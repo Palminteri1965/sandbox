@@ -109,8 +109,20 @@
         </p>
         <p class="text-sm text-slate mb-10 reveal">
           ¿Prefieres reservar por una plataforma externa?
-          <!-- Replace # with your real OpenTable / Resy / Tock booking link -->
-          <a href="#" class="text-ember-dark font-semibold hover:underline">Reserva por OpenTable →</a>
+          <!--
+            OpenTable: once your restaurant is registered as an OpenTable
+            partner, your listing lives at opentable.com/r/YOUR-RESTAURANT-SLUG
+            (find it in your OpenTable for Restaurants dashboard, or replace
+            this whole link with their official "Reserve" embed-widget code —
+            https://restaurant.opentable.com — if you'd rather embed a live
+            availability widget instead of linking out).
+          -->
+          <a href="https://www.opentable.com/r/YOUR-RESTAURANT-SLUG" target="_blank" rel="noopener noreferrer"
+            class="text-ember-dark font-semibold hover:underline">
+            Reserva por OpenTable
+            <span class="sr-only">(se abre en una pestaña nueva)</span>
+            →
+          </a>
         </p>
 
         <!--
