@@ -212,7 +212,11 @@ function initLightbox() {
 function initContactForm() {
   var form = document.querySelector('[data-contact-form]');
   if (!form) return;
-  var status = form.querySelector('[data-form-status]');
+  // `status` and `error` are siblings of the form, not descendants — query
+  // from the document, not from `form`.
+  var status = document.querySelector('[data-form-status]');
+  var error = document.querySelector('[data-form-error]');
+  var submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -220,9 +224,29 @@ function initContactForm() {
       form.reportValidity();
       return;
     }
-    form.hidden = true;
-    status.hidden = false;
-    status.focus();
+
+    if (error) error.hidden = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando…';
+
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' },
+    })
+      .then(function (response) {
+        if (!response.ok) throw new Error('Request failed with ' + response.status);
+        form.hidden = true;
+        if (status) {
+          status.hidden = false;
+          status.focus();
+        }
+      })
+      .catch(function () {
+        if (error) error.hidden = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar solicitud de reserva';
+      });
   });
 }
 

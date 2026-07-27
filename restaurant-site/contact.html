@@ -113,10 +113,18 @@
           <a href="#" class="text-ember-dark font-semibold hover:underline">Reserva por OpenTable →</a>
         </p>
 
-        <form data-contact-form class="reveal space-y-6" novalidate>
-          <!-- NOTE: this form has no backend wired up yet. Connect the `action`
-               attribute to your reservation endpoint (e.g. Formspree, Netlify
-               Forms, or your own API) before going live. -->
+        <!--
+          Backend: Formspree (https://formspree.io).
+          1. Create a free account and a new form at https://formspree.io/forms
+          2. Copy its endpoint ID (looks like "mvgrbzqk") and replace
+             YOUR_FORM_ID below with it.
+          3. Formspree emails every submission to the address you registered
+             with; no server code needed.
+        -->
+        <form data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="reveal space-y-6" novalidate>
+          <input type="hidden" name="_subject" value="Nueva solicitud de reserva — Ember & Oak" />
+          <!-- Honeypot spam trap: real users never see or fill this field. -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label for="name" class="block text-sm font-semibold text-ink mb-2">Nombre completo <span class="text-danger">*</span></label>
@@ -171,6 +179,11 @@
 
           <button type="submit" class="btn-primary" data-press>Enviar solicitud de reserva</button>
         </form>
+
+        <div data-form-error hidden role="alert" class="mb-6 border border-danger/40 bg-danger/5 px-4 py-3 text-sm text-danger">
+          Algo salió mal al enviar tu solicitud. Inténtalo de nuevo o llámanos al
+          <a href="tel:+12065550142" class="font-semibold underline">(206) 555-0142</a>.
+        </div>
 
         <div data-form-status tabindex="-1" hidden role="status" aria-live="polite" class="border border-ember/40 bg-ember/5 px-6 py-8">
           <h2 class="font-display text-2xl mb-2">¡Solicitud recibida!</h2>
