@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Menú | Ember &amp; Oak Steakhouse — Seattle</title>
+<meta name="description" content="Carta de Ember & Oak Steakhouse: cortes madurados en seco, entradas, guarniciones y postres. Cocina de brasa en Seattle, WA." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body class="bg-cream">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:bg-ember focus:text-cream focus:px-4 focus:py-2">Saltar al contenido principal</a>
+
+<header data-site-header class="fixed inset-x-0 top-0 z-50">
+  <div class="container-page">
+    <div class="flex items-center justify-between h-20 sm:h-24">
+      <a href="index.html" class="font-displaysc text-lg sm:text-2xl tracking-widest2 text-cream" aria-label="Ember &amp; Oak Steakhouse — inicio">Ember <span class="text-ember-light">&amp;</span> Oak</a>
+      <nav aria-label="Principal" class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="menu.html" class="nav-link" aria-current="page">Menú</a>
+        <a href="gallery.html" class="nav-link">Galería</a>
+        <a href="about.html" class="nav-link">Nosotros</a>
+        <a href="contact.html" class="nav-link">Contacto</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="contact.html#reserve" class="btn-primary" data-press>Reservar</a>
+      </div>
+      <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 text-cream" aria-label="Abrir menú de navegación">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" data-menu-panel aria-hidden="true" class="md:hidden">
+    <a href="index.html" class="nav-link py-3 w-full">Inicio</a>
+    <a href="menu.html" class="nav-link py-3 w-full" aria-current="page">Menú</a>
+    <a href="gallery.html" class="nav-link py-3 w-full">Galería</a>
+    <a href="about.html" class="nav-link py-3 w-full">Nosotros</a>
+    <a href="contact.html" class="nav-link py-3 w-full">Contacto</a>
+    <a href="contact.html#reserve" class="btn-primary mt-4 w-full justify-center" data-press>Reservar</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- PAGE HERO -->
+  <section class="relative min-h-[48vh] flex items-end overflow-hidden bg-ink">
+    <div class="photo-fallback absolute inset-0" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13c0-4 3-7 8-7s8 3 8 7-3 5-8 5-8-1-8-5Z"/><path d="M9 10c1-1 5-1 6 0"/></svg>
+      <span>Fotografía de ambiente</span>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" aria-hidden="true"></div>
+    <div class="container-page relative pb-14 pt-32">
+      <p class="eyebrow text-ember-light mb-4">Carta</p>
+      <h1 class="font-display text-cream text-4xl sm:text-6xl">Menú</h1>
+    </div>
+  </section>
+
+  <div class="container-page">
+    <p class="max-w-2xl text-slate leading-relaxed py-12 sm:py-16 reveal">
+      Nuestra carta cambia con la temporada del Pacífico Noroeste, pero los cortes de la casa
+      son constantes: maduración en seco propia, brasa de encina y roble, y guarniciones
+      pensadas para compartir. <span class="font-semibold text-ink">GF</span> = sin gluten ·
+      <span class="font-semibold text-ink">V</span> = vegetariano.
+    </p>
+  </div>
+
+  <!-- STARTERS -->
+  <section class="section pt-0">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-3 reveal">
+        <p class="eyebrow mb-3">01</p>
+        <h2 class="text-2xl sm:text-3xl">Para Empezar</h2>
+        <div class="divider mt-6"></div>
+      </div>
+      <div data-reveal-group class="lg:col-span-9">
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Ostras Kumamoto <span class="text-[10px] align-top font-body font-semibold text-ember-dark ml-1">GF</span></h3>
+            <p class="text-sm text-slate mt-1">Media docena, mignonette de sidra, limón de Meyer.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$22</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Tartare Cortado a Cuchillo</h3>
+            <p class="text-sm text-slate mt-1">Filete, alcaparras, yema curada, tostas de centeno.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$19</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Médula Ósea Asada</h3>
+            <p class="text-sm text-slate mt-1">Gremolata de hierbas, sal en escamas, pan de masa madre.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$17</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Ensalada de Kale Toscana <span class="text-[10px] align-top font-body font-semibold text-ember-dark ml-1">V · GF</span></h3>
+            <p class="text-sm text-slate mt-1">Parmesano añejo, piñones tostados, vinagreta de limón.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$14</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEAKS -->
+  <section class="section pt-0 bg-bone">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-3 reveal">
+        <p class="eyebrow mb-3">02</p>
+        <h2 class="text-2xl sm:text-3xl">Cortes de la Casa</h2>
+        <div class="divider mt-6"></div>
+        <p class="text-sm text-slate mt-6 leading-relaxed">Todos madurados en seco en nuestra cámara propia. Se indican los días de maduración.</p>
+      </div>
+      <div data-reveal-group class="lg:col-span-9">
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Filet Mignon <span class="text-slate font-body text-sm">· 8oz</span></h3>
+            <p class="text-sm text-slate mt-1">Maduración 30 días. El corte más tierno de la casa.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$58</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">New York Strip <span class="text-slate font-body text-sm">· 12oz</span></h3>
+            <p class="text-sm text-slate mt-1">Maduración 45 días. Marcado intenso, centro jugoso.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$54</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Ribeye <span class="text-slate font-body text-sm">· 16oz</span></h3>
+            <p class="text-sm text-slate mt-1">Maduración 45 días. Veteado generoso, sabor profundo.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$68</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Porterhouse para Dos <span class="text-slate font-body text-sm">· 32oz</span></h3>
+            <p class="text-sm text-slate mt-1">Maduración 45 días. Tallado en mesa, jus de brasa.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$128</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Tomahawk <span class="text-slate font-body text-sm">· 34oz, para 2–3</span></h3>
+            <p class="text-sm text-slate mt-1">Maduración 45 días. Presentación en hueso completo.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$135</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Wagyu A5 Miyazaki <span class="text-slate font-body text-sm">· 4oz</span></h3>
+            <p class="text-sm text-slate mt-1">Importado de Japón. Sellado a la brasa, sal ahumada de Washington.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$96</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SIDES -->
+  <section class="section pt-0">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-3 reveal">
+        <p class="eyebrow mb-3">03</p>
+        <h2 class="text-2xl sm:text-3xl">Guarniciones</h2>
+        <div class="divider mt-6"></div>
+        <p class="text-sm text-slate mt-6 leading-relaxed">Pensadas para compartir en el centro de la mesa.</p>
+      </div>
+      <div data-reveal-group class="lg:col-span-9">
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Puré de Papa con Trufa</h3>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$12</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Espárragos a la Brasa <span class="text-[10px] align-top font-body font-semibold text-ember-dark ml-1">V · GF</span></h3>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$12</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Champiñones Salvajes al Ajillo <span class="text-[10px] align-top font-body font-semibold text-ember-dark ml-1">V · GF</span></h3>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$12</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Mac and Cheese Ahumado</h3>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$12</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESSERTS -->
+  <section class="section pt-0 bg-bone">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+      <div class="lg:col-span-3 reveal">
+        <p class="eyebrow mb-3">04</p>
+        <h2 class="text-2xl sm:text-3xl">Postres</h2>
+        <div class="divider mt-6"></div>
+      </div>
+      <div data-reveal-group class="lg:col-span-9">
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Tarta de Manzana con Caramelo de Whisky</h3>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$14</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Cheesecake de Vainilla de Madagascar</h3>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$12</span>
+        </div>
+        <div class="reveal flex items-start justify-between gap-4 py-4 border-b border-line/70">
+          <div class="max-w-md">
+            <h3 class="font-display text-lg sm:text-xl">Sorbete de la Casa <span class="text-[10px] align-top font-body font-semibold text-ember-dark ml-1">V · GF</span></h3>
+            <p class="text-sm text-slate mt-1">Sabor rotativo según temporada.</p>
+          </div>
+          <span class="font-body font-semibold text-ember-dark whitespace-nowrap">$9</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WINE NOTE -->
+  <section class="section">
+    <div class="container-page max-w-2xl reveal">
+      <p class="eyebrow mb-4">Vinos y maridaje</p>
+      <p class="pull-quote">
+        Nuestra carta de vinos prioriza bodegas del Valle de Walla Walla y Willamette,
+        seleccionadas para acompañar cada corte.
+      </p>
+      <p class="mt-8 text-sm text-slate">Carta de vinos completa disponible en sala. Pregunta por el maridaje sugerido del sommelier.</p>
+    </div>
+  </section>
+
+  <!-- RESERVATION CTA -->
+  <section class="bg-ember py-20 sm:py-24">
+    <div class="container-page text-center reveal">
+      <h2 class="font-display text-cream text-3xl sm:text-4xl lg:text-5xl max-w-2xl mx-auto">¿Listo para probarlo?</h2>
+      <a href="contact.html#reserve" class="btn-outline mt-8 inline-flex" data-press>Reservar mesa</a>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-ink text-bone">
+  <div class="container-page py-16 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div>
+      <p class="font-displaysc text-xl tracking-widest2 text-cream mb-4">Ember &amp; Oak</p>
+      <p class="text-sm text-bone/70 leading-relaxed max-w-xs">Cocina de brasa y maderas nobles en el corazón de Seattle. Cortes secos en casa, servicio impecable.</p>
+      <div class="flex gap-4 mt-6">
+        <a href="#" aria-label="Instagram de Ember & Oak" class="w-11 h-11 inline-flex items-center justify-center border border-bone/20 hover:border-ember hover:text-ember-light transition-colors duration-250">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook de Ember & Oak" class="w-11 h-11 inline-flex items-center justify-center border border-bone/20 hover:border-ember hover:text-ember-light transition-colors duration-250">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2l1-3h-3v-2c0-.6.4-1 1-1Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Navegación</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-ember-light transition-colors duration-250">Inicio</a></li>
+        <li><a href="menu.html" class="hover:text-ember-light transition-colors duration-250">Menú</a></li>
+        <li><a href="gallery.html" class="hover:text-ember-light transition-colors duration-250">Galería</a></li>
+        <li><a href="about.html" class="hover:text-ember-light transition-colors duration-250">Nosotros</a></li>
+        <li><a href="contact.html" class="hover:text-ember-light transition-colors duration-250">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Contacto</p>
+      <ul class="space-y-3 text-sm text-bone/80">
+        <li>214 Western Ave<br />Seattle, WA 98104</li>
+        <li><a href="tel:+12065550142" class="hover:text-ember-light transition-colors duration-250">(206) 555-0142</a></li>
+        <li><a href="mailto:reservas@emberandoak.com" class="hover:text-ember-light transition-colors duration-250">reservas@emberandoak.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Horario</p>
+      <ul class="space-y-2 text-sm text-bone/80">
+        <li class="flex justify-between gap-4"><span>Lun – Jue</span><span>4:00 – 22:00</span></li>
+        <li class="flex justify-between gap-4"><span>Vie – Sáb</span><span>4:00 – 23:00</span></li>
+        <li class="flex justify-between gap-4"><span>Domingo</span><span>4:00 – 21:00</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-bone/10">
+    <div class="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-bone/50">
+      <p>&copy; 2026 Ember &amp; Oak Steakhouse. Todos los derechos reservados.</p>
+      <p>Seattle, Washington</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

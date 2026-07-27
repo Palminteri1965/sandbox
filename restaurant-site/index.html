@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ember &amp; Oak Steakhouse | Cocina de Brasa en Seattle</title>
+<meta name="description" content="Steakhouse de autor en Seattle: cortes secos en casa, brasa de maderas nobles y una carta de vinos del Pacífico Noroeste. Reserva tu mesa en Ember & Oak." />
+<meta property="og:title" content="Ember & Oak Steakhouse — Seattle, WA" />
+<meta property="og:description" content="Cortes secos en casa y brasa de maderas nobles en el corazón de Seattle." />
+<meta property="og:type" content="restaurant" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body class="bg-cream">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:bg-ember focus:text-cream focus:px-4 focus:py-2">Saltar al contenido principal</a>
+
+<header data-site-header class="fixed inset-x-0 top-0 z-50">
+  <div class="container-page">
+    <div class="flex items-center justify-between h-20 sm:h-24">
+      <a href="index.html" class="font-displaysc text-lg sm:text-2xl tracking-widest2 text-cream" aria-label="Ember &amp; Oak Steakhouse — inicio">Ember <span class="text-ember-light">&amp;</span> Oak</a>
+      <nav aria-label="Principal" class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link" aria-current="page">Inicio</a>
+        <a href="menu.html" class="nav-link">Menú</a>
+        <a href="gallery.html" class="nav-link">Galería</a>
+        <a href="about.html" class="nav-link">Nosotros</a>
+        <a href="contact.html" class="nav-link">Contacto</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="contact.html#reserve" class="btn-primary" data-press>Reservar</a>
+      </div>
+      <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 text-cream" aria-label="Abrir menú de navegación">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" data-menu-panel aria-hidden="true" class="md:hidden">
+    <a href="index.html" class="nav-link py-3 w-full" aria-current="page">Inicio</a>
+    <a href="menu.html" class="nav-link py-3 w-full">Menú</a>
+    <a href="gallery.html" class="nav-link py-3 w-full">Galería</a>
+    <a href="about.html" class="nav-link py-3 w-full">Nosotros</a>
+    <a href="contact.html" class="nav-link py-3 w-full">Contacto</a>
+    <a href="contact.html#reserve" class="btn-primary mt-4 w-full justify-center" data-press>Reservar</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="relative min-h-[92vh] flex items-end overflow-hidden bg-ink">
+    <div data-hero-parallax class="photo-fallback absolute inset-0" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.8 2.2-3 3.9-3 6a3 3 0 0 0 6 0c0-.9-.3-1.7-.7-2.4.3.9.2 1.9-.3 2.6a1.6 1.6 0 0 1-2.8-1c0-1.6 1.2-3 .8-5.2Z"/><path d="M7 21c0-3.5 2.2-5 5-5s5 1.5 5 5"/></svg>
+      <span>Fotografía de ambiente</span>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-ink/10" aria-hidden="true"></div>
+
+    <div class="container-page relative pb-20 sm:pb-28 pt-40">
+      <p data-hero-sub class="eyebrow text-ember-light mb-6">Seattle, Washington</p>
+      <h1 class="font-display text-cream text-5xl sm:text-7xl lg:text-8xl leading-[0.95] max-w-4xl">
+        <span class="inline-block overflow-hidden"><span data-hero-word class="inline-block">Fuego.</span></span>
+        <span class="inline-block overflow-hidden"><span data-hero-word class="inline-block">Roble.</span></span>
+        <br />
+        <span class="inline-block overflow-hidden"><span data-hero-word class="inline-block text-ember-light italic">Precisión.</span></span>
+      </h1>
+      <p data-hero-sub class="mt-8 max-w-xl text-cream/80 text-base sm:text-lg leading-relaxed">
+        Steakhouse de autor en el corazón de Seattle. Cortes secos en casa durante 45 días,
+        brasa de maderas nobles y una carta de vinos del Pacífico Noroeste.
+      </p>
+      <div data-hero-sub class="mt-10 flex flex-col sm:flex-row gap-4">
+        <a href="contact.html#reserve" class="btn-primary" data-press>Reservar mesa</a>
+        <a href="menu.html" class="btn-outline" data-press>Ver el menú</a>
+      </div>
+    </div>
+
+    <a href="#philosophy" aria-label="Desplázate para conocer más" class="hidden sm:flex absolute bottom-8 right-8 sm:right-16 w-11 h-11 items-center justify-center border border-cream/30 text-cream animate-bounce motion-reduce:animate-none">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+  <!-- PHILOSOPHY / MANIFESTO -->
+  <section id="philosophy" class="section">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div class="lg:col-span-4 reveal">
+        <p class="eyebrow mb-4">Nuestra filosofía</p>
+        <div class="divider mb-6"></div>
+        <p class="text-slate text-sm leading-relaxed">
+          Cuatro elementos gobiernan la cocina de Ember &amp; Oak: el corte, el tiempo,
+          la madera y el fuego. Todo lo demás es disciplina.
+        </p>
+      </div>
+      <div class="lg:col-span-8 reveal">
+        <p class="drop-cap text-xl sm:text-2xl leading-relaxed text-ink max-w-2xl">
+          Nada sale de nuestra parrilla antes de tiempo. Maduramos cada corte en cámara seca
+          durante un mínimo de 45 días, lo llevamos a la brasa de encina y roble a más de
+          700°F, y lo servimos con la misma sencillez con la que se sirve algo que ya es perfecto.
+          No perseguimos tendencias: perseguimos el punto exacto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED DISHES -->
+  <section class="section bg-bone">
+    <div class="container-page">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14 reveal">
+        <div>
+          <p class="eyebrow mb-4">De la brasa</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl">Platos que nos definen</h2>
+        </div>
+        <a href="menu.html" class="nav-link text-ink hidden sm:inline-flex items-center gap-2">
+          Ver el menú completo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div data-reveal-group class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        <article class="reveal group">
+          <div class="photo-frame mb-5">
+            <div class="photo-fallback absolute inset-0">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13c0-4 3-7 8-7s8 3 8 7-3 5-8 5-8-1-8-5Z"/><path d="M9 10c1-1 5-1 6 0"/></svg>
+              <span>Ribeye madurado</span>
+            </div>
+          </div>
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-xl font-display">Ribeye 45 días</h3>
+            <span class="font-body text-ember-dark font-semibold">$68</span>
+          </div>
+          <p class="mt-2 text-sm text-slate leading-relaxed">Maduración seca en casa, sal de Maldon y mantequilla de hierbas de brasa.</p>
+        </article>
+
+        <article class="reveal group">
+          <div class="photo-frame mb-5">
+            <div class="photo-fallback absolute inset-0">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-1.8 2.2-3 3.9-3 6a3 3 0 0 0 6 0c0-.9-.3-1.7-.7-2.4.3.9.2 1.9-.3 2.6a1.6 1.6 0 0 1-2.8-1c0-1.6 1.2-3 .8-5.2Z"/><path d="M7 21c0-3.5 2.2-5 5-5s5 1.5 5 5"/></svg>
+              <span>Porterhouse para dos</span>
+            </div>
+          </div>
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-xl font-display">Porterhouse para dos</h3>
+            <span class="font-body text-ember-dark font-semibold">$128</span>
+          </div>
+          <p class="mt-2 text-sm text-slate leading-relaxed">Corte de la casa, tallado en mesa, acompañado de jus de brasa.</p>
+        </article>
+
+        <article class="reveal group">
+          <div class="photo-frame mb-5">
+            <div class="photo-fallback absolute inset-0">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v6a5 5 0 0 0 10 0V3"/><path d="M12 15v6M9 21h6"/></svg>
+              <span>Maridaje del sommelier</span>
+            </div>
+          </div>
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-xl font-display">Wagyu A5, 4 oz</h3>
+            <span class="font-body text-ember-dark font-semibold">$96</span>
+          </div>
+          <p class="mt-2 text-sm text-slate leading-relaxed">Importado de Miyazaki, sellado a la brasa, sal ahumada de Washington.</p>
+        </article>
+      </div>
+
+      <a href="menu.html" class="nav-link text-ink sm:hidden inline-flex items-center gap-2 mt-10">
+        Ver el menú completo
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- SOURCING STRIP -->
+  <section class="bg-ink text-cream py-16 sm:py-20">
+    <div class="container-page">
+      <div data-reveal-group class="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 text-center sm:text-left">
+        <div class="reveal">
+          <p class="font-display text-4xl sm:text-5xl text-ember-light">45</p>
+          <p class="mt-2 text-sm uppercase tracking-widest2 text-cream/70">Días de maduración en seco</p>
+        </div>
+        <div class="reveal">
+          <p class="font-display text-4xl sm:text-5xl text-ember-light">100%</p>
+          <p class="mt-2 text-sm uppercase tracking-widest2 text-cream/70">Angus certificado, granjas del NO Pacífico</p>
+        </div>
+        <div class="reveal">
+          <p class="font-display text-4xl sm:text-5xl text-ember-light">700°F</p>
+          <p class="mt-2 text-sm uppercase tracking-widest2 text-cream/70">Parrilla de encina y roble</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY TEASER -->
+  <section class="section">
+    <div class="container-page">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14 reveal">
+        <div>
+          <p class="eyebrow mb-4">El espacio</p>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl">Un comedor con carácter</h2>
+        </div>
+        <a href="gallery.html" class="nav-link text-ink hidden sm:inline-flex items-center gap-2">
+          Ver galería completa
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div data-reveal-group class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <a href="gallery.html" class="photo-frame reveal transition-transform duration-250 hover:scale-[1.02]" style="aspect-ratio: 3/4;">
+          <div class="photo-fallback absolute inset-0"><span>Comedor principal</span></div>
+        </a>
+        <a href="gallery.html" class="photo-frame reveal transition-transform duration-250 hover:scale-[1.02] lg:mt-8" style="aspect-ratio: 3/4;">
+          <div class="photo-fallback absolute inset-0"><span>Barra de vinos</span></div>
+        </a>
+        <a href="gallery.html" class="photo-frame reveal transition-transform duration-250 hover:scale-[1.02]" style="aspect-ratio: 3/4;">
+          <div class="photo-fallback absolute inset-0"><span>Cocina abierta</span></div>
+        </a>
+        <a href="gallery.html" class="photo-frame reveal transition-transform duration-250 hover:scale-[1.02] lg:mt-8" style="aspect-ratio: 3/4;">
+          <div class="photo-fallback absolute inset-0"><span>Terraza</span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section bg-bone">
+    <div class="container-page max-w-3xl reveal">
+      <blockquote class="pull-quote">
+        La mejor experiencia de steakhouse que he tenido en Seattle. El punto de cocción,
+        la maduración, el servicio — todo impecable, sin pretensión.
+      </blockquote>
+      <p class="mt-8 text-sm uppercase tracking-widest2 text-slate">Cliente habitual · Reserva de aniversario</p>
+    </div>
+  </section>
+
+  <!-- RESERVATION CTA -->
+  <section class="bg-ember py-20 sm:py-24">
+    <div class="container-page text-center reveal">
+      <h2 class="font-display text-cream text-3xl sm:text-4xl lg:text-5xl max-w-2xl mx-auto">Reserva tu mesa esta noche</h2>
+      <p class="mt-4 text-cream/85 max-w-md mx-auto">Cupo limitado. Recomendamos reservar con al menos 48 horas de anticipación los fines de semana.</p>
+      <a href="contact.html#reserve" class="btn-outline mt-8 inline-flex" data-press>Reservar ahora</a>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-ink text-bone">
+  <div class="container-page py-16 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div>
+      <p class="font-displaysc text-xl tracking-widest2 text-cream mb-4">Ember &amp; Oak</p>
+      <p class="text-sm text-bone/70 leading-relaxed max-w-xs">Cocina de brasa y maderas nobles en el corazón de Seattle. Cortes secos en casa, servicio impecable.</p>
+      <div class="flex gap-4 mt-6">
+        <a href="#" aria-label="Instagram de Ember & Oak" class="w-11 h-11 inline-flex items-center justify-center border border-bone/20 hover:border-ember hover:text-ember-light transition-colors duration-250">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook de Ember & Oak" class="w-11 h-11 inline-flex items-center justify-center border border-bone/20 hover:border-ember hover:text-ember-light transition-colors duration-250">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2l1-3h-3v-2c0-.6.4-1 1-1Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Navegación</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-ember-light transition-colors duration-250">Inicio</a></li>
+        <li><a href="menu.html" class="hover:text-ember-light transition-colors duration-250">Menú</a></li>
+        <li><a href="gallery.html" class="hover:text-ember-light transition-colors duration-250">Galería</a></li>
+        <li><a href="about.html" class="hover:text-ember-light transition-colors duration-250">Nosotros</a></li>
+        <li><a href="contact.html" class="hover:text-ember-light transition-colors duration-250">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Contacto</p>
+      <ul class="space-y-3 text-sm text-bone/80">
+        <li>214 Western Ave<br />Seattle, WA 98104</li>
+        <li><a href="tel:+12065550142" class="hover:text-ember-light transition-colors duration-250">(206) 555-0142</a></li>
+        <li><a href="mailto:reservas@emberandoak.com" class="hover:text-ember-light transition-colors duration-250">reservas@emberandoak.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Horario</p>
+      <ul class="space-y-2 text-sm text-bone/80">
+        <li class="flex justify-between gap-4"><span>Lun – Jue</span><span>4:00 – 22:00</span></li>
+        <li class="flex justify-between gap-4"><span>Vie – Sáb</span><span>4:00 – 23:00</span></li>
+        <li class="flex justify-between gap-4"><span>Domingo</span><span>4:00 – 21:00</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-bone/10">
+    <div class="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-bone/50">
+      <p>&copy; 2026 Ember &amp; Oak Steakhouse. Todos los derechos reservados.</p>
+      <p>Seattle, Washington</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>

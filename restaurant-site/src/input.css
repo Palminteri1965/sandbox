@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=Playfair+Display+SC:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display;
+    color: inherit;
+  }
+  a {
+    @apply cursor-pointer;
+  }
+  ::selection {
+    @apply bg-ember/20 text-ink;
+  }
+  :focus-visible {
+    outline: 2px solid #A16207;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply font-body text-xs sm:text-sm uppercase tracking-widest2 text-ember-dark font-semibold;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm sm:text-base font-body font-semibold uppercase tracking-wider transition-colors duration-250 cursor-pointer min-h-[44px];
+  }
+  .btn-primary {
+    @apply btn bg-ember text-cream hover:bg-ember-dark;
+  }
+  .btn-outline {
+    @apply btn border border-cream/70 text-cream hover:bg-cream hover:text-ink;
+  }
+  .btn-outline-dark {
+    @apply btn border border-ink/70 text-ink hover:bg-ink hover:text-cream;
+  }
+
+  .container-page {
+    @apply mx-auto max-w-content px-6 sm:px-10 lg:px-16;
+  }
+
+  .section {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  .divider {
+    @apply w-16 h-[3px] bg-ember;
+  }
+
+  /* .reveal is visible by default (progressive enhancement). animations.js
+     only sets an initial hidden state via gsap.set() once GSAP has
+     confirmed it loaded, so a blocked/failed CDN script never leaves
+     content permanently invisible. */
+  .reveal {
+    opacity: 1;
+  }
+
+  .nav-link {
+    @apply relative font-body text-sm uppercase tracking-wider text-cream/90 hover:text-cream transition-colors duration-250;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute left-0 -bottom-1 h-px w-0 bg-ember transition-all duration-250;
+  }
+  .nav-link:hover::after, .nav-link[aria-current="page"]::after {
+    @apply w-full;
+  }
+  .nav-link[aria-current="page"] {
+    @apply text-ember-light;
+  }
+
+  .photo-frame {
+    @apply relative block w-full p-0 border-0 overflow-hidden bg-char;
+    aspect-ratio: 4 / 5;
+  }
+  .photo-frame img,
+  .photo-frame .photo-fallback {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+
+  [data-site-header] {
+    @apply bg-transparent transition-colors duration-250;
+  }
+  [data-site-header].is-scrolled {
+    @apply bg-ink/95 backdrop-blur-sm shadow-lg shadow-ink/20;
+  }
+
+  [data-menu-panel] {
+    @apply hidden flex-col items-start gap-1 bg-ink px-6 pb-6 pt-2;
+  }
+
+  .photo-fallback {
+    @apply flex flex-col items-center justify-center gap-3 text-bone/70;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(161, 98, 7, 0.35), transparent 55%),
+      linear-gradient(155deg, #2b241d 0%, #1c1917 55%, #0c0a09 100%);
+  }
+  .photo-fallback::before {
+    content: '';
+    @apply absolute inset-0 opacity-[0.06] pointer-events-none;
+    background-image: repeating-linear-gradient(45deg, #fff 0 1px, transparent 1px 6px);
+  }
+  .photo-fallback svg {
+    @apply w-8 h-8 sm:w-10 sm:h-10 relative;
+    stroke: #C88B1F;
+  }
+  .photo-fallback span {
+    @apply relative text-[11px] sm:text-xs uppercase tracking-widest2 font-semibold;
+  }
+
+  .drop-cap::first-letter {
+    @apply font-display text-ember;
+    font-size: 4.25rem;
+    line-height: 0.75;
+    float: left;
+    margin-right: 0.75rem;
+    margin-top: 0.35rem;
+  }
+
+  .pull-quote {
+    @apply relative font-display italic text-2xl sm:text-3xl lg:text-4xl leading-snug text-ink;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    @apply absolute -top-6 sm:-top-8 -left-2 sm:-left-4 text-ember/30 font-display not-italic;
+    font-size: 5rem;
+  }
+
+  dialog[data-lightbox] {
+    @apply w-full max-w-3xl bg-ink text-cream p-0 border-0;
+  }
+  dialog[data-lightbox]::backdrop {
+    @apply bg-ink/90 backdrop-blur-sm;
+  }
+  dialog[data-lightbox] [data-lightbox-media] {
+    @apply relative w-full;
+    aspect-ratio: 16 / 10;
+  }
+}
