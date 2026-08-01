@@ -51,29 +51,31 @@
   </header>
   <main>
 
-  <section class="relative min-h-[92vh] flex items-end">
-    
-  <div class="absolute inset-0 h-full w-full rounded-sm bg-gradient-to-br from-charcoal via-ink to-charcoal relative overflow-hidden flex items-center justify-center text-cream/40">
-    <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 35%), radial-gradient(circle at 80% 60%, #fff 0, transparent 40%);"></div>
-    <div class="relative flex flex-col items-center gap-2 px-4 text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.2h3.2l1.4-2h6.8l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.2a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
-      <p class="text-[11px] uppercase tracking-widest text-cream/50">Hero photography — dining room by firelight</p>
+  
+  <div data-scroll-hero data-scroll-height="1200" data-initial-clip="25" data-final-clip="75"
+    class="relative w-full" style="height: calc(1200px + 100vh);">
+    <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
+      style="clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);">
+      <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
+        style="background-image: url('images/hero-steak.svg'); background-size: 170%;"></div>
     </div>
-  </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20"></div>
-    <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pt-40">
-      <p class="eyebrow reveal"><span data-en="Seattle, Washington" data-es="Seattle, Washington">Seattle, Washington</span></p>
-      <h1 class="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-3xl reveal">
-        <span data-en="Wood-Fired Steaks," data-es="Carnes al Fuego de Leña,">Wood-Fired Steaks,</span><br>
-        <span class="text-gold-soft italic"><span data-en="Pacific Northwest Soul." data-es="Alma del Pacífico Noroeste.">Pacific Northwest Soul.</span></span>
-      </h1>
-      <p class="mt-6 max-w-lg text-cream/70 text-base sm:text-lg reveal"><span data-en="Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront." data-es="Carne madurada en seco, técnica de fuego vivo y una carta de vinos centrada en el Noroeste, a pasos del malecón de Seattle.">Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront.</span></p>
-      <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-        <a href="tel:+12065550142" class="btn-primary"><span data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</span></a>
-        <a href="menu.html" class="btn-outline"><span data-en="View Menu" data-es="Ver Menú">View Menu</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg></a>
+    <div class="sticky top-0 -mt-[100vh] h-screen w-full flex items-end pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10"></div>
+      
+      <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pointer-events-auto">
+        <p class="eyebrow reveal"><span data-en="Seattle, Washington" data-es="Seattle, Washington">Seattle, Washington</span></p>
+        <h1 class="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-3xl reveal">
+          <span data-en="Wood-Fired Steaks," data-es="Carnes al Fuego de Leña,">Wood-Fired Steaks,</span><br>
+          <span class="text-gold-soft italic"><span data-en="Pacific Northwest Soul." data-es="Alma del Pacífico Noroeste.">Pacific Northwest Soul.</span></span>
+        </h1>
+        <p class="mt-6 max-w-lg text-cream/70 text-base sm:text-lg reveal"><span data-en="Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront." data-es="Carne madurada en seco, técnica de fuego vivo y una carta de vinos centrada en el Noroeste, a pasos del malecón de Seattle.">Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront.</span></p>
+        <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
+          <a href="tel:+12065550142" class="btn-primary"><span data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</span></a>
+          <a href="menu.html" class="btn-outline"><span data-en="View Menu" data-es="Ver Menú">View Menu</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg></a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
   <section class="py-20 sm:py-28 bg-cream" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">

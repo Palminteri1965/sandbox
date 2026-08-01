@@ -70,6 +70,70 @@
     onScroll();
   }
 
+  /* ---------- Scroll-linked hero (clip-path reveal + parallax zoom) ---------- */
+  /* Vanilla reimplementation of a framer-motion "smooth scroll hero": as the
+     tall wrapper scrolls past, the sticky background's clip-path opens from
+     an inset rectangle to full-bleed while the image zooms from 170% down
+     to 100%. No React/framer-motion needed for this one effect. */
+  var scrollHero = document.querySelector("[data-scroll-hero]");
+  if (scrollHero) {
+    var heroSticky = scrollHero.querySelector("[data-scroll-hero-sticky]");
+    var heroBg = scrollHero.querySelector("[data-scroll-hero-bg]");
+    var heroScrollHeight = parseInt(scrollHero.getAttribute("data-scroll-height"), 10) || 1200;
+    var heroInitialClip = parseInt(scrollHero.getAttribute("data-initial-clip"), 10);
+    var heroFinalClip = parseInt(scrollHero.getAttribute("data-final-clip"), 10);
+    heroInitialClip = isNaN(heroInitialClip) ? 25 : heroInitialClip;
+    heroFinalClip = isNaN(heroFinalClip) ? 75 : heroFinalClip;
+
+    if (reduceMotion) {
+      heroSticky.style.clipPath = "none";
+      if (heroBg) heroBg.style.backgroundSize = "cover";
+    } else {
+      (function () {
+        var ticking = false;
+
+        function clamp(v, min, max) {
+          return Math.max(min, Math.min(max, v));
+        }
+        function lerp(a, b, t) {
+          return a + (b - a) * t;
+        }
+
+        function render() {
+          ticking = false;
+          var rect = scrollHero.getBoundingClientRect();
+          var scrolled = clamp(-rect.top, 0, heroScrollHeight + 500);
+
+          var t1 = clamp(scrolled / heroScrollHeight, 0, 1);
+          var clipStart = lerp(heroInitialClip, 0, t1);
+          var clipEnd = lerp(heroFinalClip, 100, t1);
+          heroSticky.style.clipPath =
+            "polygon(" +
+            clipStart + "% " + clipStart + "%, " +
+            clipEnd + "% " + clipStart + "%, " +
+            clipEnd + "% " + clipEnd + "%, " +
+            clipStart + "% " + clipEnd + "%)";
+
+          if (heroBg) {
+            var t2 = clamp(scrolled / (heroScrollHeight + 500), 0, 1);
+            heroBg.style.backgroundSize = lerp(170, 100, t2).toFixed(1) + "%";
+          }
+        }
+
+        function onScroll() {
+          if (!ticking) {
+            ticking = true;
+            window.requestAnimationFrame(render);
+          }
+        }
+
+        render();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", onScroll);
+      })();
+    }
+  }
+
   /* ---------- Footer year ---------- */
   var yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());

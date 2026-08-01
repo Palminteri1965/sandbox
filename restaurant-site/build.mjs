@@ -185,6 +185,29 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[
   </section>`;
 }
 
+/**
+ * Vanilla port of a scroll-linked "smooth scroll hero": the page loads with
+ * the image clipped down to a small centered window, and as the user scrolls
+ * through a tall wrapper the clip-path opens to full-bleed while the image
+ * zooms from 170% down to 100%. All the motion is computed in js/main.js
+ * from scroll position — no React/framer-motion dependency.
+ */
+function scrollHero({ image, scrollHeightPx = 1200, initialClip = 25, finalClip = 75, overlayContent }) {
+  return `
+  <div data-scroll-hero data-scroll-height="${scrollHeightPx}" data-initial-clip="${initialClip}" data-final-clip="${finalClip}"
+    class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
+    <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
+      style="clip-path: polygon(${initialClip}% ${initialClip}%, ${finalClip}% ${initialClip}%, ${finalClip}% ${finalClip}%, ${initialClip}% ${finalClip}%);">
+      <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
+        style="background-image: url('${escAttr(image)}'); background-size: 170%;"></div>
+    </div>
+    <div class="sticky top-0 -mt-[100vh] h-screen w-full flex items-end pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10"></div>
+      ${overlayContent}
+    </div>
+  </div>`;
+}
+
 function reservationBand() {
   return `
   <section class="bg-gold">
@@ -208,25 +231,28 @@ function reservationBand() {
 /* ==================================================================== */
 
 const homeMain = `
-  <section class="relative min-h-[92vh] flex items-end">
-    ${photoPlaceholder({ caption: "Hero photography — dining room by firelight", ratio: "absolute inset-0 h-full", iconCls: "h-12 w-12" })}
-    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20"></div>
-    <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pt-40">
-      <p class="eyebrow reveal">${t("Seattle, Washington", "Seattle, Washington")}</p>
-      <h1 class="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-3xl reveal">
-        ${t("Wood-Fired Steaks,", "Carnes al Fuego de Leña,")}<br>
-        <span class="text-gold-soft italic">${t("Pacific Northwest Soul.", "Alma del Pacífico Noroeste.")}</span>
-      </h1>
-      <p class="mt-6 max-w-lg text-cream/70 text-base sm:text-lg reveal">${t(
-        "Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront.",
-        "Carne madurada en seco, técnica de fuego vivo y una carta de vinos centrada en el Noroeste, a pasos del malecón de Seattle."
-      )}</p>
-      <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-        <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")}</a>
-        <a href="menu.html" class="btn-outline">${t("View Menu", "Ver Menú")} ${icons.arrowRight("h-4 w-4")}</a>
-      </div>
-    </div>
-  </section>
+  ${scrollHero({
+    // TODO: swap for the real ribeye-on-the-grill photo once it's saved
+    // into images/ (e.g. images/hero-steak.jpg) — see restaurant-site/README.md.
+    image: "images/hero-steak.svg",
+    scrollHeightPx: 1200,
+    overlayContent: `
+      <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pointer-events-auto">
+        <p class="eyebrow reveal">${t("Seattle, Washington", "Seattle, Washington")}</p>
+        <h1 class="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-3xl reveal">
+          ${t("Wood-Fired Steaks,", "Carnes al Fuego de Leña,")}<br>
+          <span class="text-gold-soft italic">${t("Pacific Northwest Soul.", "Alma del Pacífico Noroeste.")}</span>
+        </h1>
+        <p class="mt-6 max-w-lg text-cream/70 text-base sm:text-lg reveal">${t(
+          "Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront.",
+          "Carne madurada en seco, técnica de fuego vivo y una carta de vinos centrada en el Noroeste, a pasos del malecón de Seattle."
+        )}</p>
+        <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
+          <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")}</a>
+          <a href="menu.html" class="btn-outline">${t("View Menu", "Ver Menú")} ${icons.arrowRight("h-4 w-4")}</a>
+        </div>
+      </div>`,
+  })}
 
   <section class="py-20 sm:py-28 bg-cream" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
