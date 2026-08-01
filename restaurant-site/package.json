@@ -1,0 +1,20 @@
+{
+  "name": "restaurant-site",
+  "version": "1.0.0",
+  "description": "Ember & Oak Steakhouse marketing site (static HTML + Tailwind CSS).",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:html": "node build.mjs",
+    "build:css": "tailwindcss -i src/input.css -o dist/styles.css --minify",
+    "build": "npm run build:html && npm run build:css",
+    "watch:css": "tailwindcss -i src/input.css -o dist/styles.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
+

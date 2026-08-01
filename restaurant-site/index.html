@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ember &amp; Oak Steakhouse | Wood-Fired Steaks in Seattle, WA</title>
+  <meta name="description" content="Dry-aged, wood-fired steaks and Pacific Northwest seafood in Belltown, Seattle. Reserve your table at Ember &amp; Oak Steakhouse.">
+  <meta name="theme-color" content="#1C1917">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Crect%20width%3D%2224%22%20height%3D%2224%22%20fill%3D%22%25231C1917%22%2F%3E%3Ctext%20x%3D%2212%22%20y%3D%2216.5%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2212%22%20fill%3D%22%2523C88A2E%22%20text-anchor%3D%22middle%22%3EEO%3C%2Ftext%3E%3C%2Fsvg%3E">
+  <meta property="og:title" content="Ember &amp; Oak Steakhouse | Wood-Fired Steaks in Seattle, WA">
+  <meta property="og:description" content="Dry-aged, wood-fired steaks and Pacific Northwest seafood in Belltown, Seattle. Reserve your table at Ember &amp; Oak Steakhouse.">
+  <meta property="og:type" content="restaurant.restaurant">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dist/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Ember & Oak Steakhouse","servesCuisine":"Steakhouse","priceRange":"$$$","telephone":"+12065550142","email":"reservations@emberandoak.com","address":{"@type":"PostalAddress","streetAddress":"2100 Western Avenue","addressLocality":"Seattle","addressRegion":"WA","postalCode":"98121","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"16:30","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"16:30","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"16:00","closes":"21:00"}]}</script>
+</head>
+<body class="bg-cream text-ink">
+  
+  <header data-site-nav class="fixed inset-x-0 top-0 z-50 transition-colors duration-300 bg-transparent on-dark">
+    <nav class="mx-auto max-w-content flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20" aria-label="Primary">
+      <a href="index.html" class="font-display text-xl sm:text-2xl text-cream tracking-wide">
+        Ember<span class="text-gold"> &amp; </span>Oak
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link nav-link-active" aria-current="page"><span data-en="Home" data-es="Inicio">Home</span></a>
+        <a href="menu.html" class="nav-link"><span data-en="Menu" data-es="Menú">Menu</span></a>
+        <a href="about.html" class="nav-link"><span data-en="Our Story" data-es="Nuestra Historia">Our Story</span></a>
+        <a href="gallery.html" class="nav-link"><span data-en="Gallery" data-es="Galería">Gallery</span></a>
+        <a href="contact.html" class="nav-link"><span data-en="Reservations" data-es="Reservas">Reservations</span></a>
+        <button type="button" data-lang-toggle class="text-xs font-semibold tracking-widest border border-cream/30 rounded-full h-9 min-w-[44px] px-3 text-cream/80 hover:text-gold-soft hover:border-gold/60 transition-colors cursor-pointer" aria-label="Switch to Spanish">ES</button>
+        <a href="tel:+12065550142" class="btn-primary"><span data-en="Reserve" data-es="Reservar">Reserve</span></a>
+      </div>
+      <div class="flex items-center gap-3 md:hidden">
+        <button type="button" data-lang-toggle class="text-xs font-semibold tracking-widest border border-cream/30 rounded-full h-9 min-w-[44px] px-3 text-cream/80 cursor-pointer" aria-label="Switch to Spanish">ES</button>
+        <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" class="h-11 w-11 flex items-center justify-center text-cream cursor-pointer" aria-label="Open menu">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+        </button>
+      </div>
+    </nav>
+    <div id="mobile-nav" data-mobile-nav class="hidden md:hidden flex-col bg-charcoal/98 backdrop-blur px-4 sm:px-6 pb-4">
+      <a href="index.html" class="block py-3 text-base uppercase tracking-wider text-gold-soft border-b border-cream/10" aria-current="page"><span data-en="Home" data-es="Inicio">Home</span></a>
+          <a href="menu.html" class="block py-3 text-base uppercase tracking-wider text-cream/90 border-b border-cream/10"><span data-en="Menu" data-es="Menú">Menu</span></a>
+          <a href="about.html" class="block py-3 text-base uppercase tracking-wider text-cream/90 border-b border-cream/10"><span data-en="Our Story" data-es="Nuestra Historia">Our Story</span></a>
+          <a href="gallery.html" class="block py-3 text-base uppercase tracking-wider text-cream/90 border-b border-cream/10"><span data-en="Gallery" data-es="Galería">Gallery</span></a>
+          <a href="contact.html" class="block py-3 text-base uppercase tracking-wider text-cream/90 border-b border-cream/10"><span data-en="Reservations" data-es="Reservas">Reservations</span></a>
+      <a href="tel:+12065550142" class="btn-primary mt-4 w-full"><span data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</span></a>
+    </div>
+  </header>
+  <main>
+
+  <section class="relative min-h-[92vh] flex items-end">
+    
+  <div class="absolute inset-0 h-full w-full rounded-sm bg-gradient-to-br from-charcoal via-ink to-charcoal relative overflow-hidden flex items-center justify-center text-cream/40">
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 35%), radial-gradient(circle at 80% 60%, #fff 0, transparent 40%);"></div>
+    <div class="relative flex flex-col items-center gap-2 px-4 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-12 w-12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.2h3.2l1.4-2h6.8l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.2a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+      <p class="text-[11px] uppercase tracking-widest text-cream/50">Hero photography — dining room by firelight</p>
+    </div>
+  </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-ink/20"></div>
+    <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pt-40">
+      <p class="eyebrow reveal"><span data-en="Seattle, Washington" data-es="Seattle, Washington">Seattle, Washington</span></p>
+      <h1 class="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-3xl reveal">
+        <span data-en="Wood-Fired Steaks," data-es="Carnes al Fuego de Leña,">Wood-Fired Steaks,</span><br>
+        <span class="text-gold-soft italic"><span data-en="Pacific Northwest Soul." data-es="Alma del Pacífico Noroeste.">Pacific Northwest Soul.</span></span>
+      </h1>
+      <p class="mt-6 max-w-lg text-cream/70 text-base sm:text-lg reveal"><span data-en="Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront." data-es="Carne madurada en seco, técnica de fuego vivo y una carta de vinos centrada en el Noroeste, a pasos del malecón de Seattle.">Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront.</span></p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
+        <a href="tel:+12065550142" class="btn-primary"><span data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</span></a>
+        <a href="menu.html" class="btn-outline"><span data-en="View Menu" data-es="Ver Menú">View Menu</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-cream" data-reveal-group>
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl reveal">
+        <p class="eyebrow"><span data-en="Signature" data-es="Firma de la Casa">Signature</span></p>
+        <h2 class="section-heading mt-3 text-ink"><span data-en="From the Fire" data-es="Desde el Fuego">From the Fire</span></h2>
+      </div>
+      <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <article class="group reveal">
+          
+  <div class="aspect-[4/5] w-full rounded-sm bg-gradient-to-br from-charcoal via-ink to-charcoal relative overflow-hidden flex items-center justify-center text-cream/40">
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 35%), radial-gradient(circle at 80% 60%, #fff 0, transparent 40%);"></div>
+    <div class="relative flex flex-col items-center gap-2 px-4 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.2h3.2l1.4-2h6.8l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.2a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+      <p class="text-[11px] uppercase tracking-widest text-cream/50">Bone-in ribeye on the hearth</p>
+    </div>
+  </div>
+          <h3 class="mt-5 font-display text-xl text-ink"><span data-en="Dry-Aged Bone-In Ribeye" data-es="Ribeye con Hueso Madurado">Dry-Aged Bone-In Ribeye</span></h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed"><span data-en="45-day dry-aged, hearth-roasted, bone marrow butter." data-es="Madurado en seco 45 días, asado a la parrilla, mantequilla de tuétano.">45-day dry-aged, hearth-roasted, bone marrow butter.</span></p>
+        </article>
+        
+        <article class="group reveal">
+          
+  <div class="aspect-[4/5] w-full rounded-sm bg-gradient-to-br from-charcoal via-ink to-charcoal relative overflow-hidden flex items-center justify-center text-cream/40">
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 35%), radial-gradient(circle at 80% 60%, #fff 0, transparent 40%);"></div>
+    <div class="relative flex flex-col items-center gap-2 px-4 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.2h3.2l1.4-2h6.8l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.2a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+      <p class="text-[11px] uppercase tracking-widest text-cream/50">Tomahawk carving table</p>
+    </div>
+  </div>
+          <h3 class="mt-5 font-display text-xl text-ink"><span data-en="Tomahawk for Two" data-es="Tomahawk para Dos">Tomahawk for Two</span></h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed"><span data-en="34oz Pacific Northwest beef, rosemary smoke, chimichurri." data-es="34oz de res del Pacífico Noroeste, humo de romero, chimichurri.">34oz Pacific Northwest beef, rosemary smoke, chimichurri.</span></p>
+        </article>
+        
+        <article class="group reveal">
+          
+  <div class="aspect-[4/5] w-full rounded-sm bg-gradient-to-br from-charcoal via-ink to-charcoal relative overflow-hidden flex items-center justify-center text-cream/40">
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 35%), radial-gradient(circle at 80% 60%, #fff 0, transparent 40%);"></div>
+    <div class="relative flex flex-col items-center gap-2 px-4 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.2h3.2l1.4-2h6.8l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.2a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+      <p class="text-[11px] uppercase tracking-widest text-cream/50">Alder-planked salmon</p>
+    </div>
+  </div>
+          <h3 class="mt-5 font-display text-xl text-ink"><span data-en="Alder-Planked King Salmon" data-es="Salmón Real en Tabla de Aliso">Alder-Planked King Salmon</span></h3>
+          <p class="mt-2 text-sm text-slate leading-relaxed"><span data-en="Local king salmon, citrus glaze, charred fennel." data-es="Salmón real local, glaseado cítrico, hinojo asado.">Local king salmon, citrus glaze, charred fennel.</span></p>
+        </article>
+      </div>
+      <div class="mt-12 reveal">
+        <a href="menu.html" class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-ink border-b border-gold pb-1 hover:text-gold transition-colors">
+          <span data-en="See the Full Menu" data-es="Ver el Menú Completo">See the Full Menu</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-charcoal on-dark" data-reveal-group>
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
+      <div class="reveal order-2 lg:order-1">
+        
+  <div class="aspect-[4/3] w-full rounded-sm bg-gradient-to-br from-charcoal via-ink to-charcoal relative overflow-hidden flex items-center justify-center text-cream/40">
+    <div class="absolute inset-0 opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 35%), radial-gradient(circle at 80% 60%, #fff 0, transparent 40%);"></div>
+    <div class="relative flex flex-col items-center gap-2 px-4 text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-8 w-8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.2h3.2l1.4-2h6.8l1.4 2H20a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.2a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+      <p class="text-[11px] uppercase tracking-widest text-cream/50">Chef searing steaks over open flame</p>
+    </div>
+  </div>
+      </div>
+      <div class="reveal order-1 lg:order-2">
+        <p class="eyebrow"><span data-en="Our Story" data-es="Nuestra Historia">Our Story</span></p>
+        <h2 class="section-heading mt-3 text-cream"><span data-en="Fire is the only Ingredient we can’t Substitute" data-es="El Fuego es el Único Ingrediente que no Podemos Sustituir">Fire is the only Ingredient we can’t Substitute</span></h2>
+        <p class="mt-5 text-cream/70 leading-relaxed"><span data-en="Since day one, every steak at Ember &amp; Oak has touched real fire — oak and alder, never gas. We work directly with Pacific Northwest ranches and day-boat fishermen, and we age our beef in-house because flavor can't be rushed." data-es="Desde el primer día, cada carne en Ember &amp; Oak ha tocado fuego real: roble y aliso, nunca gas. Trabajamos directamente con ranchos del Pacífico Noroeste y pescadores locales, y maduramos nuestra carne en casa porque el sabor no se puede apresurar.">Since day one, every steak at Ember &amp; Oak has touched real fire — oak and alder, never gas. We work directly with Pacific Northwest ranches and day-boat fishermen, and we age our beef in-house because flavor can't be rushed.</span></p>
+        <a href="about.html" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold-soft border-b border-gold-soft/60 pb-1 hover:text-gold transition-colors">
+          <span data-en="Meet the Kitchen" data-es="Conoce la Cocina">Meet the Kitchen</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 sm:py-28 bg-parchment" data-reveal-group>
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center reveal">
+        <p class="eyebrow justify-center flex"><span data-en="Guests" data-es="Comensales">Guests</span></p>
+        <h2 class="section-heading mt-3 text-ink"><span data-en="What Seattle is Saying" data-es="Lo que Dice Seattle">What Seattle is Saying</span></h2>
+      </div>
+      <div class="mt-12 grid gap-8 md:grid-cols-3">
+        
+        <figure class="reveal bg-cream rounded-sm p-8 border border-border/60">
+          <div class="flex gap-1 text-gold"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-gold/40 mt-4" fill="currentColor" aria-hidden="true"><path d="M7.5 9.2c-1.8 0-3.2 1.4-3.2 3.2v5.1h5.3v-5.1H7.5c0-1.2 1-2.1 2.1-2.1V9.2H7.5zM16.6 9.2c-1.8 0-3.2 1.4-3.2 3.2v5.1H18.7v-5.1h-2.1c0-1.2 1-2.1 2.1-2.1V9.2h-2.1z"/></svg>
+          <blockquote class="mt-2 text-ink/80 leading-relaxed"><span data-en="Best steak I've had in Seattle, full stop. The tomahawk for two is a showstopper." data-es="El mejor bistec que he probado en Seattle, sin duda. El tomahawk para dos es espectacular.">Best steak I've had in Seattle, full stop. The tomahawk for two is a showstopper.</span></blockquote>
+          <figcaption class="mt-4 text-sm font-semibold text-ink">Danielle R.</figcaption>
+        </figure>
+        
+        <figure class="reveal bg-cream rounded-sm p-8 border border-border/60">
+          <div class="flex gap-1 text-gold"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-gold/40 mt-4" fill="currentColor" aria-hidden="true"><path d="M7.5 9.2c-1.8 0-3.2 1.4-3.2 3.2v5.1h5.3v-5.1H7.5c0-1.2 1-2.1 2.1-2.1V9.2H7.5zM16.6 9.2c-1.8 0-3.2 1.4-3.2 3.2v5.1H18.7v-5.1h-2.1c0-1.2 1-2.1 2.1-2.1V9.2h-2.1z"/></svg>
+          <blockquote class="mt-2 text-ink/80 leading-relaxed"><span data-en="Warm, unpretentious service and a wine list that actually knows the Northwest." data-es="Servicio cálido y sin pretensiones, con una carta de vinos que realmente conoce el Noroeste.">Warm, unpretentious service and a wine list that actually knows the Northwest.</span></blockquote>
+          <figcaption class="mt-4 text-sm font-semibold text-ink">Marcus T.</figcaption>
+        </figure>
+        
+        <figure class="reveal bg-cream rounded-sm p-8 border border-border/60">
+          <div class="flex gap-1 text-gold"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/></svg></div>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-6 w-6 text-gold/40 mt-4" fill="currentColor" aria-hidden="true"><path d="M7.5 9.2c-1.8 0-3.2 1.4-3.2 3.2v5.1h5.3v-5.1H7.5c0-1.2 1-2.1 2.1-2.1V9.2H7.5zM16.6 9.2c-1.8 0-3.2 1.4-3.2 3.2v5.1H18.7v-5.1h-2.1c0-1.2 1-2.1 2.1-2.1V9.2h-2.1z"/></svg>
+          <blockquote class="mt-2 text-ink/80 leading-relaxed"><span data-en="The alder-planked salmon converted my steak-only husband. We're already rebooking." data-es="El salmón en tabla de aliso convenció a mi esposo, que solo comía carne. Ya reservamos de nuevo.">The alder-planked salmon converted my steak-only husband. We're already rebooking.</span></blockquote>
+          <figcaption class="mt-4 text-sm font-semibold text-ink">Priya K.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="bg-gold">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+      <div>
+        <p class="font-display text-2xl sm:text-3xl text-ink"><span data-en="Ready for the wood-fired experience?" data-es="¿Listo para la experiencia al fuego de leña?">Ready for the wood-fired experience?</span></p>
+        <p class="text-ink/70 mt-1 text-sm"><span data-en="Call or email us — a member of our team will confirm within one business day." data-es="Llámanos o escríbenos: un miembro de nuestro equipo confirmará en un día hábil.">Call or email us — a member of our team will confirm within one business day.</span></p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+        <a href="tel:+12065550142" class="btn-outline-dark bg-ink !text-cream border-ink hover:!bg-charcoal">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.2c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v2.8c0 .6-.4 1-1 1C10.6 19.7 4.3 13.4 4.3 5.7c0-.6.4-1 1-1H8.1c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.2z"/></svg> (206) 555-0142
+        </a>
+        <a href="contact.html" class="btn-outline-dark"><span data-en="Reservation Form" data-es="Formulario de Reserva">Reservation Form</span></a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+  
+  <footer class="on-dark bg-ink text-cream/80">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
+      <div class="md:col-span-2">
+        <p class="font-display text-2xl text-cream">Ember & Oak Steakhouse</p>
+        <p class="mt-3 max-w-sm text-sm leading-relaxed text-cream/60"><span data-en="Dry-aged steaks, live-fire cooking, and Pacific Northwest hospitality in the heart of Seattle." data-es="Carnes maduradas en seco, cocina a fuego vivo y hospitalidad del Pacífico Noroeste en el corazón de Seattle.">Dry-aged steaks, live-fire cooking, and Pacific Northwest hospitality in the heart of Seattle.</span></p>
+        <div class="mt-6 flex items-center gap-4">
+          <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full border border-cream/20 hover:border-gold hover:text-gold-soft transition-colors" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg></a>
+          <a href="#" class="h-10 w-10 flex items-center justify-center rounded-full border border-cream/20 hover:border-gold hover:text-gold-soft transition-colors" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="currentColor" aria-hidden="true"><path d="M14 21v-7.5h2.3l.4-3H14V8.4c0-.9.2-1.5 1.5-1.5H17V4.2C16.6 4.1 15.6 4 14.5 4 12.2 4 10.6 5.4 10.6 8v2.5H8.3v3h2.3V21H14z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <p class="eyebrow"><span data-en="Visit" data-es="Visítanos">Visit</span></p>
+        <ul class="mt-4 space-y-3 text-sm text-cream/70">
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 mt-0.5 text-gold shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-6.7 7-12.3A7 7 0 0 0 5 8.7C5 14.3 12 21 12 21z"/><circle cx="12" cy="8.7" r="2.4"/></svg><a href="https://maps.google.com/?q=2100+Western+Ave+Seattle+WA+98121" class="hover:text-gold-soft">2100 Western Avenue, Seattle, WA 98121</a></li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 mt-0.5 text-gold shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.2c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.5.6 3.8.6.6 0 1 .4 1 1v2.8c0 .6-.4 1-1 1C10.6 19.7 4.3 13.4 4.3 5.7c0-.6.4-1 1-1H8.1c.6 0 1 .4 1 1 0 1.3.2 2.6.6 3.8.1.4 0 .8-.3 1.1L6.6 10.2z"/></svg><a href="tel:+12065550142" class="hover:text-gold-soft">(206) 555-0142</a></li>
+          <li class="flex items-start gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 mt-0.5 text-gold shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="6" width="17" height="12" rx="1.5"/><path d="M4 7l8 6 8-6"/></svg><a href="mailto:reservations@emberandoak.com" class="hover:text-gold-soft">reservations@emberandoak.com</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow"><span data-en="Hours" data-es="Horario">Hours</span></p>
+        <ul class="mt-4 space-y-2 text-sm text-cream/70">
+          <li class="flex justify-between gap-4"><span><span data-en="Tue – Thu" data-es="Mar – Jue">Tue – Thu</span></span><span>4:30 – 10:00 PM</span></li>
+          <li class="flex justify-between gap-4"><span><span data-en="Fri – Sat" data-es="Vie – Sáb">Fri – Sat</span></span><span>4:30 – 11:00 PM</span></li>
+          <li class="flex justify-between gap-4"><span><span data-en="Sunday" data-es="Domingo">Sunday</span></span><span>4:00 – 9:00 PM</span></li>
+          <li class="flex justify-between gap-4 text-cream/40"><span><span data-en="Monday" data-es="Lunes">Monday</span></span><span><span data-en="Closed" data-es="Cerrado">Closed</span></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-cream/10">
+      <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-cream/40">
+        <p>&copy; <span data-year>2026</span> Ember & Oak Steakhouse. <span data-en="All rights reserved." data-es="Todos los derechos reservados.">All rights reserved.</span></p>
+        <p><span data-en="Seattle, Washington" data-es="Seattle, Washington">Seattle, Washington</span></p>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="js/main.js" defer></script>
+</body>
+</html>
