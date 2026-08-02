@@ -179,6 +179,41 @@
     });
   }
 
+  /* ---------- Ember cursor halo ---------- */
+  /* A small trailing glow that follows the pointer, like a drifting ember.
+     Desktop mice only (skips touch/coarse pointers) and off entirely for
+     prefers-reduced-motion. */
+  if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var emberCursor = document.createElement("div");
+    emberCursor.id = "ember-cursor";
+    emberCursor.setAttribute("aria-hidden", "true");
+    document.body.appendChild(emberCursor);
+
+    var mouseX = 0, mouseY = 0, curX = 0, curY = 0, hoverScale = 1;
+
+    document.addEventListener("mousemove", function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      emberCursor.classList.add("is-active");
+    });
+
+    document.addEventListener("mouseleave", function () {
+      emberCursor.classList.remove("is-active");
+    });
+
+    document.addEventListener("mouseover", function (e) {
+      hoverScale = e.target.closest("a, button, [role='button'], input, textarea") ? 1.7 : 1;
+    });
+
+    (function raf() {
+      curX += (mouseX - curX) * 0.16;
+      curY += (mouseY - curY) * 0.16;
+      emberCursor.style.transform =
+        "translate3d(" + (curX - 21) + "px, " + (curY - 21) + "px, 0) scale(" + hoverScale + ")";
+      window.requestAnimationFrame(raf);
+    })();
+  }
+
   /* ---------- Contact / reservation form (no backend wired yet) ---------- */
   var form = document.querySelector("[data-reservation-form]");
   if (form) {

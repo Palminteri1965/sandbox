@@ -93,4 +93,42 @@
   .section-heading {
     @apply text-3xl sm:text-4xl lg:text-5xl leading-tight;
   }
+
+  /* Subtle ember-glow text hover for card/dish titles — color and letter
+     spacing ease in together, no layout shift. */
+  .text-hover-ember {
+    @apply transition-all duration-300;
+  }
+  .text-hover-ember:hover {
+    @apply text-ember-soft;
+    letter-spacing: 0.015em;
+    text-shadow: 0 0 20px rgba(226, 88, 42, 0.4);
+  }
+
+  /* Cursor ember halo: a soft trailing glow, desktop mice only. Hidden on
+     touch devices and for prefers-reduced-motion (see main.js gating too). */
+  #ember-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 9999px;
+    pointer-events: none;
+    z-index: 9999;
+    background: radial-gradient(circle, rgba(226, 88, 42, 0.55) 0%, rgba(210, 60, 20, 0.28) 45%, rgba(210, 60, 20, 0) 72%);
+    filter: blur(3px);
+    mix-blend-mode: screen;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    will-change: transform;
+  }
+  #ember-cursor.is-active {
+    opacity: 1;
+  }
+  @media (hover: none), (pointer: coarse) {
+    #ember-cursor {
+      display: none;
+    }
+  }
 }

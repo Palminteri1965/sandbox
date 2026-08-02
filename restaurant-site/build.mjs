@@ -51,7 +51,7 @@ function head({ title, description }) {
   <meta property="og:type" content="restaurant.restaurant">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="dist/styles.css">
   <script>document.documentElement.classList.add('js');</script>`;
 }
@@ -250,13 +250,13 @@ const homeMain = `
           <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
           ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
         </p>
-        <h1 class="mt-5 font-display font-normal uppercase text-cream leading-[0.9] tracking-[0.01em] text-6xl sm:text-7xl lg:text-8xl xl:text-9xl reveal">
+        <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.88] tracking-[0.02em] text-[clamp(4rem,11vw,11.5rem)] reveal">
           Ember
           <span class="block">
-            <span class="text-gold italic normal-case font-medium text-[1.1em] align-[-0.06em] mr-1 sm:mr-3">&amp;</span>Oak
+            <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4">&amp;</span>Oak
           </span>
         </h1>
-        <p class="mt-6 max-w-md font-display italic text-cream/75 text-lg sm:text-xl reveal">${t(
+        <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl reveal">${t(
           "Wood-fired steaks. Pacific Northwest soul.",
           "Carnes al fuego de leña. Alma del Pacífico Noroeste."
         )}</p>
@@ -267,11 +267,11 @@ const homeMain = `
       </div>`,
   })}
 
-  <section class="py-20 sm:py-28 bg-cream" data-reveal-group>
+  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl reveal">
         <p class="eyebrow">${t("Signature", "Firma de la Casa")}</p>
-        <h2 class="section-heading mt-3 text-ink">${t("From the Fire", "Desde el Fuego")}</h2>
+        <h2 class="section-heading mt-3 text-cream">${t("From the Fire", "Desde el Fuego")}</h2>
       </div>
       <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
         ${[
@@ -295,21 +295,21 @@ const homeMain = `
             (d) => `
         <article class="group reveal">
           ${photoPlaceholder({ caption: d.cap, ratio: "aspect-[4/5]" })}
-          <h3 class="mt-5 font-display text-xl text-ink">${t(d.en[0], d.es[0])}</h3>
-          <p class="mt-2 text-sm text-slate leading-relaxed">${t(d.en[1], d.es[1])}</p>
+          <h3 class="mt-5 font-display text-xl text-cream text-hover-ember inline-block">${t(d.en[0], d.es[0])}</h3>
+          <p class="mt-2 text-sm text-cream/60 leading-relaxed">${t(d.en[1], d.es[1])}</p>
         </article>`
           )
           .join("\n        ")}
       </div>
       <div class="mt-12 reveal">
-        <a href="menu.html" class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-ink border-b border-gold pb-1 hover:text-gold transition-colors">
+        <a href="menu.html" class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-cream border-b border-gold pb-1 hover:text-gold transition-colors">
           ${t("See the Full Menu", "Ver el Menú Completo")} ${icons.arrowRight("h-4 w-4")}
         </a>
       </div>
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-charcoal on-dark" data-reveal-group>
+  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
       <div class="reveal order-2 lg:order-1">
         ${photoPlaceholder({ caption: "Chef searing steaks over open flame", ratio: "aspect-[4/3]" })}
@@ -328,11 +328,11 @@ const homeMain = `
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-parchment" data-reveal-group>
+  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center reveal">
         <p class="eyebrow justify-center flex">${t("Guests", "Comensales")}</p>
-        <h2 class="section-heading mt-3 text-ink">${t("What Seattle is Saying", "Lo que Dice Seattle")}</h2>
+        <h2 class="section-heading mt-3 text-cream">${t("What Seattle is Saying", "Lo que Dice Seattle")}</h2>
       </div>
       <div class="mt-12 grid gap-8 md:grid-cols-3">
         ${[
@@ -354,11 +354,11 @@ const homeMain = `
         ]
           .map(
             (r) => `
-        <figure class="reveal bg-cream rounded-sm p-8 border border-border/60">
+        <figure class="reveal bg-white/[0.04] rounded-sm p-8 border border-cream/10 transition-colors duration-300 hover:border-gold/40 hover:bg-white/[0.06]">
           <div class="flex gap-1 text-gold">${icons.star("h-4 w-4")}${icons.star("h-4 w-4")}${icons.star("h-4 w-4")}${icons.star("h-4 w-4")}${icons.star("h-4 w-4")}</div>
           ${icons.quote("h-6 w-6 text-gold/40 mt-4")}
-          <blockquote class="mt-2 text-ink/80 leading-relaxed">${t(r.en, r.es)}</blockquote>
-          <figcaption class="mt-4 text-sm font-semibold text-ink">${r.name}</figcaption>
+          <blockquote class="mt-2 text-cream/75 leading-relaxed">${t(r.en, r.es)}</blockquote>
+          <figcaption class="mt-4 text-sm font-semibold text-cream">${r.name}</figcaption>
         </figure>`
           )
           .join("\n        ")}
@@ -375,9 +375,9 @@ const homeMain = `
 
 function menuRow({ en, es, price }) {
   return `
-        <li class="flex items-baseline justify-between gap-4 py-4 border-b border-border/60 reveal">
+        <li class="flex items-baseline justify-between gap-4 py-4 border-b border-border/60 reveal transition-colors duration-300 hover:border-gold/50">
           <div>
-            <p class="font-display text-lg text-ink">${t(en[0], es[0])}</p>
+            <p class="font-display text-lg text-ink text-hover-ember inline-block">${t(en[0], es[0])}</p>
             <p class="text-sm text-slate mt-1 max-w-md">${t(en[1], es[1])}</p>
           </div>
           <p class="font-display text-lg text-gold whitespace-nowrap">${price}</p>

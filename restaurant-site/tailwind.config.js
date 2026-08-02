@@ -14,10 +14,15 @@ module.exports = {
           light: "#C88A2E",
           soft: "#E8CFA0",
         },
+        ember: {
+          DEFAULT: "#E2582A",
+          soft: "#F0794A",
+        },
         border: "#D6D3D1",
       },
       fontFamily: {
         display: ["'Playfair Display'", "serif"],
+        wordmark: ["Cormorant", "'Playfair Display'", "serif"],
         body: ["Inter", "sans-serif"],
       },
       maxWidth: {
