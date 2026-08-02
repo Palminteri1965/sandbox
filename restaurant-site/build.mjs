@@ -192,14 +192,20 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[
  * zooms from 170% down to 100%. All the motion is computed in js/main.js
  * from scroll position — no React/framer-motion dependency.
  */
-function scrollHero({ image, scrollHeightPx = 1200, initialClip = 25, finalClip = 75, overlayContent }) {
+function scrollHero({ image, imageWebp, scrollHeightPx = 1200, initialClip = 25, finalClip = 75, overlayContent }) {
+  // Plain url() first so browsers without image-set() support keep it; the
+  // image-set() declaration after wins the cascade wherever it's understood,
+  // handing WebP to browsers that can decode it and JPEG to everyone else.
+  const bgImage = imageWebp
+    ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
+    : `background-image: url('${escAttr(image)}');`;
   return `
   <div data-scroll-hero data-scroll-height="${scrollHeightPx}" data-initial-clip="${initialClip}" data-final-clip="${finalClip}"
     class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
       style="clip-path: polygon(${initialClip}% ${initialClip}%, ${finalClip}% ${initialClip}%, ${finalClip}% ${finalClip}%, ${initialClip}% ${finalClip}%);">
       <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
-        style="background-image: url('${escAttr(image)}'); background-size: 170%;"></div>
+        style="${bgImage} background-size: 170%;"></div>
     </div>
     <div class="sticky top-0 -mt-[100vh] h-screen w-full flex items-end pointer-events-none">
       <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10"></div>
@@ -232,9 +238,8 @@ function reservationBand() {
 
 const homeMain = `
   ${scrollHero({
-    // TODO: swap for the real ribeye-on-the-grill photo once it's saved
-    // into images/ (e.g. images/hero-steak.jpg) — see restaurant-site/README.md.
-    image: "images/hero-steak.svg",
+    image: "images/hero-steak.jpg",
+    imageWebp: "images/hero-steak.webp",
     scrollHeightPx: 1200,
     overlayContent: `
       <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pointer-events-auto">
