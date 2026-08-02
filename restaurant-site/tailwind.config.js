@@ -18,6 +18,10 @@ module.exports = {
           DEFAULT: "#E2582A",
           soft: "#F0794A",
         },
+        garnet: {
+          DEFAULT: "#33110A",
+          deep: "#170A08",
+        },
         border: "#D6D3D1",
       },
       fontFamily: {

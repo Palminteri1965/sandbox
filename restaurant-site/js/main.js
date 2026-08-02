@@ -180,8 +180,9 @@
   }
 
   /* ---------- Ember cursor halo ---------- */
-  /* A small trailing glow that follows the pointer, like a drifting ember.
-     Desktop mice only (skips touch/coarse pointers) and off entirely for
+  /* A large, soft ambient glow trails the pointer at rest, and draws in
+     tight over links/text (see .is-hovering in input.css). Desktop mice
+     only (skips touch/coarse pointers) and off entirely for
      prefers-reduced-motion. */
   if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
     var emberCursor = document.createElement("div");
@@ -189,6 +190,8 @@
     emberCursor.setAttribute("aria-hidden", "true");
     document.body.appendChild(emberCursor);
 
+    var EMBER_BASE_SIZE = 130;
+    var EMBER_HOVER_SCALE = 42 / EMBER_BASE_SIZE;
     var mouseX = 0, mouseY = 0, curX = 0, curY = 0, hoverScale = 1;
 
     document.addEventListener("mousemove", function (e) {
@@ -202,14 +205,17 @@
     });
 
     document.addEventListener("mouseover", function (e) {
-      hoverScale = e.target.closest("a, button, [role='button'], input, textarea") ? 1.7 : 1;
+      var hovering = !!e.target.closest("a, button, [role='button'], input, textarea, .text-hover-ember");
+      hoverScale = hovering ? EMBER_HOVER_SCALE : 1;
+      emberCursor.classList.toggle("is-hovering", hovering);
     });
 
     (function raf() {
       curX += (mouseX - curX) * 0.16;
       curY += (mouseY - curY) * 0.16;
+      var half = (EMBER_BASE_SIZE / 2);
       emberCursor.style.transform =
-        "translate3d(" + (curX - 21) + "px, " + (curY - 21) + "px, 0) scale(" + hoverScale + ")";
+        "translate3d(" + (curX - half) + "px, " + (curY - half) + "px, 0) scale(" + hoverScale + ")";
       window.requestAnimationFrame(raf);
     })();
   }

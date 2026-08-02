@@ -11,29 +11,48 @@
       scroll-behavior: auto;
     }
   }
+  /* One continuous black-to-garnet-to-black wash for the whole document —
+     sections stay bg-transparent so scrolling reveals a single seamless
+     gradient instead of hard color bands between them. Sized to the full
+     page (not background-attachment:fixed) so it scales with content
+     height rather than repeating per viewport. */
   body {
-    @apply bg-cream text-ink font-body antialiased;
+    @apply text-cream font-body antialiased;
+    background-color: #0c0a09;
+    background-image: linear-gradient(
+      180deg,
+      #0c0a09 0%,
+      #170a08 20%,
+      #2b0f0a 42%,
+      #33110a 50%,
+      #2b0f0a 58%,
+      #170a08 80%,
+      #0c0a09 100%
+    );
   }
   h1, h2, h3, h4 {
     @apply font-display;
   }
   ::selection {
-    @apply bg-gold/20 text-ink;
+    @apply bg-gold/30 text-cream;
   }
   a, button, [role="button"], input, textarea, select {
     @apply outline-none;
   }
+  /* The whole site is dark by default now, so the focus ring offset
+     matches that; .on-light (reservation band, gold background) swaps it
+     back for the one bright section. */
   a:focus-visible,
   button:focus-visible,
   [role="button"]:focus-visible,
   input:focus-visible,
   textarea:focus-visible,
   select:focus-visible {
-    @apply ring-2 ring-gold ring-offset-2 ring-offset-cream;
+    @apply ring-2 ring-gold ring-offset-2 ring-offset-ink;
   }
-  .on-dark a:focus-visible,
-  .on-dark button:focus-visible {
-    @apply ring-offset-charcoal;
+  .on-light a:focus-visible,
+  .on-light button:focus-visible {
+    @apply ring-offset-gold;
   }
 }
 
@@ -41,18 +60,15 @@
   .eyebrow {
     @apply text-xs sm:text-sm tracking-[0.2em] uppercase text-gold font-semibold;
   }
-  /* Transparent, bordered CTAs that glow gold on hover — used on dark
-     surfaces (nav, hero, footer). Light-surface buttons use .btn-solid
-     instead, since gold-on-cream text fails contrast at this size. */
+  /* Transparent, bordered CTAs that glow gold on hover — the whole site is
+     a dark surface now, so this is the only primary button style needed. */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 rounded-sm border border-gold-soft/50 bg-transparent px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-gold-soft transition-all duration-300 cursor-pointer hover:border-gold-soft hover:text-cream hover:bg-gold/10 hover:shadow-[0_0_28px_-4px_rgba(200,138,46,0.65)];
   }
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 rounded-sm border border-cream/30 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-cream/90 transition-all duration-300 cursor-pointer hover:border-cream/70 hover:text-cream hover:bg-cream/5 hover:shadow-[0_0_24px_-6px_rgba(250,249,246,0.5)];
   }
-  .btn-solid {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-gold-light cursor-pointer;
-  }
+  /* Ink-on-gold — for the one light section left, the gold CTA band. */
   .btn-outline-dark {
     @apply inline-flex items-center justify-center gap-2 rounded-sm border border-ink/30 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-ink/5 cursor-pointer;
   }
@@ -105,26 +121,33 @@
     text-shadow: 0 0 20px rgba(226, 88, 42, 0.4);
   }
 
-  /* Cursor ember halo: a soft trailing glow, desktop mice only. Hidden on
-     touch devices and for prefers-reduced-motion (see main.js gating too). */
+  /* Cursor ember halo: a large, soft ambient glow that trails the pointer
+     and draws in tighter/brighter over links and text — desktop mice only.
+     Hidden on touch devices and for prefers-reduced-motion (main.js gates
+     creation too). Base size is the "resting" ambient halo; .is-hovering
+     shrinks it via a JS-driven scale() down to the old fixed-size look. */
   #ember-cursor {
     position: fixed;
     top: 0;
     left: 0;
-    width: 42px;
-    height: 42px;
+    width: 130px;
+    height: 130px;
     border-radius: 9999px;
     pointer-events: none;
     z-index: 9999;
-    background: radial-gradient(circle, rgba(226, 88, 42, 0.55) 0%, rgba(210, 60, 20, 0.28) 45%, rgba(210, 60, 20, 0) 72%);
-    filter: blur(3px);
+    background: radial-gradient(circle, rgba(226, 88, 42, 0.22) 0%, rgba(210, 60, 20, 0.1) 45%, rgba(210, 60, 20, 0) 72%);
+    filter: blur(9px);
     mix-blend-mode: screen;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease, filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
   }
   #ember-cursor.is-active {
     opacity: 1;
+  }
+  #ember-cursor.is-hovering {
+    filter: blur(3px);
+    background: radial-gradient(circle, rgba(226, 88, 42, 0.5) 0%, rgba(210, 60, 20, 0.26) 45%, rgba(210, 60, 20, 0) 72%);
   }
   @media (hover: none), (pointer: coarse) {
     #ember-cursor {

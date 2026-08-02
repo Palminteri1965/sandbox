@@ -102,7 +102,7 @@ function nav(active) {
 
 function footer() {
   return `
-  <footer class="on-dark bg-ink text-cream/80">
+  <footer class="on-dark text-cream/80">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
       <div class="md:col-span-2">
         <p class="font-display text-2xl text-cream">${SITE.fullName}</p>
@@ -154,7 +154,7 @@ function page({ title, description, active, jsonLd = "", main }) {
   ${head({ title, description })}
   ${jsonLd}
 </head>
-<body class="bg-cream text-ink">
+<body class="text-cream">
   ${nav(active)}
   <main>
 ${main}
@@ -172,7 +172,7 @@ ${main}
 
 function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]" }) {
   return `
-  <section class="relative pt-20 bg-ink">
+  <section class="relative pt-20">
     ${photoPlaceholder({ caption: eyebrow.en + " — hero photography", ratio, iconCls: "h-10 w-10" })}
     <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20"></div>
     <div class="absolute inset-0 flex items-end">
@@ -204,14 +204,14 @@ function scrollHero({ image, imageWebp, scrollHeightPx = 1200, initialClip = 25,
     : `background-image: url('${escAttr(image)}');`;
   return `
   <div data-scroll-hero data-scroll-height="${scrollHeightPx}" data-initial-clip="${initialClip}" data-final-clip="${finalClip}"
-    class="relative w-full bg-ink" style="height: calc(${scrollHeightPx}px + 100vh);">
+    class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
       style="clip-path: polygon(${initialClip}% ${initialClip}%, ${finalClip}% ${initialClip}%, ${finalClip}% ${finalClip}%, ${initialClip}% ${finalClip}%);">
       <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
         style="${bgImage} background-size: 170%;"></div>
     </div>
-    <div class="sticky top-0 -mt-[100vh] h-screen w-full flex items-end pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10"></div>
+    <div class="sticky top-0 -mt-[100vh] h-screen w-full pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40"></div>
       ${overlayContent}
     </div>
   </div>`;
@@ -219,7 +219,7 @@ function scrollHero({ image, imageWebp, scrollHeightPx = 1200, initialClip = 25,
 
 function reservationBand() {
   return `
-  <section class="bg-gold">
+  <section class="bg-gold on-light">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       <div>
         <p class="font-display text-2xl sm:text-3xl text-ink">${t("Ready for the wood-fired experience?", "¿Listo para la experiencia al fuego de leña?")}</p>
@@ -245,29 +245,37 @@ const homeMain = `
     imageWebp: "images/hero-steak.webp",
     scrollHeightPx: 1200,
     overlayContent: `
-      <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 pointer-events-auto">
-        <p class="eyebrow reveal flex items-center gap-3">
-          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
-          ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
-        </p>
-        <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.88] tracking-[0.02em] text-[clamp(4rem,11vw,11.5rem)] reveal">
-          Ember
-          <span class="block">
-            <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4">&amp;</span>Oak
-          </span>
-        </h1>
-        <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl reveal">${t(
-          "Wood-fired steaks. Pacific Northwest soul.",
-          "Carnes al fuego de leña. Alma del Pacífico Noroeste."
-        )}</p>
-        <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-          <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")} ${icons.arrowRight("h-4 w-4")}</a>
-          <a href="menu.html" class="btn-outline">${t("View the Menu", "Ver el Menú")}</a>
+      <div class="relative h-full w-full flex flex-col justify-between pointer-events-auto">
+        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
+          <p class="eyebrow reveal flex items-center gap-3">
+            <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+            ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
+          </p>
+          <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.92] tracking-[0.16em] sm:tracking-[0.22em] text-[clamp(2.5rem,7.5vw,7.5rem)] reveal">
+            Ember
+            <span class="block">
+              <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4 tracking-normal">&amp;</span>Oak
+            </span>
+          </h1>
+          <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl tracking-normal reveal">${t(
+            "Wood-fired steaks. Pacific Northwest soul.",
+            "Carnes al fuego de leña. Alma del Pacífico Noroeste."
+          )}</p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
+            <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")} ${icons.arrowRight("h-4 w-4")}</a>
+            <a href="menu.html" class="btn-outline">${t("View the Menu", "Ver el Menú")}</a>
+          </div>
+        </div>
+        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 flex items-center justify-between reveal">
+          <p class="text-[11px] tracking-[0.2em] uppercase text-cream/60">${t("A Wood-Fired Kitchen", "Una Cocina de Fuego de Leña")}</p>
+          <p class="hidden sm:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-cream/60">
+            ${t("Scroll", "Desplázate")} ${icons.arrowRight("h-3 w-3 rotate-90")}
+          </p>
         </div>
       </div>`,
   })}
 
-  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl reveal">
         <p class="eyebrow">${t("Signature", "Firma de la Casa")}</p>
@@ -309,7 +317,7 @@ const homeMain = `
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
       <div class="reveal order-2 lg:order-1">
         ${photoPlaceholder({ caption: "Chef searing steaks over open flame", ratio: "aspect-[4/3]" })}
@@ -328,7 +336,7 @@ const homeMain = `
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center reveal">
         <p class="eyebrow justify-center flex">${t("Guests", "Comensales")}</p>
@@ -375,10 +383,10 @@ const homeMain = `
 
 function menuRow({ en, es, price }) {
   return `
-        <li class="flex items-baseline justify-between gap-4 py-4 border-b border-border/60 reveal transition-colors duration-300 hover:border-gold/50">
+        <li class="flex items-baseline justify-between gap-4 py-4 border-b border-cream/10 reveal transition-colors duration-300 hover:border-gold/50">
           <div>
-            <p class="font-display text-lg text-ink text-hover-ember inline-block">${t(en[0], es[0])}</p>
-            <p class="text-sm text-slate mt-1 max-w-md">${t(en[1], es[1])}</p>
+            <p class="font-display text-lg text-cream text-hover-ember inline-block">${t(en[0], es[0])}</p>
+            <p class="text-sm text-cream/55 mt-1 max-w-md">${t(en[1], es[1])}</p>
           </div>
           <p class="font-display text-lg text-gold whitespace-nowrap">${price}</p>
         </li>`;
@@ -391,7 +399,7 @@ function menuSection({ eyebrow, title, items }) {
           ${icons.flame("h-5 w-5 text-gold")}
           <p class="eyebrow">${t(eyebrow.en, eyebrow.es)}</p>
         </div>
-        <h2 class="font-display text-2xl sm:text-3xl text-ink reveal">${t(title.en, title.es)}</h2>
+        <h2 class="font-display text-2xl sm:text-3xl text-cream reveal">${t(title.en, title.es)}</h2>
         <ul class="mt-6">
           ${items.map(menuRow).join("\n")}
         </ul>
@@ -405,7 +413,7 @@ const menuMain = `
     subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
   })}
 
-  <section class="py-16 sm:py-24 bg-cream">
+  <section class="py-16 sm:py-24">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-x-16">
       <div>
         ${menuSection({
@@ -450,7 +458,7 @@ const menuMain = `
         })}
       </div>
     </div>
-    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 mt-6 border-t border-border/60 pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 text-sm text-slate">
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 mt-6 border-t border-cream/10 pt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3 text-sm text-cream/55">
       ${icons.leaf("h-5 w-5 text-gold shrink-0")}
       <p>${t(
         "Beef sourced from Pacific Northwest ranches within 300 miles; seafood from day-boat, sustainable fisheries. Full wine and cocktail list available on request.",
@@ -473,19 +481,19 @@ const aboutMain = `
     subtitle: { en: "A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.", es: "Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste." },
   })}
 
-  <section class="py-20 sm:py-28 bg-cream" data-reveal-group>
+  <section class="py-20 sm:py-28" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2 items-center">
       <div class="reveal">
         ${photoPlaceholder({ caption: "Executive chef portrait, kitchen pass", ratio: "aspect-[4/5]" })}
       </div>
       <div class="reveal">
         <p class="eyebrow">${t("Since 2016", "Desde 2016")}</p>
-        <h2 class="section-heading mt-3 text-ink">${t("A Kitchen Built on One Rule: Real Fire, No Shortcuts", "Una Cocina con una Sola Regla: Fuego Real, sin Atajos")}</h2>
-        <p class="mt-5 text-slate leading-relaxed">${t(
+        <h2 class="section-heading mt-3 text-cream">${t("A Kitchen Built on One Rule: Real Fire, No Shortcuts", "Una Cocina con una Sola Regla: Fuego Real, sin Atajos")}</h2>
+        <p class="mt-5 text-cream/60 leading-relaxed">${t(
           "Ember & Oak opened in Belltown with a simple idea: cook the way ranchers and fishermen along the Sound have for generations — over oak and alder, patiently, without shortcuts. Every steak is dry-aged in our on-site cooler for a minimum of 30 days before it ever sees the hearth.",
           "Ember & Oak abrió en Belltown con una idea simple: cocinar como lo han hecho por generaciones los rancheros y pescadores del Sound, sobre roble y aliso, con paciencia y sin atajos. Cada carne se madura en seco en nuestra propia cava durante un mínimo de 30 días antes de tocar la parrilla."
         )}</p>
-        <p class="mt-4 text-slate leading-relaxed">${t(
+        <p class="mt-4 text-cream/60 leading-relaxed">${t(
           "Our executive chef spent a decade in New York steakhouses before returning home to Seattle to build a menu rooted in this region — Puget Sound seafood, Walla Walla produce, and beef from ranches we visit ourselves.",
           "Nuestro chef ejecutivo pasó una década en steakhouses de Nueva York antes de regresar a Seattle para construir un menú arraigado en esta región: mariscos de Puget Sound, productos de Walla Walla y carne de ranchos que visitamos personalmente."
         )}</p>
@@ -493,7 +501,7 @@ const aboutMain = `
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-charcoal on-dark" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl reveal">
         <p class="eyebrow">${t("Our Approach", "Nuestro Enfoque")}</p>
@@ -556,14 +564,14 @@ const galleryMain = `
     subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
   })}
 
-  <section class="py-16 sm:py-24 bg-cream" data-reveal-group>
+  <section class="py-16 sm:py-24" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         ${galleryCaptions
           .map((cap) => `<div class="reveal">${photoPlaceholder({ caption: cap, ratio: "aspect-square" })}</div>`)
           .join("\n        ")}
       </div>
-      <p class="mt-8 text-sm text-slate reveal">${t(
+      <p class="mt-8 text-sm text-cream/55 reveal">${t(
         "Photography placeholders shown above — swap in professional interior, food, and lifestyle photography before launch.",
         "Las imágenes de arriba son marcadores de posición: reemplácelas con fotografía profesional de interiores, platos y ambiente antes del lanzamiento."
       )}</p>
@@ -585,35 +593,35 @@ const contactMain = `
     ratio: "aspect-[16/9] md:aspect-[24/9]",
   })}
 
-  <section class="py-16 sm:py-24 bg-cream">
+  <section class="py-16 sm:py-24">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-5">
       <div class="lg:col-span-2 space-y-10">
         <div>
           <p class="eyebrow">${t("Call Us", "Llámanos")}</p>
-          <a href="${SITE.phoneHref}" class="mt-2 flex items-center gap-3 font-display text-2xl text-ink hover:text-gold transition-colors">
+          <a href="${SITE.phoneHref}" class="mt-2 flex items-center gap-3 font-display text-2xl text-cream hover:text-gold transition-colors">
             ${icons.phone("h-5 w-5 text-gold")} ${SITE.phoneDisplay}
           </a>
-          <p class="text-sm text-slate mt-1">${t("Best for same-week and large-party reservations.", "Ideal para reservas de la misma semana o grupos grandes.")}</p>
+          <p class="text-sm text-cream/55 mt-1">${t("Best for same-week and large-party reservations.", "Ideal para reservas de la misma semana o grupos grandes.")}</p>
         </div>
         <div>
           <p class="eyebrow">${t("Email", "Correo")}</p>
-          <a href="mailto:${SITE.email}" class="mt-2 flex items-center gap-3 text-lg text-ink hover:text-gold transition-colors">
+          <a href="mailto:${SITE.email}" class="mt-2 flex items-center gap-3 text-lg text-cream hover:text-gold transition-colors">
             ${icons.mail("h-5 w-5 text-gold")} ${SITE.email}
           </a>
         </div>
         <div>
           <p class="eyebrow">${t("Address", "Dirección")}</p>
-          <a href="${SITE.mapsHref}" class="mt-2 flex items-start gap-3 text-lg text-ink hover:text-gold transition-colors">
+          <a href="${SITE.mapsHref}" class="mt-2 flex items-start gap-3 text-lg text-cream hover:text-gold transition-colors">
             ${icons.pin("h-5 w-5 text-gold mt-1 shrink-0")} <span>${SITE.addressLine1}<br>${SITE.addressLine2}</span>
           </a>
         </div>
         <div>
           <p class="eyebrow">${t("Hours", "Horario")}</p>
-          <ul class="mt-3 space-y-2 text-slate">
+          <ul class="mt-3 space-y-2 text-cream/60">
             <li class="flex items-center gap-3">${icons.clock("h-4 w-4 text-gold")} <span>${t("Tue – Thu", "Mar – Jue")}: 4:30 – 10:00 PM</span></li>
             <li class="flex items-center gap-3">${icons.clock("h-4 w-4 text-gold")} <span>${t("Fri – Sat", "Vie – Sáb")}: 4:30 – 11:00 PM</span></li>
             <li class="flex items-center gap-3">${icons.clock("h-4 w-4 text-gold")} <span>${t("Sunday", "Domingo")}: 4:00 – 9:00 PM</span></li>
-            <li class="flex items-center gap-3 text-slate/50">${icons.clock("h-4 w-4")} <span>${t("Monday: Closed", "Lunes: Cerrado")}</span></li>
+            <li class="flex items-center gap-3 text-cream/35">${icons.clock("h-4 w-4")} <span>${t("Monday: Closed", "Lunes: Cerrado")}</span></li>
           </ul>
         </div>
       </div>
@@ -624,51 +632,51 @@ const contactMain = `
         <form data-reservation-form class="mt-10 space-y-6" novalidate>
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium text-ink mb-2" for="name">${t("Full Name", "Nombre Completo")}</label>
+              <label class="block text-sm font-medium text-cream/80 mb-2" for="name">${t("Full Name", "Nombre Completo")}</label>
               <input id="name" name="name" type="text" required autocomplete="name"
-                class="w-full min-h-[44px] rounded-sm border border-border bg-white px-4 py-3 text-ink placeholder:text-slate/50"
+                class="w-full min-h-[44px] rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/35"
                 ${tAttr("placeholder", "Jane Smith", "Juana Pérez")}>
             </div>
             <div>
-              <label class="block text-sm font-medium text-ink mb-2" for="party">${t("Party Size", "Número de Personas")}</label>
+              <label class="block text-sm font-medium text-cream/80 mb-2" for="party">${t("Party Size", "Número de Personas")}</label>
               <input id="party" name="party" type="number" min="1" max="6" required inputmode="numeric"
-                class="w-full min-h-[44px] rounded-sm border border-border bg-white px-4 py-3 text-ink placeholder:text-slate/50"
+                class="w-full min-h-[44px] rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/35"
                 ${tAttr("placeholder", "2", "2")}>
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium text-ink mb-2" for="email">${t("Email", "Correo Electrónico")}</label>
+              <label class="block text-sm font-medium text-cream/80 mb-2" for="email">${t("Email", "Correo Electrónico")}</label>
               <input id="email" name="email" type="email" required autocomplete="email"
-                class="w-full min-h-[44px] rounded-sm border border-border bg-white px-4 py-3 text-ink placeholder:text-slate/50"
+                class="w-full min-h-[44px] rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/35"
                 ${tAttr("placeholder", "you@email.com", "tu@correo.com")}>
             </div>
             <div>
-              <label class="block text-sm font-medium text-ink mb-2" for="phone">${t("Phone", "Teléfono")}</label>
+              <label class="block text-sm font-medium text-cream/80 mb-2" for="phone">${t("Phone", "Teléfono")}</label>
               <input id="phone" name="phone" type="tel" required autocomplete="tel"
-                class="w-full min-h-[44px] rounded-sm border border-border bg-white px-4 py-3 text-ink placeholder:text-slate/50"
+                class="w-full min-h-[44px] rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/35"
                 ${tAttr("placeholder", "(206) 555-0100", "(206) 555-0100")}>
             </div>
           </div>
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <label class="block text-sm font-medium text-ink mb-2" for="date">${t("Preferred Date", "Fecha Preferida")}</label>
+              <label class="block text-sm font-medium text-cream/80 mb-2" for="date">${t("Preferred Date", "Fecha Preferida")}</label>
               <input id="date" name="date" type="date" required
-                class="w-full min-h-[44px] rounded-sm border border-border bg-white px-4 py-3 text-ink">
+                class="w-full min-h-[44px] rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream [color-scheme:dark]">
             </div>
             <div>
-              <label class="block text-sm font-medium text-ink mb-2" for="time">${t("Preferred Time", "Hora Preferida")}</label>
+              <label class="block text-sm font-medium text-cream/80 mb-2" for="time">${t("Preferred Time", "Hora Preferida")}</label>
               <input id="time" name="time" type="time" required
-                class="w-full min-h-[44px] rounded-sm border border-border bg-white px-4 py-3 text-ink">
+                class="w-full min-h-[44px] rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream [color-scheme:dark]">
             </div>
           </div>
           <div>
-            <label class="block text-sm font-medium text-ink mb-2" for="notes">${t("Notes (allergies, occasion)", "Notas (alergias, ocasión)")}</label>
+            <label class="block text-sm font-medium text-cream/80 mb-2" for="notes">${t("Notes (allergies, occasion)", "Notas (alergias, ocasión)")}</label>
             <textarea id="notes" name="notes" rows="4"
-              class="w-full rounded-sm border border-border bg-white px-4 py-3 text-ink placeholder:text-slate/50"
+              class="w-full rounded-sm border border-cream/20 bg-white/5 px-4 py-3 text-cream placeholder:text-cream/35"
               ${tAttr("placeholder", "Anniversary dinner, one guest with a shellfish allergy…", "Cena de aniversario, un invitado con alergia a mariscos…")}></textarea>
           </div>
-          <button type="submit" class="btn-solid w-full sm:w-auto">${t("Request Reservation", "Solicitar Reserva")}</button>
+          <button type="submit" class="btn-primary w-full sm:w-auto">${t("Request Reservation", "Solicitar Reserva")}</button>
           <p data-form-status hidden role="status" class="text-sm text-gold font-medium">
             ${t(
               "Thanks — this form is a preview and isn't wired to a booking system yet. Please call us to confirm your table.",

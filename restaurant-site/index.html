@@ -17,7 +17,7 @@
   <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Ember & Oak Steakhouse","servesCuisine":"Steakhouse","priceRange":"$$$","telephone":"+12065550142","email":"reservations@emberandoak.com","address":{"@type":"PostalAddress","streetAddress":"2100 Western Avenue","addressLocality":"Seattle","addressRegion":"WA","postalCode":"98121","addressCountry":"US"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday"],"opens":"16:30","closes":"22:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Friday","Saturday"],"opens":"16:30","closes":"23:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"16:00","closes":"21:00"}]}</script>
 </head>
-<body class="bg-cream text-ink">
+<body class="text-cream">
   
   <header data-site-nav class="fixed inset-x-0 top-0 z-50 transition-colors duration-300 bg-transparent on-dark">
     <nav class="mx-auto max-w-content flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20" aria-label="Primary">
@@ -53,36 +53,44 @@
 
   
   <div data-scroll-hero data-scroll-height="1200" data-initial-clip="25" data-final-clip="75"
-    class="relative w-full bg-ink" style="height: calc(1200px + 100vh);">
+    class="relative w-full" style="height: calc(1200px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
       style="clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);">
       <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
         style="background-image: url('images/hero-steak.jpg'); background-image: image-set(url('images/hero-steak.webp') type('image/webp'), url('images/hero-steak.jpg') type('image/jpeg')); background-size: 170%;"></div>
     </div>
-    <div class="sticky top-0 -mt-[100vh] h-screen w-full flex items-end pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/10"></div>
+    <div class="sticky top-0 -mt-[100vh] h-screen w-full pointer-events-none">
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40"></div>
       
-      <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 pointer-events-auto">
-        <p class="eyebrow reveal flex items-center gap-3">
-          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
-          <span data-en="Est. 2016 · Seattle, Washington" data-es="Fundado en 2016 · Seattle, Washington">Est. 2016 · Seattle, Washington</span>
-        </p>
-        <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.88] tracking-[0.02em] text-[clamp(4rem,11vw,11.5rem)] reveal">
-          Ember
-          <span class="block">
-            <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4">&amp;</span>Oak
-          </span>
-        </h1>
-        <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl reveal"><span data-en="Wood-fired steaks. Pacific Northwest soul." data-es="Carnes al fuego de leña. Alma del Pacífico Noroeste.">Wood-fired steaks. Pacific Northwest soul.</span></p>
-        <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-          <a href="tel:+12065550142" class="btn-primary"><span data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg></a>
-          <a href="menu.html" class="btn-outline"><span data-en="View the Menu" data-es="Ver el Menú">View the Menu</span></a>
+      <div class="relative h-full w-full flex flex-col justify-between pointer-events-auto">
+        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
+          <p class="eyebrow reveal flex items-center gap-3">
+            <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+            <span data-en="Est. 2016 · Seattle, Washington" data-es="Fundado en 2016 · Seattle, Washington">Est. 2016 · Seattle, Washington</span>
+          </p>
+          <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.92] tracking-[0.16em] sm:tracking-[0.22em] text-[clamp(2.5rem,7.5vw,7.5rem)] reveal">
+            Ember
+            <span class="block">
+              <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4 tracking-normal">&amp;</span>Oak
+            </span>
+          </h1>
+          <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl tracking-normal reveal"><span data-en="Wood-fired steaks. Pacific Northwest soul." data-es="Carnes al fuego de leña. Alma del Pacífico Noroeste.">Wood-fired steaks. Pacific Northwest soul.</span></p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
+            <a href="tel:+12065550142" class="btn-primary"><span data-en="Reserve a Table" data-es="Reservar una Mesa">Reserve a Table</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg></a>
+            <a href="menu.html" class="btn-outline"><span data-en="View the Menu" data-es="Ver el Menú">View the Menu</span></a>
+          </div>
+        </div>
+        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 flex items-center justify-between reveal">
+          <p class="text-[11px] tracking-[0.2em] uppercase text-cream/60"><span data-en="A Wood-Fired Kitchen" data-es="Una Cocina de Fuego de Leña">A Wood-Fired Kitchen</span></p>
+          <p class="hidden sm:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-cream/60">
+            <span data-en="Scroll" data-es="Desplázate">Scroll</span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-3 w-3 rotate-90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="12" x2="19" y2="12"/><path d="M13 6l6 6-6 6"/></svg>
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl reveal">
         <p class="eyebrow"><span data-en="Signature" data-es="Firma de la Casa">Signature</span></p>
@@ -137,7 +145,7 @@
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
       <div class="reveal order-2 lg:order-1">
         
@@ -160,7 +168,7 @@
     </div>
   </section>
 
-  <section class="py-20 sm:py-28 bg-ink on-dark border-t border-cream/5" data-reveal-group>
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center reveal">
         <p class="eyebrow justify-center flex"><span data-en="Guests" data-es="Comensales">Guests</span></p>
@@ -193,7 +201,7 @@
   </section>
 
   
-  <section class="bg-gold">
+  <section class="bg-gold on-light">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
       <div>
         <p class="font-display text-2xl sm:text-3xl text-ink"><span data-en="Ready for the wood-fired experience?" data-es="¿Listo para la experiencia al fuego de leña?">Ready for the wood-fired experience?</span></p>
@@ -210,7 +218,7 @@
 
   </main>
   
-  <footer class="on-dark bg-ink text-cream/80">
+  <footer class="on-dark text-cream/80">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-16 grid gap-12 md:grid-cols-4">
       <div class="md:col-span-2">
         <p class="font-display text-2xl text-cream">Ember & Oak Steakhouse</p>
