@@ -41,20 +41,36 @@
   .eyebrow {
     @apply text-xs sm:text-sm tracking-[0.2em] uppercase text-gold font-semibold;
   }
+  /* Transparent, bordered CTAs that glow gold on hover — used on dark
+     surfaces (nav, hero, footer). Light-surface buttons use .btn-solid
+     instead, since gold-on-cream text fails contrast at this size. */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-gold-light cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-gold-soft/50 bg-transparent px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-gold-soft transition-all duration-300 cursor-pointer hover:border-gold-soft hover:text-cream hover:bg-gold/10 hover:shadow-[0_0_28px_-4px_rgba(200,138,46,0.65)];
   }
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-cream/40 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-cream/10 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-cream/30 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-cream/90 transition-all duration-300 cursor-pointer hover:border-cream/70 hover:text-cream hover:bg-cream/5 hover:shadow-[0_0_24px_-6px_rgba(250,249,246,0.5)];
+  }
+  .btn-solid {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-gold px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-cream transition-colors duration-200 hover:bg-gold-light cursor-pointer;
   }
   .btn-outline-dark {
     @apply inline-flex items-center justify-center gap-2 rounded-sm border border-ink/30 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-ink/5 cursor-pointer;
   }
   .nav-link {
-    @apply text-sm uppercase tracking-wider text-cream/80 transition-colors duration-200 hover:text-gold-soft;
+    @apply relative text-xs tracking-[0.15em] uppercase text-cream/70 transition-colors duration-300 hover:text-cream pb-1;
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-gold-soft transition-all duration-300;
+  }
+  .nav-link:hover::after {
+    @apply w-full;
   }
   .nav-link-active {
     @apply text-gold-soft;
+  }
+  .nav-link-active::after {
+    @apply w-full bg-gold-soft;
   }
   /* .reveal only starts hidden once html.js is set by the blocking head
      script, so no-JS clients and crawlers always see full content. */

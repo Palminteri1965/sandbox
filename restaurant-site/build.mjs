@@ -83,7 +83,7 @@ function nav(active) {
       </a>
       <div class="hidden md:flex items-center gap-8">
         ${desktopLinks}
-        <button type="button" data-lang-toggle class="text-xs font-semibold tracking-widest border border-cream/30 rounded-full h-9 min-w-[44px] px-3 text-cream/80 hover:text-gold-soft hover:border-gold/60 transition-colors cursor-pointer" aria-label="${escAttr("Switch to Spanish")}">ES</button>
+        <button type="button" data-lang-toggle class="text-xs font-semibold tracking-widest border border-cream/30 rounded-full h-9 min-w-[44px] px-3 text-cream/80 hover:text-gold-soft hover:border-gold/60 hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] transition-all duration-300 cursor-pointer" aria-label="${escAttr("Switch to Spanish")}">ES</button>
         <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve", "Reservar")}</a>
       </div>
       <div class="flex items-center gap-3 md:hidden">
@@ -201,7 +201,7 @@ function scrollHero({ image, imageWebp, scrollHeightPx = 1200, initialClip = 25,
     : `background-image: url('${escAttr(image)}');`;
   return `
   <div data-scroll-hero data-scroll-height="${scrollHeightPx}" data-initial-clip="${initialClip}" data-final-clip="${finalClip}"
-    class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
+    class="relative w-full bg-ink" style="height: calc(${scrollHeightPx}px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
       style="clip-path: polygon(${initialClip}% ${initialClip}%, ${finalClip}% ${initialClip}%, ${finalClip}% ${finalClip}%, ${initialClip}% ${finalClip}%);">
       <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
@@ -242,19 +242,24 @@ const homeMain = `
     imageWebp: "images/hero-steak.webp",
     scrollHeightPx: 1200,
     overlayContent: `
-      <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 pointer-events-auto">
-        <p class="eyebrow reveal">${t("Seattle, Washington", "Seattle, Washington")}</p>
-        <h1 class="mt-4 font-display text-4xl sm:text-6xl lg:text-7xl leading-[1.05] text-cream max-w-3xl reveal">
-          ${t("Wood-Fired Steaks,", "Carnes al Fuego de Leña,")}<br>
-          <span class="text-gold-soft italic">${t("Pacific Northwest Soul.", "Alma del Pacífico Noroeste.")}</span>
+      <div class="relative mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-16 md:pb-24 pointer-events-auto">
+        <p class="eyebrow reveal flex items-center gap-3">
+          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+          ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
+        </p>
+        <h1 class="mt-5 font-display font-normal uppercase text-cream leading-[0.9] tracking-[0.01em] text-6xl sm:text-7xl lg:text-8xl xl:text-9xl reveal">
+          Ember
+          <span class="block">
+            <span class="text-gold italic normal-case font-medium text-[1.1em] align-[-0.06em] mr-1 sm:mr-3">&amp;</span>Oak
+          </span>
         </h1>
-        <p class="mt-6 max-w-lg text-cream/70 text-base sm:text-lg reveal">${t(
-          "Dry-aged beef, live-fire technique, and a wine list built around the Northwest — steps from the Seattle waterfront.",
-          "Carne madurada en seco, técnica de fuego vivo y una carta de vinos centrada en el Noroeste, a pasos del malecón de Seattle."
+        <p class="mt-6 max-w-md font-display italic text-cream/75 text-lg sm:text-xl reveal">${t(
+          "Wood-fired steaks. Pacific Northwest soul.",
+          "Carnes al fuego de leña. Alma del Pacífico Noroeste."
         )}</p>
         <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-          <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")}</a>
-          <a href="menu.html" class="btn-outline">${t("View Menu", "Ver Menú")} ${icons.arrowRight("h-4 w-4")}</a>
+          <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")} ${icons.arrowRight("h-4 w-4")}</a>
+          <a href="menu.html" class="btn-outline">${t("View the Menu", "Ver el Menú")}</a>
         </div>
       </div>`,
   })}
@@ -660,7 +665,7 @@ const contactMain = `
               class="w-full rounded-sm border border-border bg-white px-4 py-3 text-ink placeholder:text-slate/50"
               ${tAttr("placeholder", "Anniversary dinner, one guest with a shellfish allergy…", "Cena de aniversario, un invitado con alergia a mariscos…")}></textarea>
           </div>
-          <button type="submit" class="btn-primary w-full sm:w-auto">${t("Request Reservation", "Solicitar Reserva")}</button>
+          <button type="submit" class="btn-solid w-full sm:w-auto">${t("Request Reservation", "Solicitar Reserva")}</button>
           <p data-form-status hidden role="status" class="text-sm text-gold font-medium">
             ${t(
               "Thanks — this form is a preview and isn't wired to a booking system yet. Please call us to confirm your table.",
