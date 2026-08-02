@@ -111,8 +111,8 @@ function footer() {
           "Carnes maduradas en seco, cocina a fuego vivo y hospitalidad del Pacífico Noroeste en el corazón de Seattle."
         )}</p>
         <div class="mt-6 flex items-center gap-4">
-          <a href="${SITE.instagramHref}" class="h-10 w-10 flex items-center justify-center rounded-full border border-cream/20 hover:border-gold hover:text-gold-soft transition-colors" aria-label="Instagram">${icons.instagram("h-4 w-4")}</a>
-          <a href="${SITE.facebookHref}" class="h-10 w-10 flex items-center justify-center rounded-full border border-cream/20 hover:border-gold hover:text-gold-soft transition-colors" aria-label="Facebook">${icons.facebook("h-4 w-4")}</a>
+          <a href="${SITE.instagramHref}" class="h-10 w-10 flex items-center justify-center rounded-full border border-cream/20 hover:border-gold hover:text-gold-soft hover:shadow-[0_0_16px_-3px_rgba(200,138,46,0.65)] transition-all duration-300" aria-label="Instagram">${icons.instagram("h-4 w-4")}</a>
+          <a href="${SITE.facebookHref}" class="h-10 w-10 flex items-center justify-center rounded-full border border-cream/20 hover:border-gold hover:text-gold-soft hover:shadow-[0_0_16px_-3px_rgba(200,138,46,0.65)] transition-all duration-300" aria-label="Facebook">${icons.facebook("h-4 w-4")}</a>
         </div>
       </div>
       <div>
@@ -172,14 +172,17 @@ ${main}
 
 function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]" }) {
   return `
-  <section class="relative pt-20">
+  <section class="relative pt-20 bg-ink">
     ${photoPlaceholder({ caption: eyebrow.en + " — hero photography", ratio, iconCls: "h-10 w-10" })}
-    <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 to-ink/20"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20"></div>
     <div class="absolute inset-0 flex items-end">
       <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
-        <p class="eyebrow reveal">${t(eyebrow.en, eyebrow.es)}</p>
-        <h1 class="section-heading text-cream mt-3 reveal">${t(title.en, title.es)}</h1>
-        ${subtitle ? `<p class="mt-4 max-w-xl text-cream/70 reveal">${t(subtitle.en, subtitle.es)}</p>` : ""}
+        <p class="eyebrow reveal flex items-center gap-3">
+          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+          ${t(eyebrow.en, eyebrow.es)}
+        </p>
+        <h1 class="mt-4 font-display font-normal uppercase tracking-[0.01em] leading-[0.95] text-cream text-4xl sm:text-6xl lg:text-7xl reveal">${t(title.en, title.es)}</h1>
+        ${subtitle ? `<p class="mt-5 max-w-xl font-display italic text-cream/70 text-lg sm:text-xl reveal">${t(subtitle.en, subtitle.es)}</p>` : ""}
       </div>
     </div>
   </section>`;
