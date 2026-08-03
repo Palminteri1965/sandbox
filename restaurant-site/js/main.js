@@ -73,12 +73,15 @@
   /* ---------- Scroll-linked hero (clip-path reveal + parallax zoom) ---------- */
   /* Vanilla reimplementation of a framer-motion "smooth scroll hero": as the
      tall wrapper scrolls past, the sticky background's clip-path opens from
-     an inset rectangle to full-bleed while the image zooms from 170% down
-     to 100%. No React/framer-motion needed for this one effect. */
+     an inset rectangle to full-bleed while the media zooms from 170% down
+     to 100%. Works with either a background-image div or a <video> (the
+     video only autoplays when motion isn't reduced). No React/framer-motion
+     needed for this one effect. */
   var scrollHero = document.querySelector("[data-scroll-hero]");
   if (scrollHero) {
     var heroSticky = scrollHero.querySelector("[data-scroll-hero-sticky]");
     var heroBg = scrollHero.querySelector("[data-scroll-hero-bg]");
+    var heroIsVideo = !!(heroBg && heroBg.tagName === "VIDEO");
     var heroScrollHeight = parseInt(scrollHero.getAttribute("data-scroll-height"), 10) || 1200;
     var heroInitialClip = parseInt(scrollHero.getAttribute("data-initial-clip"), 10);
     var heroFinalClip = parseInt(scrollHero.getAttribute("data-final-clip"), 10);
@@ -87,8 +90,21 @@
 
     if (reduceMotion) {
       heroSticky.style.clipPath = "none";
-      if (heroBg) heroBg.style.backgroundSize = "cover";
+      if (heroBg && heroIsVideo) {
+        heroBg.style.transform = "scale(1)";
+        heroBg.pause();
+      } else if (heroBg) {
+        heroBg.style.backgroundSize = "cover";
+      }
     } else {
+      if (heroIsVideo) {
+        // Autoplay is intentionally left off the <video> tag so no-JS/
+        // reduced-motion visitors just see the poster frame.
+        heroBg.play().catch(function () {
+          /* Autoplay can still be blocked by the browser; poster stays put. */
+        });
+      }
+
       (function () {
         var ticking = false;
 
@@ -116,7 +132,12 @@
 
           if (heroBg) {
             var t2 = clamp(scrolled / (heroScrollHeight + 500), 0, 1);
-            heroBg.style.backgroundSize = lerp(170, 100, t2).toFixed(1) + "%";
+            var size = lerp(170, 100, t2);
+            if (heroIsVideo) {
+              heroBg.style.transform = "scale(" + (size / 100).toFixed(3) + ")";
+            } else {
+              heroBg.style.backgroundSize = size.toFixed(1) + "%";
+            }
           }
         }
 

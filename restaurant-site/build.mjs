@@ -190,25 +190,34 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[
 
 /**
  * Vanilla port of a scroll-linked "smooth scroll hero": the page loads with
- * the image clipped down to a small centered window, and as the user scrolls
- * through a tall wrapper the clip-path opens to full-bleed while the image
+ * the media clipped down to a small centered window, and as the user scrolls
+ * through a tall wrapper the clip-path opens to full-bleed while the media
  * zooms from 170% down to 100%. All the motion is computed in js/main.js
  * from scroll position — no React/framer-motion dependency.
+ *
+ * Pass either `image` (+ optional `imageWebp`) for a static photo, or `video`
+ * for an autoplaying background clip (used instead of the image when given).
  */
-function scrollHero({ image, imageWebp, scrollHeightPx = 1200, initialClip = 25, finalClip = 75, overlayContent }) {
+function scrollHero({ image, imageWebp, video, scrollHeightPx = 1200, initialClip = 25, finalClip = 75, overlayContent }) {
   // Plain url() first so browsers without image-set() support keep it; the
   // image-set() declaration after wins the cascade wherever it's understood,
   // handing WebP to browsers that can decode it and JPEG to everyone else.
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : `background-image: url('${escAttr(image)}');`;
+  const bg = video
+    ? `<video data-scroll-hero-bg class="absolute inset-0 h-full w-full object-cover" style="transform: scale(1.7);"
+        muted loop playsinline preload="auto" poster="${escAttr(video.poster || image || "")}">
+        ${video.webm ? `<source src="${escAttr(video.webm)}" type="video/webm">` : ""}
+        <source src="${escAttr(video.src)}" type="video/mp4">
+      </video>`
+    : `<div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat" style="${bgImage} background-size: 170%;"></div>`;
   return `
   <div data-scroll-hero data-scroll-height="${scrollHeightPx}" data-initial-clip="${initialClip}" data-final-clip="${finalClip}"
     class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
       style="clip-path: polygon(${initialClip}% ${initialClip}%, ${finalClip}% ${initialClip}%, ${finalClip}% ${finalClip}%, ${initialClip}% ${finalClip}%);">
-      <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
-        style="${bgImage} background-size: 170%;"></div>
+      ${bg}
     </div>
     <div class="sticky top-0 -mt-[100vh] h-screen w-full pointer-events-none">
       <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40"></div>
@@ -331,6 +340,7 @@ function homeHero() {
   return scrollHero({
     image: "images/hero-steak.jpg",
     imageWebp: "images/hero-steak.webp",
+    video: { src: "images/hero-steak.mp4", webm: "images/hero-steak.webm", poster: "images/hero-steak.jpg" },
     scrollHeightPx: 1200,
     overlayContent: `
       <div class="relative h-full w-full flex flex-col justify-between pointer-events-auto">

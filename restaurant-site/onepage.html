@@ -57,8 +57,11 @@
     class="relative w-full" style="height: calc(1200px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
       style="clip-path: polygon(25% 25%, 75% 25%, 75% 75%, 25% 75%);">
-      <div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat"
-        style="background-image: url('images/hero-steak.jpg'); background-image: image-set(url('images/hero-steak.webp') type('image/webp'), url('images/hero-steak.jpg') type('image/jpeg')); background-size: 170%;"></div>
+      <video data-scroll-hero-bg class="absolute inset-0 h-full w-full object-cover" style="transform: scale(1.7);"
+        muted loop playsinline preload="auto" poster="images/hero-steak.jpg">
+        <source src="images/hero-steak.webm" type="video/webm">
+        <source src="images/hero-steak.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="sticky top-0 -mt-[100vh] h-screen w-full pointer-events-none">
       <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40"></div>
