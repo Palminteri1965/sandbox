@@ -56,8 +56,8 @@ function head({ title, description }) {
   <script>document.documentElement.classList.add('js');</script>`;
 }
 
-function nav(active) {
-  const items = [
+function nav(active, { items, logoHref = "index.html" } = {}) {
+  items = items || [
     { href: "index.html", en: "Home", es: "Inicio", key: "home" },
     { href: "menu.html", en: "Menu", es: "Menú", key: "menu" },
     { href: "about.html", en: "Our Story", es: "Nuestra Historia", key: "about" },
@@ -78,7 +78,7 @@ function nav(active) {
   return `
   <header data-site-nav class="fixed inset-x-0 top-0 z-50 transition-colors duration-300 bg-transparent on-dark">
     <nav class="mx-auto max-w-content flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20" aria-label="${escAttr("Primary")}">
-      <a href="index.html" class="font-display text-xl sm:text-2xl text-cream tracking-wide">
+      <a href="${logoHref}" class="font-display text-xl sm:text-2xl text-cream tracking-wide">
         Ember<span class="text-gold"> &amp; </span>Oak
       </a>
       <div class="hidden md:flex items-center gap-8">
@@ -147,7 +147,7 @@ function scripts() {
   <script src="js/main.js" defer></script>`;
 }
 
-function page({ title, description, active, jsonLd = "", main }) {
+function page({ title, description, active, jsonLd = "", main, navItems, navLogoHref }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,7 +155,7 @@ function page({ title, description, active, jsonLd = "", main }) {
   ${jsonLd}
 </head>
 <body class="text-cream">
-  ${nav(active)}
+  ${nav(active, { items: navItems, logoHref: navLogoHref })}
   <main>
 ${main}
   </main>
@@ -217,7 +217,7 @@ function scrollHero({ image, imageWebp, scrollHeightPx = 1200, initialClip = 25,
   </div>`;
 }
 
-function reservationBand() {
+function reservationBand({ formHref = "contact.html" } = {}) {
   return `
   <section class="bg-gold on-light">
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
@@ -229,7 +229,7 @@ function reservationBand() {
         <a href="${SITE.phoneHref}" class="btn-outline-dark bg-ink !text-cream border-ink hover:!bg-charcoal">
           ${icons.phone("h-4 w-4")} ${SITE.phoneDisplay}
         </a>
-        <a href="contact.html" class="btn-outline-dark">${t("Reservation Form", "Formulario de Reserva")}</a>
+        <a href="${formHref}" class="btn-outline-dark">${t("Reservation Form", "Formulario de Reserva")}</a>
       </div>
     </div>
   </section>`;
@@ -239,42 +239,9 @@ function reservationBand() {
 /* HOME                                                                  */
 /* ==================================================================== */
 
-const homeMain = `
-  ${scrollHero({
-    image: "images/hero-steak.jpg",
-    imageWebp: "images/hero-steak.webp",
-    scrollHeightPx: 1200,
-    overlayContent: `
-      <div class="relative h-full w-full flex flex-col justify-between pointer-events-auto">
-        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
-          <p class="eyebrow reveal flex items-center gap-3">
-            <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
-            ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
-          </p>
-          <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.92] tracking-[0.16em] sm:tracking-[0.22em] text-[clamp(2.5rem,7.5vw,7.5rem)] reveal">
-            Ember
-            <span class="block">
-              <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4 tracking-normal">&amp;</span>Oak
-            </span>
-          </h1>
-          <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl tracking-normal reveal">${t(
-            "Wood-fired steaks. Pacific Northwest soul.",
-            "Carnes al fuego de leña. Alma del Pacífico Noroeste."
-          )}</p>
-          <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-            <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")} ${icons.arrowRight("h-4 w-4")}</a>
-            <a href="menu.html" class="btn-outline">${t("View the Menu", "Ver el Menú")}</a>
-          </div>
-        </div>
-        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 flex items-center justify-between reveal">
-          <p class="text-[11px] tracking-[0.2em] uppercase text-cream/60">${t("A Wood-Fired Kitchen", "Una Cocina de Fuego de Leña")}</p>
-          <p class="hidden sm:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-cream/60">
-            ${t("Scroll", "Desplázate")} ${icons.arrowRight("h-3 w-3 rotate-90")}
-          </p>
-        </div>
-      </div>`,
-  })}
-
+/** "From the Fire" signature-dishes teaser — shared by the home page and the one-page layout. */
+function signatureDishesSection({ menuHref = "menu.html" } = {}) {
+  return `
   <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl reveal">
@@ -310,32 +277,17 @@ const homeMain = `
           .join("\n        ")}
       </div>
       <div class="mt-12 reveal">
-        <a href="menu.html" class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-cream border-b border-gold pb-1 hover:text-gold transition-colors">
+        <a href="${menuHref}" class="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-cream border-b border-gold pb-1 hover:text-gold transition-colors">
           ${t("See the Full Menu", "Ver el Menú Completo")} ${icons.arrowRight("h-4 w-4")}
         </a>
       </div>
     </div>
-  </section>
+  </section>`;
+}
 
-  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
-    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
-      <div class="reveal order-2 lg:order-1">
-        ${photoPlaceholder({ caption: "Chef searing steaks over open flame", ratio: "aspect-[4/3]" })}
-      </div>
-      <div class="reveal order-1 lg:order-2">
-        <p class="eyebrow">${t("Our Story", "Nuestra Historia")}</p>
-        <h2 class="section-heading mt-3 text-cream">${t("Fire is the only Ingredient we can’t Substitute", "El Fuego es el Único Ingrediente que no Podemos Sustituir")}</h2>
-        <p class="mt-5 text-cream/70 leading-relaxed">${t(
-          "Since day one, every steak at Ember & Oak has touched real fire — oak and alder, never gas. We work directly with Pacific Northwest ranches and day-boat fishermen, and we age our beef in-house because flavor can't be rushed.",
-          "Desde el primer día, cada carne en Ember & Oak ha tocado fuego real: roble y aliso, nunca gas. Trabajamos directamente con ranchos del Pacífico Noroeste y pescadores locales, y maduramos nuestra carne en casa porque el sabor no se puede apresurar."
-        )}</p>
-        <a href="about.html" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold-soft border-b border-gold-soft/60 pb-1 hover:text-gold transition-colors">
-          ${t("Meet the Kitchen", "Conoce la Cocina")} ${icons.arrowRight("h-4 w-4")}
-        </a>
-      </div>
-    </div>
-  </section>
-
+/** Guest quotes — shared by the home page and the one-page layout. */
+function testimonialsSection() {
+  return `
   <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center reveal">
@@ -372,7 +324,70 @@ const homeMain = `
           .join("\n        ")}
       </div>
     </div>
+  </section>`;
+}
+
+function homeHero() {
+  return scrollHero({
+    image: "images/hero-steak.jpg",
+    imageWebp: "images/hero-steak.webp",
+    scrollHeightPx: 1200,
+    overlayContent: `
+      <div class="relative h-full w-full flex flex-col justify-between pointer-events-auto">
+        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
+          <p class="eyebrow reveal flex items-center gap-3">
+            <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+            ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
+          </p>
+          <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.92] tracking-[0.16em] sm:tracking-[0.22em] text-[clamp(2.5rem,7.5vw,7.5rem)] reveal">
+            Ember
+            <span class="block">
+              <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4 tracking-normal">&amp;</span>Oak
+            </span>
+          </h1>
+          <p class="mt-7 max-w-md font-wordmark italic text-cream/75 text-xl sm:text-2xl tracking-normal reveal">${t(
+            "Wood-fired steaks. Pacific Northwest soul.",
+            "Carnes al fuego de leña. Alma del Pacífico Noroeste."
+          )}</p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
+            <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")} ${icons.arrowRight("h-4 w-4")}</a>
+            <a href="menu.html" class="btn-outline">${t("View the Menu", "Ver el Menú")}</a>
+          </div>
+        </div>
+        <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 flex items-center justify-between reveal">
+          <p class="text-[11px] tracking-[0.2em] uppercase text-cream/60">${t("A Wood-Fired Kitchen", "Una Cocina de Fuego de Leña")}</p>
+          <p class="hidden sm:flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-cream/60">
+            ${t("Scroll", "Desplázate")} ${icons.arrowRight("h-3 w-3 rotate-90")}
+          </p>
+        </div>
+      </div>`,
+  });
+}
+
+const homeMain = `
+  ${homeHero()}
+  ${signatureDishesSection()}
+
+  <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
+    <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
+      <div class="reveal order-2 lg:order-1">
+        ${photoPlaceholder({ caption: "Chef searing steaks over open flame", ratio: "aspect-[4/3]" })}
+      </div>
+      <div class="reveal order-1 lg:order-2">
+        <p class="eyebrow">${t("Our Story", "Nuestra Historia")}</p>
+        <h2 class="section-heading mt-3 text-cream">${t("Fire is the only Ingredient we can’t Substitute", "El Fuego es el Único Ingrediente que no Podemos Sustituir")}</h2>
+        <p class="mt-5 text-cream/70 leading-relaxed">${t(
+          "Since day one, every steak at Ember & Oak has touched real fire — oak and alder, never gas. We work directly with Pacific Northwest ranches and day-boat fishermen, and we age our beef in-house because flavor can't be rushed.",
+          "Desde el primer día, cada carne en Ember & Oak ha tocado fuego real: roble y aliso, nunca gas. Trabajamos directamente con ranchos del Pacífico Noroeste y pescadores locales, y maduramos nuestra carne en casa porque el sabor no se puede apresurar."
+        )}</p>
+        <a href="about.html" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-gold-soft border-b border-gold-soft/60 pb-1 hover:text-gold transition-colors">
+          ${t("Meet the Kitchen", "Conoce la Cocina")} ${icons.arrowRight("h-4 w-4")}
+        </a>
+      </div>
+    </div>
   </section>
+
+  ${testimonialsSection()}
 
   ${reservationBand()}
 `;
@@ -406,14 +421,11 @@ function menuSection({ eyebrow, title, items }) {
       </div>`;
 }
 
-const menuMain = `
-  ${pageHero({
-    eyebrow: { en: "Menu", es: "Menú" },
-    title: { en: "The Menu", es: "El Menú" },
-    subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
-  })}
-
-  <section class="py-16 sm:py-24">
+/** Full menu grid — shared by the menu page and the one-page layout. */
+function menuGridSection({ id, intro = "" } = {}) {
+  return `
+  <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24">
+    ${intro}
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-x-16">
       <div>
         ${menuSection({
@@ -465,7 +477,17 @@ const menuMain = `
         "Carne proveniente de ranchos del Pacífico Noroeste a menos de 300 millas; mariscos de pesca sostenible del día. Carta completa de vinos y cócteles disponible bajo solicitud."
       )}</p>
     </div>
-  </section>
+  </section>`;
+}
+
+const menuMain = `
+  ${pageHero({
+    eyebrow: { en: "Menu", es: "Menú" },
+    title: { en: "The Menu", es: "El Menú" },
+    subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
+  })}
+
+  ${menuGridSection()}
 
   ${reservationBand()}
 `;
@@ -474,14 +496,10 @@ const menuMain = `
 /* ABOUT                                                                 */
 /* ==================================================================== */
 
-const aboutMain = `
-  ${pageHero({
-    eyebrow: { en: "Our Story", es: "Nuestra Historia" },
-    title: { en: "Built Around the Fire", es: "Construido Alrededor del Fuego" },
-    subtitle: { en: "A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.", es: "Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste." },
-  })}
-
-  <section class="py-20 sm:py-28" data-reveal-group>
+/** Kitchen story + values — shared by the about page and the one-page layout. */
+function ourStorySections({ id } = {}) {
+  return `
+  <section${id ? ` id="${id}"` : ""} class="py-20 sm:py-28" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2 items-center">
       <div class="reveal">
         ${photoPlaceholder({ caption: "Executive chef portrait, kitchen pass", ratio: "aspect-[4/5]" })}
@@ -536,7 +554,17 @@ const aboutMain = `
           .join("\n        ")}
       </div>
     </div>
-  </section>
+  </section>`;
+}
+
+const aboutMain = `
+  ${pageHero({
+    eyebrow: { en: "Our Story", es: "Nuestra Historia" },
+    title: { en: "Built Around the Fire", es: "Construido Alrededor del Fuego" },
+    subtitle: { en: "A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.", es: "Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste." },
+  })}
+
+  ${ourStorySections()}
 
   ${reservationBand()}
 `;
@@ -557,15 +585,12 @@ const galleryCaptions = [
   "Dry-aging cooler",
 ];
 
-const galleryMain = `
-  ${pageHero({
-    eyebrow: { en: "Gallery", es: "Galería" },
-    title: { en: "A Taste of the Room", es: "Una Muestra del Ambiente" },
-    subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
-  })}
-
-  <section class="py-16 sm:py-24" data-reveal-group>
+/** Photo grid — shared by the gallery page and the one-page layout. */
+function galleryGridSection({ id, intro = "" } = {}) {
+  return `
+  <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+      ${intro}
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         ${galleryCaptions
           .map((cap) => `<div class="reveal">${photoPlaceholder({ caption: cap, ratio: "aspect-square" })}</div>`)
@@ -576,7 +601,17 @@ const galleryMain = `
         "Las imágenes de arriba son marcadores de posición: reemplácelas con fotografía profesional de interiores, platos y ambiente antes del lanzamiento."
       )}</p>
     </div>
-  </section>
+  </section>`;
+}
+
+const galleryMain = `
+  ${pageHero({
+    eyebrow: { en: "Gallery", es: "Galería" },
+    title: { en: "A Taste of the Room", es: "Una Muestra del Ambiente" },
+    subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
+  })}
+
+  ${galleryGridSection()}
 
   ${reservationBand()}
 `;
@@ -585,15 +620,11 @@ const galleryMain = `
 /* CONTACT                                                               */
 /* ==================================================================== */
 
-const contactMain = `
-  ${pageHero({
-    eyebrow: { en: "Reservations", es: "Reservas" },
-    title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
-    subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
-    ratio: "aspect-[16/9] md:aspect-[24/9]",
-  })}
-
-  <section class="py-16 sm:py-24">
+/** Contact details + reservation form — shared by the contact page and the one-page layout. */
+function reservationSection({ id, intro = "" } = {}) {
+  return `
+  <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24">
+    ${intro}
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-5">
       <div class="lg:col-span-2 space-y-10">
         <div>
@@ -686,7 +717,18 @@ const contactMain = `
         </form>
       </div>
     </div>
-  </section>
+  </section>`;
+}
+
+const contactMain = `
+  ${pageHero({
+    eyebrow: { en: "Reservations", es: "Reservas" },
+    title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
+    subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
+    ratio: "aspect-[16/9] md:aspect-[24/9]",
+  })}
+
+  ${reservationSection()}
 `;
 
 /* ==================================================================== */
@@ -715,6 +757,69 @@ const restaurantJsonLd = `<script type="application/ld+json">${JSON.stringify({
     { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "16:00", closes: "21:00" },
   ],
 })}</script>`;
+
+/* ==================================================================== */
+/* ONE-PAGE LAYOUT (preview)                                             */
+/* ==================================================================== */
+
+/** Centered chapter heading used to introduce a section within the one-page layout. */
+function sectionIntro({ eyebrow, title, subtitle }) {
+  return `
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
+      <p class="eyebrow justify-center flex">${t(eyebrow.en, eyebrow.es)}</p>
+      <h2 class="section-heading mt-3 text-cream">${t(title.en, title.es)}</h2>
+      ${subtitle ? `<p class="mt-4 font-wordmark italic text-cream/70 text-lg sm:text-xl">${t(subtitle.en, subtitle.es)}</p>` : ""}
+    </div>`;
+}
+
+const landingNavItems = [
+  { href: "#home", en: "Home", es: "Inicio", key: "home" },
+  { href: "#menu", en: "Menu", es: "Menú", key: "menu" },
+  { href: "#story", en: "Our Story", es: "Nuestra Historia", key: "story" },
+  { href: "#gallery", en: "Gallery", es: "Galería", key: "gallery" },
+  { href: "#reservations", en: "Reservations", es: "Reservas", key: "reservations" },
+];
+
+const landingMain = `
+  <div id="home">
+    ${homeHero()}
+  </div>
+
+  ${signatureDishesSection({ menuHref: "#menu" })}
+
+  ${menuGridSection({
+    id: "menu",
+    intro: sectionIntro({
+      eyebrow: { en: "Menu", es: "Menú" },
+      title: { en: "The Menu", es: "El Menú" },
+      subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
+    }),
+  })}
+
+  ${ourStorySections({ id: "story" })}
+
+  ${galleryGridSection({
+    id: "gallery",
+    intro: sectionIntro({
+      eyebrow: { en: "Gallery", es: "Galería" },
+      title: { en: "A Taste of the Room", es: "Una Muestra del Ambiente" },
+      subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
+    }),
+  })}
+
+  ${testimonialsSection()}
+
+  ${reservationSection({
+    id: "reservations",
+    intro: sectionIntro({
+      eyebrow: { en: "Reservations", es: "Reservas" },
+      title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
+      subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
+    }),
+  })}
+
+  ${reservationBand({ formHref: "#reservations" })}
+`;
 
 const pages = [
   {
@@ -752,6 +857,16 @@ const pages = [
     description: "Reserve your table at Ember & Oak Steakhouse in Seattle — call, email, or request a reservation online.",
     active: "contact",
     main: contactMain,
+  },
+  {
+    file: "onepage.html",
+    title: "Ember & Oak Steakhouse | Wood-Fired Steaks in Seattle, WA",
+    description: "Dry-aged, wood-fired steaks and Pacific Northwest seafood in Belltown, Seattle — menu, story, gallery, and reservations on one continuous page.",
+    active: "home",
+    jsonLd: restaurantJsonLd,
+    main: landingMain,
+    navItems: landingNavItems,
+    navLogoHref: "#home",
   },
 ];
 

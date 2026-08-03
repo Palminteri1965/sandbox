@@ -11,6 +11,11 @@
       scroll-behavior: auto;
     }
   }
+  /* One-page layout: in-page anchors (#menu, #story, ...) land below the
+     fixed nav instead of directly underneath it. */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
   /* One continuous black-to-garnet-to-black wash for the whole document —
      sections stay bg-transparent so scrolling reveals a single seamless
      gradient instead of hard color bands between them. Sized to the full
