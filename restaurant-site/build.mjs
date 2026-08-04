@@ -170,11 +170,26 @@ ${main}
 /* Shared bits                                                          */
 /* ==================================================================== */
 
-function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]" }) {
+function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]", image, imageWebp }) {
+  const bgImage = imageWebp
+    ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
+    : image
+    ? `background-image: url('${escAttr(image)}');`
+    : "";
+  const photo = image
+    ? `<div class="${ratio} w-full bg-center bg-cover bg-no-repeat" style="${bgImage}"></div>`
+    : photoPlaceholder({ caption: eyebrow.en + " — hero photography", ratio, iconCls: "h-10 w-10" });
+  // Rather than overlaying a guessed solid color to fake a blend, the photo
+  // and its darkening tint both fade to fully transparent over their last
+  // ~28%, letting the real body gradient (see input.css) show through
+  // underneath — an exact match on every page, whatever its total height.
+  const fadeMask = image
+    ? `mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);`
+    : "";
   return `
   <section class="relative pt-20">
-    ${photoPlaceholder({ caption: eyebrow.en + " — hero photography", ratio, iconCls: "h-10 w-10" })}
-    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20"></div>
+    <div style="${fadeMask}">${photo}</div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="${fadeMask}"></div>
     <div class="absolute inset-0 flex items-end">
       <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
         <p class="eyebrow reveal flex items-center gap-3">
@@ -514,6 +529,8 @@ const menuMain = `
     eyebrow: { en: "Menu", es: "Menú" },
     title: { en: "The Menu", es: "El Menú" },
     subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
+    image: "images/menu-hero.jpg",
+    imageWebp: "images/menu-hero.webp",
   })}
 
   ${menuGridSection()}
