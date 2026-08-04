@@ -44,24 +44,31 @@
 <main id="main">
   <!-- PAGE HERO -->
   <section class="relative min-h-[48vh] flex items-end overflow-hidden bg-ink">
-    <div class="photo-fallback absolute inset-0" aria-hidden="true">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13c0-4 3-7 8-7s8 3 8 7-3 5-8 5-8-1-8-5Z"/><path d="M9 10c1-1 5-1 6 0"/></svg>
-      <span>Fotografía de ambiente</span>
-    </div>
-    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" aria-hidden="true"></div>
+    <img
+      src="assets/img/menu-hero.jpg"
+      alt="Cortes premium madurados en seco, listos para la brasa, junto a una copa de vino tinto"
+      class="absolute inset-0 h-full w-full object-cover"
+      data-hero-parallax
+    />
+    <!-- Darken the top edge so the nav stays legible over the photo -->
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/60 via-transparent to-transparent" aria-hidden="true"></div>
+    <!-- Fade the bottom edge into garnet so the photo melts into the band below -->
+    <div class="absolute inset-0 bg-gradient-to-t from-garnet via-garnet/70 to-transparent" aria-hidden="true"></div>
     <div class="container-page relative pb-14 pt-32">
       <p class="eyebrow text-ember-light mb-4">Carta</p>
       <h1 class="font-display text-cream text-4xl sm:text-6xl">Menú</h1>
     </div>
   </section>
 
-  <div class="container-page">
-    <p class="max-w-2xl text-slate leading-relaxed py-12 sm:py-16 reveal">
-      Nuestra carta cambia con la temporada del Pacífico Noroeste, pero los cortes de la casa
-      son constantes: maduración en seco propia, brasa de encina y roble, y guarniciones
-      pensadas para compartir. <span class="font-semibold text-ink">GF</span> = sin gluten ·
-      <span class="font-semibold text-ink">V</span> = vegetariano.
-    </p>
+  <div class="bg-garnet">
+    <div class="container-page">
+      <p class="max-w-2xl text-bone/90 leading-relaxed py-12 sm:py-16 reveal">
+        Nuestra carta cambia con la temporada del Pacífico Noroeste, pero los cortes de la casa
+        son constantes: maduración en seco propia, brasa de encina y roble, y guarniciones
+        pensadas para compartir. <span class="font-semibold text-cream">GF</span> = sin gluten ·
+        <span class="font-semibold text-cream">V</span> = vegetariano.
+      </p>
+    </div>
   </div>
 
   <!-- STARTERS -->
