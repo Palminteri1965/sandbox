@@ -17,11 +17,6 @@ module.exports = {
         bone: '#F1EDE6',
         line: '#D6D3D1',
         danger: '#DC2626',
-        garnet: {
-          DEFAULT: '#4A1420',
-          light: '#6B1E2E',
-          dark: '#2E0C14',
-        },
       },
       fontFamily: {
         display: ['"Playfair Display"', 'serif'],
