@@ -83,14 +83,10 @@
     var heroBg = scrollHero.querySelector("[data-scroll-hero-bg]");
     var heroIsVideo = !!(heroBg && heroBg.tagName === "VIDEO");
     var heroScrollHeight = parseInt(scrollHero.getAttribute("data-scroll-height"), 10) || 1200;
-    function readClipAttr(name, fallback) {
-      var v = parseInt(scrollHero.getAttribute(name), 10);
-      return isNaN(v) ? fallback : v;
-    }
-    var heroInitialClipX = readClipAttr("data-initial-clip-x", 25);
-    var heroFinalClipX = readClipAttr("data-final-clip-x", 75);
-    var heroInitialClipY = readClipAttr("data-initial-clip-y", 25);
-    var heroFinalClipY = readClipAttr("data-final-clip-y", 75);
+    var heroInitialClip = parseInt(scrollHero.getAttribute("data-initial-clip"), 10);
+    var heroFinalClip = parseInt(scrollHero.getAttribute("data-final-clip"), 10);
+    heroInitialClip = isNaN(heroInitialClip) ? 25 : heroInitialClip;
+    heroFinalClip = isNaN(heroFinalClip) ? 75 : heroFinalClip;
 
     if (reduceMotion) {
       heroSticky.style.clipPath = "none";
@@ -125,16 +121,14 @@
           var scrolled = clamp(-rect.top, 0, heroScrollHeight + 500);
 
           var t1 = clamp(scrolled / heroScrollHeight, 0, 1);
-          var clipStartX = lerp(heroInitialClipX, 0, t1);
-          var clipEndX = lerp(heroFinalClipX, 100, t1);
-          var clipStartY = lerp(heroInitialClipY, 0, t1);
-          var clipEndY = lerp(heroFinalClipY, 100, t1);
+          var clipStart = lerp(heroInitialClip, 0, t1);
+          var clipEnd = lerp(heroFinalClip, 100, t1);
           heroSticky.style.clipPath =
             "polygon(" +
-            clipStartX + "% " + clipStartY + "%, " +
-            clipEndX + "% " + clipStartY + "%, " +
-            clipEndX + "% " + clipEndY + "%, " +
-            clipStartX + "% " + clipEndY + "%)";
+            clipStart + "% " + clipStart + "%, " +
+            clipEnd + "% " + clipStart + "%, " +
+            clipEnd + "% " + clipEnd + "%, " +
+            clipStart + "% " + clipEnd + "%)";
 
           if (heroBg) {
             var t2 = clamp(scrolled / (heroScrollHeight + 500), 0, 1);

@@ -198,17 +198,7 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[
  * Pass either `image` (+ optional `imageWebp`) for a static photo, or `video`
  * for an autoplaying background clip (used instead of the image when given).
  */
-function scrollHero({
-  image,
-  imageWebp,
-  video,
-  scrollHeightPx = 1200,
-  initialClipX = 25,
-  finalClipX = 75,
-  initialClipY = 25,
-  finalClipY = 75,
-  overlayContent,
-}) {
+function scrollHero({ image, imageWebp, video, scrollHeightPx = 1200, initialClip = 25, finalClip = 75, overlayContent }) {
   // Plain url() first so browsers without image-set() support keep it; the
   // image-set() declaration after wins the cascade wherever it's understood,
   // handing WebP to browsers that can decode it and JPEG to everyone else.
@@ -223,12 +213,10 @@ function scrollHero({
       </video>`
     : `<div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat" style="${bgImage} background-size: 170%;"></div>`;
   return `
-  <div data-scroll-hero data-scroll-height="${scrollHeightPx}"
-    data-initial-clip-x="${initialClipX}" data-final-clip-x="${finalClipX}"
-    data-initial-clip-y="${initialClipY}" data-final-clip-y="${finalClipY}"
+  <div data-scroll-hero data-scroll-height="${scrollHeightPx}" data-initial-clip="${initialClip}" data-final-clip="${finalClip}"
     class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
     <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
-      style="clip-path: polygon(${initialClipX}% ${initialClipY}%, ${finalClipX}% ${initialClipY}%, ${finalClipX}% ${finalClipY}%, ${initialClipX}% ${finalClipY}%);">
+      style="clip-path: polygon(${initialClip}% ${initialClip}%, ${finalClip}% ${initialClip}%, ${finalClip}% ${finalClip}%, ${initialClip}% ${finalClip}%);">
       ${bg}
     </div>
     <div class="sticky top-0 -mt-[100vh] h-screen w-full pointer-events-none">
@@ -354,13 +342,6 @@ function homeHero() {
     imageWebp: "images/hero-steak.webp",
     video: { src: "images/hero-steak.mp4", webm: "images/hero-steak.webm", poster: "images/hero-steak.jpg" },
     scrollHeightPx: 1200,
-    // The wordmark occupies the top ~55-60% of the viewport at rest, so the
-    // clipped preview starts as a letterbox band clear of the text instead
-    // of a centered square — it still opens out to full-bleed on scroll.
-    initialClipX: 5,
-    finalClipX: 95,
-    initialClipY: 66,
-    finalClipY: 92,
     overlayContent: `
       <div class="relative h-full w-full flex flex-col justify-between pointer-events-auto">
         <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
