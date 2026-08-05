@@ -245,24 +245,34 @@ function scrollHero({
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : `background-image: url('${escAttr(image)}');`;
+  // The sticky panel stays pinned at full viewport height for its entire
+  // scroll-jacked range, then hands off to the next section in one frame —
+  // there's no gradual reveal moment like a normal in-flow photo has. So
+  // instead of fading the media into what's "underneath" it (there's
+  // nothing there but the panel's own backdrop), the panel's own backdrop
+  // is tinted to match the body gradient's garnet, and the media's bottom
+  // sliver fades into *that* — by the moment the panel releases, the last
+  // visible strip already reads as the same garnet the next section opens
+  // with, so the handoff no longer reads as a hard cut.
+  const bottomFadeMask = `mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 85%, transparent 100%);`;
   const bg = video
-    ? `<video data-scroll-hero-bg class="absolute inset-0 h-full w-full object-cover" style="transform: scale(1.7);"
+    ? `<video data-scroll-hero-bg class="absolute inset-0 h-full w-full object-cover" style="transform: scale(1.7); ${bottomFadeMask}"
         muted loop playsinline preload="auto" poster="${escAttr(video.poster || image || "")}">
         ${video.webm ? `<source src="${escAttr(video.webm)}" type="video/webm">` : ""}
         <source src="${escAttr(video.src)}" type="video/mp4">
       </video>`
-    : `<div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat" style="${bgImage} background-size: 170%;"></div>`;
+    : `<div data-scroll-hero-bg class="absolute inset-0 bg-center bg-no-repeat" style="${bgImage} background-size: 170%; ${bottomFadeMask}"></div>`;
   return `
   <div data-scroll-hero data-scroll-height="${scrollHeightPx}"
     data-initial-clip-x="${initialClipX}" data-final-clip-x="${finalClipX}"
     data-initial-clip-y="${initialClipY}" data-final-clip-y="${finalClipY}"
     class="relative w-full" style="height: calc(${scrollHeightPx}px + 100vh);">
-    <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden bg-ink"
-      style="clip-path: polygon(${initialClipX}% ${initialClipY}%, ${finalClipX}% ${initialClipY}%, ${finalClipX}% ${finalClipY}%, ${initialClipX}% ${finalClipY}%);">
+    <div data-scroll-hero-sticky class="sticky top-0 h-screen w-full overflow-hidden"
+      style="clip-path: polygon(${initialClipX}% ${initialClipY}%, ${finalClipX}% ${initialClipY}%, ${finalClipX}% ${finalClipY}%, ${initialClipX}% ${finalClipY}%); background: linear-gradient(to bottom, #0C0A09 0%, #0C0A09 75%, #2B0F0A 90%, #33110A 100%);">
       ${bg}
     </div>
     <div class="sticky top-0 -mt-[100vh] h-screen w-full pointer-events-none">
-      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-ink/40" style="${bottomFadeMask}"></div>
       ${overlayContent}
     </div>
   </div>`;
