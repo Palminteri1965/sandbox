@@ -126,6 +126,24 @@
     text-shadow: 0 0 20px rgba(226, 88, 42, 0.4);
   }
 
+  /* Dish photo zoom: hovering the title or description (both .dish-caption)
+     scales the photo inside the same .dish-card — the rounded overflow-hidden
+     wrapper around it clips the zoom so it never spills past the card. */
+  .dish-photo {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .dish-card:has(.dish-caption:hover) .dish-photo {
+    transform: scale(1.06);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dish-photo {
+      transition: none;
+    }
+    .dish-card:has(.dish-caption:hover) .dish-photo {
+      transform: none;
+    }
+  }
+
   /* Cursor ember halo: a large, soft ambient glow that trails the pointer
      and draws in tighter/brighter over links and text — desktop mice only.
      Hidden on touch devices and for prefers-reduced-motion (main.js gates

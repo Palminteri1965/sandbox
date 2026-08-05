@@ -30,12 +30,12 @@ const tAttr = (attrName, en, es) =>
 
 /** Renders a real photo (with optional WebP source) in place of the dashed
  * placeholder once one exists for a given spot — same rounded-card shape. */
-function photoOrPlaceholder({ image, imageWebp, caption, ratio = "aspect-[4/5]", iconCls = "h-8 w-8" }) {
+function photoOrPlaceholder({ image, imageWebp, caption, ratio = "aspect-[4/5]", iconCls = "h-8 w-8", cls = "" }) {
   if (!image) return photoPlaceholder({ caption, ratio, iconCls });
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : `background-image: url('${escAttr(image)}');`;
-  return `<div class="${ratio} w-full rounded-sm bg-center bg-cover bg-no-repeat" style="${bgImage}"></div>`;
+  return `<div class="${ratio} w-full rounded-sm bg-center bg-cover bg-no-repeat ${cls}" style="${bgImage}"></div>`;
 }
 
 function photoPlaceholder({ caption, ratio = "aspect-[4/5]", iconCls = "h-8 w-8" }) {
@@ -320,10 +320,12 @@ function signatureDishesSection({ menuHref = "menu.html" } = {}) {
         ]
           .map(
             (d) => `
-        <article class="group reveal">
-          ${photoOrPlaceholder({ image: d.image, imageWebp: d.imageWebp, caption: d.cap, ratio: "aspect-[4/5]" })}
-          <h3 class="mt-5 font-display text-xl text-cream text-hover-ember inline-block">${t(d.en[0], d.es[0])}</h3>
-          <p class="mt-2 text-sm text-cream/60 leading-relaxed">${t(d.en[1], d.es[1])}</p>
+        <article class="dish-card group reveal">
+          <div class="rounded-sm overflow-hidden">
+            ${photoOrPlaceholder({ image: d.image, imageWebp: d.imageWebp, caption: d.cap, ratio: "aspect-[4/5]", cls: "dish-photo" })}
+          </div>
+          <h3 class="dish-caption mt-5 font-display text-xl text-cream text-hover-ember inline-block">${t(d.en[0], d.es[0])}</h3>
+          <p class="dish-caption mt-2 text-sm text-cream/60 leading-relaxed">${t(d.en[1], d.es[1])}</p>
         </article>`
           )
           .join("\n        ")}
