@@ -637,6 +637,8 @@ const aboutMain = `
     eyebrow: { en: "Our Story", es: "Nuestra Historia" },
     title: { en: "Built Around the Fire", es: "Construido Alrededor del Fuego" },
     subtitle: { en: "A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.", es: "Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste." },
+    image: "images/our-story-hero.jpg",
+    imageWebp: "images/our-story-hero.webp",
   })}
 
   ${ourStorySections()}
