@@ -165,6 +165,21 @@
     }
   }
 
+  /* ---------- Static page-hero background video (no scroll-link, just a
+     looping autoplay clip) ---------- */
+  /* No autoplay attribute on the tag itself — browsers don't honor
+     prefers-reduced-motion for native autoplay, so it's started here in JS
+     where reduceMotion can gate it, same as the scroll-hero's video. */
+  document.querySelectorAll("[data-page-hero-video]").forEach(function (v) {
+    if (reduceMotion) {
+      v.pause();
+    } else {
+      v.play().catch(function () {
+        /* Autoplay can still be blocked by the browser; poster stays put. */
+      });
+    }
+  });
+
   /* ---------- Ember crackle sound toggle (opt-in — browsers block audible
      autoplay, so the video stays muted and this lets visitors turn on the
      looping crackle sound themselves) ---------- */

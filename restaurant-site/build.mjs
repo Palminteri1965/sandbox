@@ -180,20 +180,25 @@ ${main}
 /* Shared bits                                                          */
 /* ==================================================================== */
 
-function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]", image, imageWebp }) {
+function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]", image, imageWebp, video }) {
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : image
     ? `background-image: url('${escAttr(image)}');`
     : "";
-  const photo = image
+  const photo = video
+    ? `<video data-page-hero-video class="${ratio} w-full object-cover" muted loop playsinline preload="auto" poster="${escAttr(video.poster || image || "")}">
+        ${video.webm ? `<source src="${escAttr(video.webm)}" type="video/webm">` : ""}
+        <source src="${escAttr(video.src)}" type="video/mp4">
+      </video>`
+    : image
     ? `<div class="${ratio} w-full bg-center bg-cover bg-no-repeat" style="${bgImage}"></div>`
     : photoPlaceholder({ caption: eyebrow.en + " — hero photography", ratio, iconCls: "h-10 w-10" });
   // Rather than overlaying a guessed solid color to fake a blend, the photo
   // and its darkening tint both fade to fully transparent over their last
   // ~28%, letting the real body gradient (see input.css) show through
   // underneath — an exact match on every page, whatever its total height.
-  const fadeMask = image
+  const fadeMask = image || video
     ? `mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);`
     : "";
   return `
@@ -637,8 +642,7 @@ const aboutMain = `
     eyebrow: { en: "Our Story", es: "Nuestra Historia" },
     title: { en: "Built Around the Fire", es: "Construido Alrededor del Fuego" },
     subtitle: { en: "A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.", es: "Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste." },
-    image: "images/our-story-hero.jpg",
-    imageWebp: "images/our-story-hero.webp",
+    video: { src: "images/our-story-hero.mp4", webm: "images/our-story-hero.webm", poster: "images/our-story-hero.jpg" },
   })}
 
   ${ourStorySections()}
