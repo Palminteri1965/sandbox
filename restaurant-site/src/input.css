@@ -126,14 +126,25 @@
     text-shadow: 0 0 20px rgba(226, 88, 42, 0.4);
   }
 
-  /* Dish photo zoom: hovering the title or description (both .dish-caption)
-     scales the photo inside the same .dish-card — the rounded overflow-hidden
-     wrapper around it clips the zoom so it never spills past the card. */
-  .dish-photo {
-    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .dish-card:has(.dish-caption:hover) .dish-photo {
-    transform: scale(1.06);
+  /* Dish photo "wow" zoom: hovering the title or description (both
+     .dish-caption) blows the photo up well past its own frame — deliberately
+     unclipped, so it lifts over the grid and neighboring cards to show off
+     the food photography at real size. Desktop mice only (hover-capable,
+     fine pointer): on touch, an enlarged photo would either not trigger
+     cleanly or overflow off-screen with nothing to reverse it, so it's
+     skipped there and the photo just stays at its normal grid size. */
+  @media (hover: hover) and (pointer: fine) {
+    .dish-photo {
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .dish-card:has(.dish-caption:hover) {
+      z-index: 20;
+    }
+    .dish-card:has(.dish-caption:hover) .dish-photo {
+      transform: scale(1.55);
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(232, 207, 160, 0.15);
+    }
   }
   @media (prefers-reduced-motion: reduce) {
     .dish-photo {
@@ -141,6 +152,7 @@
     }
     .dish-card:has(.dish-caption:hover) .dish-photo {
       transform: none;
+      box-shadow: none;
     }
   }
 

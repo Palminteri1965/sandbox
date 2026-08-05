@@ -320,10 +320,8 @@ function signatureDishesSection({ menuHref = "menu.html" } = {}) {
         ]
           .map(
             (d) => `
-        <article class="dish-card group reveal">
-          <div class="rounded-sm overflow-hidden">
-            ${photoOrPlaceholder({ image: d.image, imageWebp: d.imageWebp, caption: d.cap, ratio: "aspect-[4/5]", cls: "dish-photo" })}
-          </div>
+        <article class="dish-card group reveal relative">
+          ${photoOrPlaceholder({ image: d.image, imageWebp: d.imageWebp, caption: d.cap, ratio: "aspect-[4/5]", cls: "dish-photo" })}
           <h3 class="dish-caption mt-5 font-display text-xl text-cream text-hover-ember inline-block">${t(d.en[0], d.es[0])}</h3>
           <p class="dish-caption mt-2 text-sm text-cream/60 leading-relaxed">${t(d.en[1], d.es[1])}</p>
         </article>`
