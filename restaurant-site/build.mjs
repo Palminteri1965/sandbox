@@ -582,7 +582,12 @@ function ourStorySections({ id } = {}) {
   <section${id ? ` id="${id}"` : ""} class="py-20 sm:py-28" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2 items-center">
       <div class="reveal">
-        ${photoPlaceholder({ caption: "Executive chef portrait, kitchen pass", ratio: "aspect-[4/5]" })}
+        ${photoOrPlaceholder({
+          image: "images/chef-portrait.jpg",
+          imageWebp: "images/chef-portrait.webp",
+          caption: "Executive chef portrait, kitchen pass",
+          ratio: "aspect-[4/5]",
+        })}
       </div>
       <div class="reveal">
         <p class="eyebrow">${t("Since 2016", "Desde 2016")}</p>
