@@ -26,4 +26,6 @@ export const icons = {
   flame: (cls) => base(`<path d="M12 2.5c.9 2.7-1.8 3.8-1.8 6.5a2.7 2.7 0 0 0 5.4 0c0-.9-.4-1.8-.9-2.6 1.8 1 3.6 3.6 3.6 6.3a6.3 6.3 0 1 1-12.6 0c0-3.6 1.8-6.3 3.6-8.1.9-.9 2.2-1.7 2.7-2.1z"/>`, { cls, fill: true }),
   star: (cls) => base(`<path d="M12 3.2l2.5 5.1 5.6.8-4 3.9.9 5.6L12 15.9l-5 2.7.9-5.6-4-3.9 5.6-.8L12 3.2z"/>`, { cls, fill: true }),
   check: (cls) => base(`<path d="M5 13l4.5 4.5L19 8"/>`, { cls }),
+  soundOn: (cls) => base(`<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/>`, { cls }),
+  soundOff: (cls) => base(`<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>`, { cls }),
 };

@@ -404,6 +404,19 @@ function homeHero() {
             ${t("Scroll", "Desplázate")} ${icons.arrowRight("h-3 w-3 rotate-90")}
           </p>
         </div>
+        <!-- Opt-in ember crackle sound: the video above stays muted so it can
+             autoplay everywhere; browsers block audible autoplay outright,
+             so this lets a visitor turn the loop on themselves. -->
+        <button type="button" data-ember-sound-toggle aria-pressed="false"
+          class="absolute right-4 sm:right-6 lg:right-8 bottom-24 sm:bottom-28 md:bottom-32 h-11 w-11 flex items-center justify-center rounded-full border border-cream/25 bg-ink/40 backdrop-blur-sm text-cream/75 transition-all duration-300 cursor-pointer hover:text-gold-soft hover:border-gold/50 hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] reveal"
+          aria-label="${escAttr("Play ember crackle sound")}">
+          <span data-sound-icon-off>${icons.soundOff("h-5 w-5")}</span>
+          <span data-sound-icon-on>${icons.soundOn("h-5 w-5")}</span>
+        </button>
+        <audio data-ember-audio loop preload="none">
+          <source src="audio/ember-crackle.ogg" type="audio/ogg">
+          <source src="audio/ember-crackle.mp3" type="audio/mpeg">
+        </audio>
       </div>`,
   });
 }

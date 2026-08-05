@@ -159,4 +159,18 @@
       display: none;
     }
   }
+
+  /* Ember crackle sound toggle: swap the speaker icon by playing state. */
+  [data-ember-sound-toggle] [data-sound-icon-on] {
+    display: none;
+  }
+  [data-ember-sound-toggle].is-playing [data-sound-icon-on] {
+    display: block;
+  }
+  [data-ember-sound-toggle].is-playing [data-sound-icon-off] {
+    display: none;
+  }
+  [data-ember-sound-toggle].is-playing {
+    @apply border-gold/50 text-gold-soft;
+  }
 }

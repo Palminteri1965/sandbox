@@ -6,6 +6,9 @@
   /* ---------- Language toggle (EN / ES) ---------- */
   var LANG_KEY = "eo-lang";
   var lang = localStorage.getItem(LANG_KEY) || "en";
+  // Assigned later by the ember sound toggle (if present on the page) so its
+  // aria-label stays in sync with language switches after the fact.
+  var updateEmberSoundLabel;
 
   function applyLang(next) {
     lang = next === "es" ? "es" : "en";
@@ -24,6 +27,7 @@
       btn.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
     });
     localStorage.setItem(LANG_KEY, lang);
+    if (updateEmberSoundLabel) updateEmberSoundLabel();
   }
 
   document.addEventListener("click", function (e) {
@@ -159,6 +163,42 @@
         window.addEventListener("resize", onScroll);
       })();
     }
+  }
+
+  /* ---------- Ember crackle sound toggle (opt-in — browsers block audible
+     autoplay, so the video stays muted and this lets visitors turn on the
+     looping crackle sound themselves) ---------- */
+  var soundToggle = document.querySelector("[data-ember-sound-toggle]");
+  var emberAudio = document.querySelector("[data-ember-audio]");
+  if (soundToggle && emberAudio) {
+    var soundLabel = {
+      on: { en: "Mute ember crackle sound", es: "Silenciar sonido de brasas" },
+      off: { en: "Play ember crackle sound", es: "Activar sonido de brasas" },
+    };
+    updateEmberSoundLabel = function () {
+      var copy = soundLabel[emberAudio.paused ? "off" : "on"];
+      soundToggle.setAttribute("aria-label", lang === "es" ? copy.es : copy.en);
+    };
+    soundToggle.addEventListener("click", function () {
+      if (emberAudio.paused) {
+        emberAudio.play().catch(function () {
+          /* Still blocked (rare) — button just stays in its "off" state. */
+        });
+      } else {
+        emberAudio.pause();
+      }
+    });
+    emberAudio.addEventListener("play", function () {
+      soundToggle.classList.add("is-playing");
+      soundToggle.setAttribute("aria-pressed", "true");
+      updateEmberSoundLabel();
+    });
+    emberAudio.addEventListener("pause", function () {
+      soundToggle.classList.remove("is-playing");
+      soundToggle.setAttribute("aria-pressed", "false");
+      updateEmberSoundLabel();
+    });
+    updateEmberSoundLabel();
   }
 
   /* ---------- Footer year ---------- */
