@@ -135,8 +135,23 @@
      skipped there and the photo just stays at its normal grid size. */
   @media (hover: hover) and (pointer: fine) {
     .dish-photo {
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      /* Only transform animates — it's compositor-only (GPU), so it stays
+         smooth at any size. box-shadow can't be GPU-composited: animating
+         its blur alongside a growing transform forced a repaint of an
+         80px blur on every frame, which contributed to the stutter.
+         It's left off the transition list entirely so it just snaps in
+         with the new state instead of trying (and failing) to animate. */
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: transform;
+      box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+      /* The real cause of the shaking: a transformed element paints above
+         plain in-flow siblings regardless of DOM order, so once scaling
+         began the photo covered the caption text beneath it and stole the
+         hover the whole effect depends on — it shrank, uncovered the text,
+         re-triggered hover, and repeated in a feedback loop. Making the
+         photo ignore pointer events means it can never intercept hover
+         meant for the caption, however large it renders. */
+      pointer-events: none;
     }
     .dish-card:has(.dish-caption:hover) {
       z-index: 20;
