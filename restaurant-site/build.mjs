@@ -695,6 +695,7 @@ const galleryMain = `
     eyebrow: { en: "Gallery", es: "Galería" },
     title: { en: "A Taste of the Room", es: "Una Muestra del Ambiente" },
     subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
+    video: { src: "images/gallery-hero.mp4", webm: "images/gallery-hero.webm", poster: "images/gallery-hero.jpg" },
   })}
 
   ${galleryGridSection()}
