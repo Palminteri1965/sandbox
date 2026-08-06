@@ -77,21 +77,29 @@
   .btn-outline-dark {
     @apply inline-flex items-center justify-center gap-2 rounded-sm border border-ink/30 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-ink/5 cursor-pointer;
   }
+  /* Golden halo instead of an underline: text brightens and gains a soft
+     glow on hover, punches brighter/tighter on click, eases back on release. */
   .nav-link {
-    @apply relative text-xs tracking-[0.15em] uppercase text-cream/70 transition-colors duration-300 hover:text-cream pb-1;
+    @apply relative text-xs tracking-[0.15em] uppercase text-cream/70;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    text-shadow: 0 0 0 rgba(200, 138, 46, 0);
   }
-  .nav-link::after {
-    content: "";
-    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-gold-soft transition-all duration-300;
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    @apply text-gold-soft;
+    text-shadow: 0 0 10px rgba(200, 138, 46, 0.8), 0 0 22px rgba(200, 138, 46, 0.45);
   }
-  .nav-link:hover::after {
-    @apply w-full;
+  .nav-link:active {
+    transition-duration: 0.1s;
+    text-shadow: 0 0 14px rgba(200, 138, 46, 1), 0 0 32px rgba(200, 138, 46, 0.7);
   }
   .nav-link-active {
     @apply text-gold-soft;
   }
-  .nav-link-active::after {
-    @apply w-full bg-gold-soft;
+  @media (prefers-reduced-motion: reduce) {
+    .nav-link {
+      transition: none;
+    }
   }
   /* .reveal only starts hidden once html.js is set by the blocking head
      script, so no-JS clients and crawlers always see full content. */
