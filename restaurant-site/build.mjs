@@ -126,7 +126,7 @@ const sideNavColors = ["#C0392B", "#E2582A", "#F0794A", "#D97706", "#C88A2E"];
 function sideNav(active, { items } = {}) {
   items = items || defaultNavItems;
   return `
-  <nav data-side-nav class="hidden md:flex fixed right-4 md:right-5 lg:right-7 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-1" aria-label="${escAttr("Section navigation")}">
+  <nav data-side-nav class="hidden md:flex fixed right-4 md:right-5 lg:right-7 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-3" aria-label="${escAttr("Section navigation")}">
     ${items
       .map(
         (item, i) => `

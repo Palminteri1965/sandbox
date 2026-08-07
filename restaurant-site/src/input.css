@@ -133,11 +133,11 @@
     top: 50%;
     transform: translateY(-50%) translateX(6px);
     white-space: nowrap;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #faf9f6;
-    text-shadow: 0 0 8px var(--dot-color), 0 0 16px var(--dot-color);
+    text-shadow: 0 0 10px var(--dot-color), 0 0 22px var(--dot-color), 0 0 34px var(--dot-color);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease;
