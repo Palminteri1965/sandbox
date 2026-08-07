@@ -137,10 +137,7 @@
     letter-spacing: 0.15em;
     text-transform: uppercase;
     color: #faf9f6;
-    background: rgba(12, 10, 9, 0.85);
-    border: 1px solid rgba(232, 207, 160, 0.2);
-    padding: 5px 12px;
-    border-radius: 4px;
+    text-shadow: 0 0 8px var(--dot-color), 0 0 16px var(--dot-color);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.25s ease;

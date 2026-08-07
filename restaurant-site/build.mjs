@@ -130,9 +130,9 @@ function sideNav(active, { items } = {}) {
     ${items
       .map(
         (item, i) => `
-    <a href="${item.href}" data-side-nav-item class="side-nav-item p-3${item.key === active ? " is-active" : ""}" aria-label="${escAttr(item.en)}">
+    <a href="${item.href}" data-side-nav-item class="side-nav-item p-3${item.key === active ? " is-active" : ""}" style="--dot-color: ${sideNavColors[i % sideNavColors.length]}" aria-label="${escAttr(item.en)}">
       <span class="side-nav-label">${t(item.en, item.es)}</span>
-      <span class="side-nav-dot" style="--dot-color: ${sideNavColors[i % sideNavColors.length]}"></span>
+      <span class="side-nav-dot"></span>
     </a>`
       )
       .join("\n    ")}
