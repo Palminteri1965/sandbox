@@ -783,7 +783,19 @@ function reservationSection({ id, intro = "" } = {}) {
       </div>
 
       <div class="lg:col-span-3">
-        ${photoPlaceholder({ caption: "Map — 2100 Western Ave, Seattle, WA", ratio: "aspect-[16/9]" })}
+        <div class="relative aspect-[16/9] w-full rounded-sm overflow-hidden border border-cream/10">
+          <iframe
+            src="https://www.google.com/maps?q=${encodeURIComponent(SITE.addressLine1 + ", " + SITE.addressLine2)}&output=embed"
+            class="absolute inset-0 h-full w-full border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="${escAttr("Map — " + SITE.addressLine1 + ", " + SITE.addressLine2)}"
+          ></iframe>
+          <a href="${SITE.mapsHref}" target="_blank" rel="noopener"
+            class="absolute bottom-3 right-3 inline-flex items-center gap-2 rounded-sm bg-ink/85 backdrop-blur px-4 py-2.5 text-xs font-semibold uppercase tracking-wider text-cream border border-cream/20 hover:border-gold/60 hover:text-gold-soft hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] transition-all duration-300">
+            ${t("Open in Google Maps", "Abrir en Google Maps")} ${icons.arrowRight("h-3.5 w-3.5")}
+          </a>
+        </div>
 
         <form data-reservation-form class="mt-10 space-y-6" novalidate>
           <div class="grid sm:grid-cols-2 gap-6">
