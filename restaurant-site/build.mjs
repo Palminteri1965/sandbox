@@ -449,7 +449,12 @@ const homeMain = `
   <section class="py-20 sm:py-28 on-dark border-t border-cream/5" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-2 items-center">
       <div class="reveal order-2 lg:order-1">
-        ${photoPlaceholder({ caption: "Chef searing steaks over open flame", ratio: "aspect-[4/3]" })}
+        ${photoOrPlaceholder({
+          image: "images/chef-searing-steaks.jpg",
+          imageWebp: "images/chef-searing-steaks.webp",
+          caption: "Chef searing steaks over open flame",
+          ratio: "aspect-[4/3]",
+        })}
       </div>
       <div class="reveal order-1 lg:order-2">
         <p class="eyebrow">${t("Our Story", "Nuestra Historia")}</p>
@@ -660,15 +665,15 @@ const aboutMain = `
 /* ==================================================================== */
 
 const galleryCaptions = [
-  "Dining room by firelight",
-  "Tomahawk carving tableside",
-  "Oak-fired hearth in action",
-  "Private dining room",
-  "Raw bar and oyster service",
-  "Bar & cocktail program",
-  "Chef plating pass",
-  "Seattle waterfront patio",
-  "Dry-aging cooler",
+  { caption: "Dining room by firelight", slug: "dining-room-firelight" },
+  { caption: "Tomahawk carving tableside", slug: "tomahawk-carving-tableside" },
+  { caption: "Oak-fired hearth in action", slug: "oak-fired-hearth" },
+  { caption: "Private dining room", slug: "private-dining-room" },
+  { caption: "Raw bar and oyster service", slug: "raw-bar-oyster-service" },
+  { caption: "Bar & cocktail program", slug: "bar-cocktail-program" },
+  { caption: "Chef plating pass", slug: "chef-plating-pass" },
+  { caption: "Seattle waterfront patio", slug: "seattle-waterfront-patio" },
+  { caption: "Dry-aging cooler", slug: "dry-aging-cooler" },
 ];
 
 /** Photo grid — shared by the gallery page and the one-page layout. */
@@ -679,13 +684,16 @@ function galleryGridSection({ id, intro = "" } = {}) {
       ${intro}
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         ${galleryCaptions
-          .map((cap) => `<div class="reveal">${photoPlaceholder({ caption: cap, ratio: "aspect-square" })}</div>`)
+          .map(
+            (g) => `<div class="reveal">${photoOrPlaceholder({
+              image: `images/${g.slug}.jpg`,
+              imageWebp: `images/${g.slug}.webp`,
+              caption: g.caption,
+              ratio: "aspect-square",
+            })}</div>`
+          )
           .join("\n        ")}
       </div>
-      <p class="mt-8 text-sm text-cream/55 reveal">${t(
-        "Photography placeholders shown above — swap in professional interior, food, and lifestyle photography before launch.",
-        "Las imágenes de arriba son marcadores de posición: reemplácelas con fotografía profesional de interiores, platos y ambiente antes del lanzamiento."
-      )}</p>
     </div>
   </section>`;
 }
