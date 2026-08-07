@@ -712,18 +712,39 @@ function galleryGridSection({ id, intro = "" } = {}) {
   <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       ${intro}
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" style="perspective: 1000px;">
         ${galleryCaptions
           .map(
-            (g) => `<div class="reveal">${photoOrPlaceholder({
-              image: `images/${g.slug}.jpg`,
-              imageWebp: `images/${g.slug}.webp`,
-              caption: g.caption,
-              ratio: "aspect-square",
-            })}</div>`
+            (g, i) => `
+        <button type="button" data-gallery-item data-index="${i}"
+          data-image="images/${g.slug}.jpg" data-caption="${escAttr(g.caption)}"
+          class="gallery-thumb reveal w-full text-left cursor-pointer" aria-label="${escAttr("View larger: " + g.caption)}">
+          ${photoOrPlaceholder({
+            image: `images/${g.slug}.jpg`,
+            imageWebp: `images/${g.slug}.webp`,
+            caption: g.caption,
+            ratio: "aspect-square",
+          })}
+        </button>`
           )
           .join("\n        ")}
       </div>
+    </div>
+
+    <div data-lightbox class="fixed inset-0 z-[100] hidden items-center justify-center bg-ink/95 backdrop-blur-sm p-4 sm:p-10" role="dialog" aria-modal="true" aria-label="${escAttr("Photo viewer")}">
+      <button type="button" data-lightbox-close class="absolute top-4 right-4 sm:top-6 sm:right-6 h-11 w-11 flex items-center justify-center rounded-full border border-cream/25 text-cream/80 hover:text-gold-soft hover:border-gold/50 hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] transition-all duration-300 cursor-pointer" aria-label="${escAttr("Close")}">
+        ${icons.close("h-5 w-5")}
+      </button>
+      <button type="button" data-lightbox-prev class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 h-12 w-12 flex items-center justify-center rounded-full border border-cream/25 text-cream/80 hover:text-gold-soft hover:border-gold/50 hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] transition-all duration-300 cursor-pointer" aria-label="${escAttr("Previous photo")}">
+        ${icons.arrowRight("h-5 w-5 rotate-180")}
+      </button>
+      <button type="button" data-lightbox-next class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 h-12 w-12 flex items-center justify-center rounded-full border border-cream/25 text-cream/80 hover:text-gold-soft hover:border-gold/50 hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] transition-all duration-300 cursor-pointer" aria-label="${escAttr("Next photo")}">
+        ${icons.arrowRight("h-5 w-5")}
+      </button>
+      <figure class="max-w-5xl w-full max-h-full flex flex-col items-center">
+        <img data-lightbox-img src="" alt="" class="max-h-[78vh] w-auto max-w-full rounded-sm object-contain shadow-2xl">
+        <figcaption data-lightbox-caption class="mt-5 text-center text-sm uppercase tracking-widest text-cream/70"></figcaption>
+      </figure>
     </div>
   </section>`;
 }

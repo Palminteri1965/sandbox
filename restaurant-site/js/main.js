@@ -254,6 +254,94 @@
     updateEmberSoundLabel();
   }
 
+  /* ---------- Gallery: 3D tilt on hover + lightbox ---------- */
+  var galleryThumbs = document.querySelectorAll("[data-gallery-item]");
+  if (galleryThumbs.length) {
+    if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      galleryThumbs.forEach(function (el) {
+        el.addEventListener("mousemove", function (e) {
+          var rect = el.getBoundingClientRect();
+          var px = (e.clientX - rect.left) / rect.width;
+          var py = (e.clientY - rect.top) / rect.height;
+          var rotateY = (px - 0.5) * 14;
+          var rotateX = (0.5 - py) * 14;
+          el.style.transitionDuration = "0.1s";
+          el.style.transform =
+            "perspective(900px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) scale(1.06)";
+        });
+        el.addEventListener("mouseleave", function () {
+          el.style.transitionDuration = "0.5s";
+          el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
+        });
+      });
+    }
+
+    var lightbox = document.querySelector("[data-lightbox]");
+    var lightboxImg = document.querySelector("[data-lightbox-img]");
+    var lightboxCaption = document.querySelector("[data-lightbox-caption]");
+    if (lightbox && lightboxImg) {
+      var galleryList = Array.prototype.slice.call(galleryThumbs);
+      var currentIndex = -1;
+      var lastFocused = null;
+
+      function showAt(index) {
+        currentIndex = (index + galleryList.length) % galleryList.length;
+        var item = galleryList[currentIndex];
+        lightboxImg.classList.remove("is-shown");
+        var img = new Image();
+        img.onload = function () {
+          lightboxImg.src = item.getAttribute("data-image");
+          lightboxImg.alt = item.getAttribute("data-caption") || "";
+          if (lightboxCaption) lightboxCaption.textContent = item.getAttribute("data-caption") || "";
+          // Force a reflow so the fade/scale-in transition replays each time.
+          void lightboxImg.offsetWidth;
+          lightboxImg.classList.add("is-shown");
+        };
+        img.src = item.getAttribute("data-image");
+      }
+
+      function openLightbox(index, trigger) {
+        lastFocused = trigger || document.activeElement;
+        showAt(index);
+        lightbox.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+        var closeBtn = lightbox.querySelector("[data-lightbox-close]");
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("is-open");
+        lightboxImg.classList.remove("is-shown");
+        document.body.style.overflow = "";
+        if (lastFocused) lastFocused.focus();
+      }
+
+      galleryList.forEach(function (item, i) {
+        item.addEventListener("click", function () {
+          openLightbox(i, item);
+        });
+      });
+
+      var closeEl = lightbox.querySelector("[data-lightbox-close]");
+      var prevEl = lightbox.querySelector("[data-lightbox-prev]");
+      var nextEl = lightbox.querySelector("[data-lightbox-next]");
+      if (closeEl) closeEl.addEventListener("click", closeLightbox);
+      if (prevEl) prevEl.addEventListener("click", function () { showAt(currentIndex - 1); });
+      if (nextEl) nextEl.addEventListener("click", function () { showAt(currentIndex + 1); });
+
+      lightbox.addEventListener("click", function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (!lightbox.classList.contains("is-open")) return;
+        if (e.key === "Escape") closeLightbox();
+        else if (e.key === "ArrowLeft") showAt(currentIndex - 1);
+        else if (e.key === "ArrowRight") showAt(currentIndex + 1);
+      });
+    }
+  }
+
   /* ---------- Footer year ---------- */
   var yearEl = document.querySelector("[data-year]");
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
