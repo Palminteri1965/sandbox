@@ -74,6 +74,44 @@
     onScroll();
   }
 
+  /* ---------- Side nav scroll-spy (one-page layout only) ---------- */
+  /* On the 5-page site, side-nav links point at other pages (menu.html,
+     etc.) and whichever one matches the current page is already marked
+     .is-active server-side — nothing to do here. Only anchor links
+     (onepage.html's #menu, #story, ...) get watched, since those all live
+     on the same page and the "current" one changes as you scroll. */
+  var sideNavItems = document.querySelectorAll("[data-side-nav-item]");
+  if (sideNavItems.length && "IntersectionObserver" in window) {
+    var sideNavSections = [];
+    sideNavItems.forEach(function (link) {
+      var href = link.getAttribute("href") || "";
+      if (href.charAt(0) !== "#") return;
+      var section = document.querySelector(href);
+      if (section) sideNavSections.push({ link: link, section: section });
+    });
+    if (sideNavSections.length) {
+      var spyObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            var match = sideNavSections.filter(function (s) {
+              return s.section === entry.target;
+            })[0];
+            if (!match) return;
+            sideNavItems.forEach(function (l) {
+              l.classList.remove("is-active");
+            });
+            match.link.classList.add("is-active");
+          });
+        },
+        { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+      );
+      sideNavSections.forEach(function (s) {
+        spyObserver.observe(s.section);
+      });
+    }
+  }
+
   /* ---------- Scroll-linked hero (clip-path reveal + parallax zoom) ---------- */
   /* Vanilla reimplementation of a framer-motion "smooth scroll hero": as the
      tall wrapper scrolls past, the sticky background's clip-path opens from

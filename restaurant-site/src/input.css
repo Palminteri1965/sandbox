@@ -101,6 +101,62 @@
       transition: none;
     }
   }
+
+  /* Right-edge dot nav: vertically centered section shortcuts, desktop
+     only. Each dot glows in its own ember/gold shade (--dot-color, set
+     inline per item) on hover, brighter still while its section is
+     current, and reveals a name tag to its left. */
+  .side-nav-item {
+    position: relative;
+  }
+  .side-nav-dot {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 9999px;
+    background: var(--dot-color);
+    box-shadow: 0 0 6px 1px var(--dot-color);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  .side-nav-item:hover .side-nav-dot,
+  .side-nav-item:focus-visible .side-nav-dot {
+    transform: scale(1.4);
+    box-shadow: 0 0 14px 3px var(--dot-color), 0 0 26px 8px var(--dot-color);
+  }
+  .side-nav-item.is-active .side-nav-dot {
+    transform: scale(1.25);
+    box-shadow: 0 0 10px 2px var(--dot-color), 0 0 18px 5px var(--dot-color);
+  }
+  .side-nav-label {
+    position: absolute;
+    right: calc(100% + 14px);
+    top: 50%;
+    transform: translateY(-50%) translateX(6px);
+    white-space: nowrap;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #faf9f6;
+    background: rgba(12, 10, 9, 0.85);
+    border: 1px solid rgba(232, 207, 160, 0.2);
+    padding: 5px 12px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .side-nav-item:hover .side-nav-label,
+  .side-nav-item:focus-visible .side-nav-label {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .side-nav-dot,
+    .side-nav-label {
+      transition: none;
+    }
+  }
+
   /* .reveal only starts hidden once html.js is set by the blocking head
      script, so no-JS clients and crawlers always see full content. */
   html.js .reveal {

@@ -66,14 +66,16 @@ function head({ title, description }) {
   <script>document.documentElement.classList.add('js');</script>`;
 }
 
+const defaultNavItems = [
+  { href: "index.html", en: "Home", es: "Inicio", key: "home" },
+  { href: "menu.html", en: "Menu", es: "Menú", key: "menu" },
+  { href: "about.html", en: "Our Story", es: "Nuestra Historia", key: "about" },
+  { href: "gallery.html", en: "Gallery", es: "Galería", key: "gallery" },
+  { href: "contact.html", en: "Reservations", es: "Reservas", key: "contact" },
+];
+
 function nav(active, { items, logoHref = "index.html" } = {}) {
-  items = items || [
-    { href: "index.html", en: "Home", es: "Inicio", key: "home" },
-    { href: "menu.html", en: "Menu", es: "Menú", key: "menu" },
-    { href: "about.html", en: "Our Story", es: "Nuestra Historia", key: "about" },
-    { href: "gallery.html", en: "Gallery", es: "Galería", key: "gallery" },
-    { href: "contact.html", en: "Reservations", es: "Reservas", key: "contact" },
-  ];
+  items = items || defaultNavItems;
   const linkCls = (key) => `nav-link${key === active ? " nav-link-active" : ""}`;
   const desktopLinks = items
     .map((i) => `<a href="${i.href}" class="${linkCls(i.key)}"${i.key === active ? ' aria-current="page"' : ""}>${t(i.en, i.es)}</a>`)
@@ -108,6 +110,33 @@ function nav(active, { items, logoHref = "index.html" } = {}) {
       <a href="${SITE.phoneHref}" class="btn-primary mt-4 w-full">${t("Reserve a Table", "Reservar una Mesa")}</a>
     </div>
   </header>`;
+}
+
+// Ember-toned dot palette for the side nav, red through gold — one shade
+// per item, cycling if there are ever more items than colors.
+const sideNavColors = ["#C0392B", "#E2582A", "#F0794A", "#D97706", "#C88A2E"];
+
+/**
+ * Right-edge, vertically-centered dot nav: a shortcut to jump sections
+ * without reaching for the top bar. Desktop only (md and up) — mobile
+ * already has the hamburger menu. Each dot glows warmer on hover and
+ * reveals the section name; on the one-page layout (anchor hrefs) main.js
+ * scroll-spies to keep the current section lit as you scroll.
+ */
+function sideNav(active, { items } = {}) {
+  items = items || defaultNavItems;
+  return `
+  <nav data-side-nav class="hidden md:flex fixed right-4 md:right-5 lg:right-7 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-5" aria-label="${escAttr("Section navigation")}">
+    ${items
+      .map(
+        (item, i) => `
+    <a href="${item.href}" data-side-nav-item class="side-nav-item${item.key === active ? " is-active" : ""}" aria-label="${escAttr(item.en)}">
+      <span class="side-nav-label">${t(item.en, item.es)}</span>
+      <span class="side-nav-dot" style="--dot-color: ${sideNavColors[i % sideNavColors.length]}"></span>
+    </a>`
+      )
+      .join("\n    ")}
+  </nav>`;
 }
 
 function footer() {
@@ -166,6 +195,7 @@ function page({ title, description, active, jsonLd = "", main, navItems, navLogo
 </head>
 <body class="text-cream">
   ${nav(active, { items: navItems, logoHref: navLogoHref })}
+  ${sideNav(active, { items: navItems })}
   <main>
 ${main}
   </main>
