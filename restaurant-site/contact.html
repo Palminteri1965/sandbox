@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="es" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contacto y Reservas | Ember &amp; Oak Steakhouse — Seattle</title>
+<meta name="description" content="Reserva tu mesa, encuentra la dirección y horarios de Ember & Oak Steakhouse en Seattle, WA." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="dist/styles.css" />
+</head>
+<body class="bg-cream">
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:bg-ember focus:text-cream focus:px-4 focus:py-2">Saltar al contenido principal</a>
+
+<header data-site-header class="fixed inset-x-0 top-0 z-50">
+  <div class="container-page">
+    <div class="flex items-center justify-between h-20 sm:h-24">
+      <a href="index.html" class="font-displaysc text-lg sm:text-2xl tracking-widest2 text-cream" aria-label="Ember &amp; Oak Steakhouse — inicio">Ember <span class="text-ember-light">&amp;</span> Oak</a>
+      <nav aria-label="Principal" class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="menu.html" class="nav-link">Menú</a>
+        <a href="gallery.html" class="nav-link">Galería</a>
+        <a href="about.html" class="nav-link">Nosotros</a>
+        <a href="contact.html" class="nav-link" aria-current="page">Contacto</a>
+      </nav>
+      <div class="hidden md:block">
+        <a href="contact.html#reserve" class="btn-primary" data-press>Reservar</a>
+      </div>
+      <button type="button" data-menu-toggle aria-expanded="false" aria-controls="mobile-menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 text-cream" aria-label="Abrir menú de navegación">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" data-menu-panel aria-hidden="true" class="md:hidden">
+    <a href="index.html" class="nav-link py-3 w-full">Inicio</a>
+    <a href="menu.html" class="nav-link py-3 w-full">Menú</a>
+    <a href="gallery.html" class="nav-link py-3 w-full">Galería</a>
+    <a href="about.html" class="nav-link py-3 w-full">Nosotros</a>
+    <a href="contact.html" class="nav-link py-3 w-full" aria-current="page">Contacto</a>
+    <a href="contact.html#reserve" class="btn-primary mt-4 w-full justify-center" data-press>Reservar</a>
+  </div>
+</header>
+
+<main id="main">
+  <!-- PAGE HERO -->
+  <section class="relative min-h-[40vh] flex items-end overflow-hidden bg-ink">
+    <div class="photo-fallback absolute inset-0" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+      <span>Fotografía de ambiente</span>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/50 to-ink/20" aria-hidden="true"></div>
+    <div class="container-page relative pb-14 pt-32">
+      <p class="eyebrow text-ember-light mb-4">Contacto</p>
+      <h1 class="font-display text-cream text-4xl sm:text-6xl">Visítanos</h1>
+    </div>
+  </section>
+
+  <section id="reserve" class="section scroll-mt-24">
+    <div class="container-page grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+      <!-- INFO COLUMN -->
+      <div class="lg:col-span-4 reveal">
+        <p class="eyebrow mb-4">Encuéntranos</p>
+        <ul class="space-y-6 text-sm text-slate">
+          <li class="flex gap-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0 mt-0.5 text-ember-dark"><path d="M12 21s7-6.5 7-11.5a7 7 0 1 0-14 0C5 14.5 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            <span>214 Western Ave<br />Seattle, WA 98104</span>
+          </li>
+          <li class="flex gap-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0 mt-0.5 text-ember-dark"><path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 5 5L15 12l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z"/></svg>
+            <a href="tel:+12065550142" class="hover:text-ink transition-colors duration-250">(206) 555-0142</a>
+          </li>
+          <li class="flex gap-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0 mt-0.5 text-ember-dark"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 6 8 6 8-6"/></svg>
+            <a href="mailto:reservas@emberandoak.com" class="hover:text-ink transition-colors duration-250">reservas@emberandoak.com</a>
+          </li>
+          <li class="flex gap-4">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="shrink-0 mt-0.5 text-ember-dark"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            <span>
+              Lun – Jue: 4:00 pm – 10:00 pm<br />
+              Vie – Sáb: 4:00 pm – 11:00 pm<br />
+              Domingo: 4:00 pm – 9:00 pm
+            </span>
+          </li>
+        </ul>
+
+        <div class="mt-10 pt-10 border-t border-line">
+          <p class="text-sm text-slate leading-relaxed">
+            <span class="font-semibold text-ink">Eventos privados:</span> contamos con un salón
+            para grupos de hasta 24 personas. Escríbenos a
+            <a href="mailto:eventos@emberandoak.com" class="text-ember-dark hover:underline">eventos@emberandoak.com</a>.
+          </p>
+        </div>
+
+        <!-- Map placeholder: replace with a real Google Maps / Mapbox embed -->
+        <div class="photo-frame mt-10" style="aspect-ratio: 4/3;">
+          <div class="photo-fallback absolute inset-0">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M9 20l-6-3V4l6 3 6-3 6 3v13l-6-3-6 3Z"/><path d="M9 7v13M15 4v13"/></svg>
+            <span>Mapa — insertar embed real</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM COLUMN -->
+      <div class="lg:col-span-8">
+        <p class="eyebrow mb-4 reveal">Reserva tu mesa</p>
+        <p class="text-slate max-w-lg mb-4 reveal">
+          Este formulario envía tu solicitud a nuestro equipo; confirmamos por correo o teléfono
+          en menos de 24 horas. Para reservas de última hora, llámanos directamente.
+        </p>
+        <p class="text-sm text-slate mb-10 reveal">
+          ¿Prefieres reservar por una plataforma externa?
+          <!--
+            OpenTable: once your restaurant is registered as an OpenTable
+            partner, your listing lives at opentable.com/r/YOUR-RESTAURANT-SLUG
+            (find it in your OpenTable for Restaurants dashboard, or replace
+            this whole link with their official "Reserve" embed-widget code —
+            https://restaurant.opentable.com — if you'd rather embed a live
+            availability widget instead of linking out).
+          -->
+          <a href="https://www.opentable.com/r/YOUR-RESTAURANT-SLUG" target="_blank" rel="noopener noreferrer"
+            class="text-ember-dark font-semibold hover:underline">
+            Reserva por OpenTable
+            <span class="sr-only">(se abre en una pestaña nueva)</span>
+            →
+          </a>
+        </p>
+
+        <!--
+          Backend: Formspree (https://formspree.io).
+          1. Create a free account and a new form at https://formspree.io/forms
+          2. Copy its endpoint ID (looks like "mvgrbzqk") and replace
+             YOUR_FORM_ID below with it.
+          3. Formspree emails every submission to the address you registered
+             with; no server code needed.
+        -->
+        <form data-contact-form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="reveal space-y-6" novalidate>
+          <input type="hidden" name="_subject" value="Nueva solicitud de reserva — Ember & Oak" />
+          <!-- Honeypot spam trap: real users never see or fill this field. -->
+          <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-sm font-semibold text-ink mb-2">Nombre completo <span class="text-danger">*</span></label>
+              <input type="text" id="name" name="name" required autocomplete="name"
+                class="w-full min-h-[44px] border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/50 focus:border-ember focus:outline-none transition-colors duration-250" placeholder="Tu nombre" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-semibold text-ink mb-2">Correo electrónico <span class="text-danger">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email"
+                class="w-full min-h-[44px] border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/50 focus:border-ember focus:outline-none transition-colors duration-250" placeholder="tú@correo.com" />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="phone" class="block text-sm font-semibold text-ink mb-2">Teléfono <span class="text-danger">*</span></label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel"
+                class="w-full min-h-[44px] border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/50 focus:border-ember focus:outline-none transition-colors duration-250" placeholder="(206) 555-0100" />
+            </div>
+            <div>
+              <label for="guests" class="block text-sm font-semibold text-ink mb-2">Número de comensales <span class="text-danger">*</span></label>
+              <select id="guests" name="guests" required
+                class="w-full min-h-[44px] border border-line bg-cream px-4 py-3 text-ink focus:border-ember focus:outline-none transition-colors duration-250">
+                <option value="">Selecciona…</option>
+                <option value="1-2">1–2 personas</option>
+                <option value="3-4">3–4 personas</option>
+                <option value="5-6">5–6 personas</option>
+                <option value="7+">7 o más (evento privado)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div>
+              <label for="date" class="block text-sm font-semibold text-ink mb-2">Fecha <span class="text-danger">*</span></label>
+              <input type="date" id="date" name="date" required
+                class="w-full min-h-[44px] border border-line bg-cream px-4 py-3 text-ink focus:border-ember focus:outline-none transition-colors duration-250" />
+            </div>
+            <div>
+              <label for="time" class="block text-sm font-semibold text-ink mb-2">Hora <span class="text-danger">*</span></label>
+              <input type="time" id="time" name="time" required
+                class="w-full min-h-[44px] border border-line bg-cream px-4 py-3 text-ink focus:border-ember focus:outline-none transition-colors duration-250" />
+            </div>
+          </div>
+
+          <div>
+            <label for="notes" class="block text-sm font-semibold text-ink mb-2">Peticiones especiales</label>
+            <textarea id="notes" name="notes" rows="4"
+              class="w-full border border-line bg-cream px-4 py-3 text-ink placeholder:text-slate/50 focus:border-ember focus:outline-none transition-colors duration-250" placeholder="Alergias, ocasión especial, preferencias de mesa…"></textarea>
+            <p class="mt-2 text-xs text-slate">Cuéntanos cualquier alergia o restricción alimentaria; nuestra cocina se adapta con gusto.</p>
+          </div>
+
+          <button type="submit" class="btn-primary" data-press>Enviar solicitud de reserva</button>
+        </form>
+
+        <div data-form-error hidden role="alert" class="mb-6 border border-danger/40 bg-danger/5 px-4 py-3 text-sm text-danger">
+          Algo salió mal al enviar tu solicitud. Inténtalo de nuevo o llámanos al
+          <a href="tel:+12065550142" class="font-semibold underline">(206) 555-0142</a>.
+        </div>
+
+        <div data-form-status tabindex="-1" hidden role="status" aria-live="polite" class="border border-ember/40 bg-ember/5 px-6 py-8">
+          <h2 class="font-display text-2xl mb-2">¡Solicitud recibida!</h2>
+          <p class="text-slate">Gracias — nuestro equipo confirmará tu reserva por correo o teléfono en menos de 24 horas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-ink text-bone">
+  <div class="container-page py-16 sm:py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+    <div>
+      <p class="font-displaysc text-xl tracking-widest2 text-cream mb-4">Ember &amp; Oak</p>
+      <p class="text-sm text-bone/70 leading-relaxed max-w-xs">Cocina de brasa y maderas nobles en el corazón de Seattle. Cortes secos en casa, servicio impecable.</p>
+      <div class="flex gap-4 mt-6">
+        <a href="#" aria-label="Instagram de Ember & Oak" class="w-11 h-11 inline-flex items-center justify-center border border-bone/20 hover:border-ember hover:text-ember-light transition-colors duration-250">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook de Ember & Oak" class="w-11 h-11 inline-flex items-center justify-center border border-bone/20 hover:border-ember hover:text-ember-light transition-colors duration-250">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 9h2V6h-2c-1.7 0-3 1.3-3 3v2H9v3h2v6h3v-6h2l1-3h-3v-2c0-.6.4-1 1-1Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Navegación</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="index.html" class="hover:text-ember-light transition-colors duration-250">Inicio</a></li>
+        <li><a href="menu.html" class="hover:text-ember-light transition-colors duration-250">Menú</a></li>
+        <li><a href="gallery.html" class="hover:text-ember-light transition-colors duration-250">Galería</a></li>
+        <li><a href="about.html" class="hover:text-ember-light transition-colors duration-250">Nosotros</a></li>
+        <li><a href="contact.html" class="hover:text-ember-light transition-colors duration-250">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Contacto</p>
+      <ul class="space-y-3 text-sm text-bone/80">
+        <li>214 Western Ave<br />Seattle, WA 98104</li>
+        <li><a href="tel:+12065550142" class="hover:text-ember-light transition-colors duration-250">(206) 555-0142</a></li>
+        <li><a href="mailto:reservas@emberandoak.com" class="hover:text-ember-light transition-colors duration-250">reservas@emberandoak.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="eyebrow mb-4">Horario</p>
+      <ul class="space-y-2 text-sm text-bone/80">
+        <li class="flex justify-between gap-4"><span>Lun – Jue</span><span>4:00 – 22:00</span></li>
+        <li class="flex justify-between gap-4"><span>Vie – Sáb</span><span>4:00 – 23:00</span></li>
+        <li class="flex justify-between gap-4"><span>Domingo</span><span>4:00 – 21:00</span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-bone/10">
+    <div class="container-page py-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-bone/50">
+      <p>&copy; 2026 Ember &amp; Oak Steakhouse. Todos los derechos reservados.</p>
+      <p>Seattle, Washington</p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/animations.js"></script>
+</body>
+</html>
