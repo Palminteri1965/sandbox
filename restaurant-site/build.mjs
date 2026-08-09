@@ -107,7 +107,7 @@ function nav(active, { items, logoHref = "index.html" } = {}) {
         </button>
       </div>
     </nav>
-    <div id="mobile-nav" data-mobile-nav class="hidden md:hidden flex-col bg-charcoal/98 backdrop-blur px-4 sm:px-6 pb-4">
+    <div id="mobile-nav" data-mobile-nav class="hidden md:hidden flex-col bg-garnet/95 backdrop-blur px-4 sm:px-6 pb-4">
       ${mobileLinks}
     </div>
   </header>`;

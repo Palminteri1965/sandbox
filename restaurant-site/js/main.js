@@ -63,10 +63,10 @@
   if (siteNav) {
     var onScroll = function () {
       if (window.scrollY > 24) {
-        siteNav.classList.add("bg-charcoal/95", "backdrop-blur", "shadow-lg", "shadow-black/20");
+        siteNav.classList.add("bg-garnet/95", "backdrop-blur", "shadow-lg", "shadow-black/20");
         siteNav.classList.remove("bg-transparent");
       } else {
-        siteNav.classList.remove("bg-charcoal/95", "backdrop-blur", "shadow-lg", "shadow-black/20");
+        siteNav.classList.remove("bg-garnet/95", "backdrop-blur", "shadow-lg", "shadow-black/20");
         siteNav.classList.add("bg-transparent");
       }
     };
