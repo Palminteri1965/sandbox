@@ -174,13 +174,23 @@
   </section>
 
   
-  <section id="menu" class="py-16 sm:py-24">
-    
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
-      <p class="eyebrow justify-center flex"><span data-en="Menu" data-es="Menú">Menu</span></p>
-      <h2 class="section-heading mt-3 text-cream"><span data-en="The Menu" data-es="El Menú">The Menu</span></h2>
-      <p class="mt-4 font-wordmark italic text-cream/70 text-lg sm:text-xl"><span data-en="Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters." data-es="Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico.">Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.</span></p>
+  <section id="menu" class="relative pt-20">
+    <div style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"><div class="aspect-[16/9] md:aspect-[21/9] w-full bg-center bg-cover bg-no-repeat" style="background-image: url('images/menu-hero.jpg'); background-image: image-set(url('images/menu-hero.webp') type('image/webp'), url('images/menu-hero.jpg') type('image/jpeg'));"></div></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"></div>
+    <div class="absolute inset-0 flex items-end">
+      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
+        <p class="eyebrow reveal flex items-center gap-3">
+          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+          <span data-en="Menu" data-es="Menú">Menu</span>
+        </p>
+        <h1 class="mt-4 font-display font-normal uppercase tracking-[0.01em] leading-[0.95] text-cream text-4xl sm:text-6xl lg:text-7xl reveal"><span data-en="The Menu" data-es="El Menú">The Menu</span></h1>
+        <p class="mt-5 max-w-xl font-display italic text-cream/70 text-lg sm:text-xl reveal"><span data-en="Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters." data-es="Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico.">Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.</span></p>
+      </div>
     </div>
+  </section>
+  
+  <section class="py-16 sm:py-24">
+    
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-x-16">
       <div>
         
@@ -346,7 +356,25 @@
   </section>
 
   
-  <section id="story" class="py-20 sm:py-28" data-reveal-group>
+  <section id="story" class="relative pt-20">
+    <div style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"><video data-page-hero-video class="aspect-[16/9] md:aspect-[21/9] w-full object-cover" muted loop playsinline preload="auto" poster="images/our-story-hero.jpg">
+        <source src="images/our-story-hero.webm" type="video/webm">
+        <source src="images/our-story-hero.mp4" type="video/mp4">
+      </video></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"></div>
+    <div class="absolute inset-0 flex items-end">
+      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
+        <p class="eyebrow reveal flex items-center gap-3">
+          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+          <span data-en="Our Story" data-es="Nuestra Historia">Our Story</span>
+        </p>
+        <h1 class="mt-4 font-display font-normal uppercase tracking-[0.01em] leading-[0.95] text-cream text-4xl sm:text-6xl lg:text-7xl reveal"><span data-en="Built Around the Fire" data-es="Construido Alrededor del Fuego">Built Around the Fire</span></h1>
+        <p class="mt-5 max-w-xl font-display italic text-cream/70 text-lg sm:text-xl reveal"><span data-en="A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches." data-es="Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste.">A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.</span></p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 sm:py-28" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2 items-center">
       <div class="reveal">
         <div class="aspect-[4/5] w-full rounded-sm bg-center bg-cover bg-no-repeat " style="background-image: url('images/chef-portrait.jpg'); background-image: image-set(url('images/chef-portrait.webp') type('image/webp'), url('images/chef-portrait.jpg') type('image/jpeg'));"></div>
@@ -390,14 +418,27 @@
   </section>
 
   
-  <section id="gallery" class="py-16 sm:py-24" data-reveal-group>
+  <section id="gallery" class="relative pt-20">
+    <div style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"><video data-page-hero-video class="aspect-[16/9] md:aspect-[21/9] w-full object-cover" muted loop playsinline preload="auto" poster="images/gallery-hero.jpg">
+        <source src="images/gallery-hero.webm" type="video/webm">
+        <source src="images/gallery-hero.mp4" type="video/mp4">
+      </video></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"></div>
+    <div class="absolute inset-0 flex items-end">
+      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
+        <p class="eyebrow reveal flex items-center gap-3">
+          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+          <span data-en="Gallery" data-es="Galería">Gallery</span>
+        </p>
+        <h1 class="mt-4 font-display font-normal uppercase tracking-[0.01em] leading-[0.95] text-cream text-4xl sm:text-6xl lg:text-7xl reveal"><span data-en="A Taste of the Room" data-es="Una Muestra del Ambiente">A Taste of the Room</span></h1>
+        <p class="mt-5 max-w-xl font-display italic text-cream/70 text-lg sm:text-xl reveal"><span data-en="The dining room, the hearth, and the plates in between." data-es="El comedor, la parrilla y los platos de por medio.">The dining room, the hearth, and the plates in between.</span></p>
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-16 sm:py-24" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
-      <p class="eyebrow justify-center flex"><span data-en="Gallery" data-es="Galería">Gallery</span></p>
-      <h2 class="section-heading mt-3 text-cream"><span data-en="A Taste of the Room" data-es="Una Muestra del Ambiente">A Taste of the Room</span></h2>
-      <p class="mt-4 font-wordmark italic text-cream/70 text-lg sm:text-xl"><span data-en="The dining room, the hearth, and the plates in between." data-es="El comedor, la parrilla y los platos de por medio.">The dining room, the hearth, and the plates in between.</span></p>
-    </div>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         
         <button type="button" data-gallery-item data-index="0"
@@ -507,13 +548,26 @@
   </section>
 
   
-  <section id="reservations" class="py-16 sm:py-24">
-    
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
-      <p class="eyebrow justify-center flex"><span data-en="Reservations" data-es="Reservas">Reservations</span></p>
-      <h2 class="section-heading mt-3 text-cream"><span data-en="Reserve Your Table" data-es="Reserva tu Mesa">Reserve Your Table</span></h2>
-      <p class="mt-4 font-wordmark italic text-cream/70 text-lg sm:text-xl"><span data-en="Call, email, or send a request below — parties of 7 or more should call directly." data-es="Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente.">Call, email, or send a request below — parties of 7 or more should call directly.</span></p>
+  <section id="reservations" class="relative pt-20">
+    <div style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"><video data-page-hero-video class="aspect-[16/9] md:aspect-[24/9] w-full object-cover" muted loop playsinline preload="auto" poster="images/reservations-hero.jpg">
+        <source src="images/reservations-hero.webm" type="video/webm">
+        <source src="images/reservations-hero.mp4" type="video/mp4">
+      </video></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);"></div>
+    <div class="absolute inset-0 flex items-end">
+      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
+        <p class="eyebrow reveal flex items-center gap-3">
+          <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
+          <span data-en="Reservations" data-es="Reservas">Reservations</span>
+        </p>
+        <h1 class="mt-4 font-display font-normal uppercase tracking-[0.01em] leading-[0.95] text-cream text-4xl sm:text-6xl lg:text-7xl reveal"><span data-en="Reserve Your Table" data-es="Reserva tu Mesa">Reserve Your Table</span></h1>
+        <p class="mt-5 max-w-xl font-display italic text-cream/70 text-lg sm:text-xl reveal"><span data-en="Call, email, or send a request below — parties of 7 or more should call directly." data-es="Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente.">Call, email, or send a request below — parties of 7 or more should call directly.</span></p>
+      </div>
     </div>
+  </section>
+  
+  <section class="py-16 sm:py-24">
+    
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-5">
       <div class="lg:col-span-2 space-y-10">
         <div>

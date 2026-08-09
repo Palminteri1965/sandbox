@@ -210,7 +210,7 @@ ${main}
 /* Shared bits                                                          */
 /* ==================================================================== */
 
-function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]", image, imageWebp, video }) {
+function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]", image, imageWebp, video, id }) {
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : image
@@ -232,7 +232,7 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[
     ? `mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);`
     : "";
   return `
-  <section class="relative pt-20">
+  <section${id ? ` id="${id}"` : ""} class="relative pt-20">
     <div style="${fadeMask}">${photo}</div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="${fadeMask}"></div>
     <div class="absolute inset-0 flex items-end">
@@ -921,16 +921,6 @@ const restaurantJsonLd = `<script type="application/ld+json">${JSON.stringify({
 /* ONE-PAGE LAYOUT (preview)                                             */
 /* ==================================================================== */
 
-/** Centered chapter heading used to introduce a section within the one-page layout. */
-function sectionIntro({ eyebrow, title, subtitle }) {
-  return `
-    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 reveal">
-      <p class="eyebrow justify-center flex">${t(eyebrow.en, eyebrow.es)}</p>
-      <h2 class="section-heading mt-3 text-cream">${t(title.en, title.es)}</h2>
-      ${subtitle ? `<p class="mt-4 font-wordmark italic text-cream/70 text-lg sm:text-xl">${t(subtitle.en, subtitle.es)}</p>` : ""}
-    </div>`;
-}
-
 const landingNavItems = [
   { href: "#home", en: "Home", es: "Inicio", key: "home" },
   { href: "#menu", en: "Menu", es: "Menú", key: "menu" },
@@ -946,36 +936,45 @@ const landingMain = `
 
   ${signatureDishesSection({ menuHref: "#menu" })}
 
-  ${menuGridSection({
+  ${pageHero({
     id: "menu",
-    intro: sectionIntro({
-      eyebrow: { en: "Menu", es: "Menú" },
-      title: { en: "The Menu", es: "El Menú" },
-      subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
-    }),
+    eyebrow: { en: "Menu", es: "Menú" },
+    title: { en: "The Menu", es: "El Menú" },
+    subtitle: { en: "Live-fire cooking, dry-aged beef, and a raw bar built on Pacific waters.", es: "Cocina a fuego vivo, carne madurada en seco y una barra de mariscos del Pacífico." },
+    image: "images/menu-hero.jpg",
+    imageWebp: "images/menu-hero.webp",
   })}
+  ${menuGridSection()}
 
-  ${ourStorySections({ id: "story" })}
+  ${pageHero({
+    id: "story",
+    eyebrow: { en: "Our Story", es: "Nuestra Historia" },
+    title: { en: "Built Around the Fire", es: "Construido Alrededor del Fuego" },
+    subtitle: { en: "A Belltown kitchen devoted to live fire, dry-aging, and Pacific Northwest ranches.", es: "Una cocina en Belltown dedicada al fuego vivo, la maduración en seco y los ranchos del Pacífico Noroeste." },
+    video: { src: "images/our-story-hero.mp4", webm: "images/our-story-hero.webm", poster: "images/our-story-hero.jpg" },
+  })}
+  ${ourStorySections()}
 
-  ${galleryGridSection({
+  ${pageHero({
     id: "gallery",
-    intro: sectionIntro({
-      eyebrow: { en: "Gallery", es: "Galería" },
-      title: { en: "A Taste of the Room", es: "Una Muestra del Ambiente" },
-      subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
-    }),
+    eyebrow: { en: "Gallery", es: "Galería" },
+    title: { en: "A Taste of the Room", es: "Una Muestra del Ambiente" },
+    subtitle: { en: "The dining room, the hearth, and the plates in between.", es: "El comedor, la parrilla y los platos de por medio." },
+    video: { src: "images/gallery-hero.mp4", webm: "images/gallery-hero.webm", poster: "images/gallery-hero.jpg" },
   })}
+  ${galleryGridSection()}
 
   ${testimonialsSection()}
 
-  ${reservationSection({
+  ${pageHero({
     id: "reservations",
-    intro: sectionIntro({
-      eyebrow: { en: "Reservations", es: "Reservas" },
-      title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
-      subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
-    }),
+    eyebrow: { en: "Reservations", es: "Reservas" },
+    title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
+    subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
+    ratio: "aspect-[16/9] md:aspect-[24/9]",
+    video: { src: "images/reservations-hero.mp4", webm: "images/reservations-hero.webm", poster: "images/reservations-hero.jpg" },
   })}
+  ${reservationSection()}
 
   ${reservationBand({ formHref: "#reservations" })}
 `;
