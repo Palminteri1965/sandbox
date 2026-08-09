@@ -409,6 +409,56 @@
     })();
   }
 
+  /* ---------- Dish hover-photo halo (menu page) ---------- */
+  /* Dish names carrying data-hover-image show a circular preview of the
+     dish, trailing the cursor slightly offset so it never covers the text
+     being hovered. Same gating as the ember cursor: desktop mice only, off
+     for prefers-reduced-motion. */
+  var hoverPhotoTargets = document.querySelectorAll("[data-hover-image]");
+  if (hoverPhotoTargets.length && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    var dishPhoto = document.createElement("div");
+    dishPhoto.id = "dish-hover-photo";
+    dishPhoto.setAttribute("aria-hidden", "true");
+    document.body.appendChild(dishPhoto);
+
+    var DISH_PHOTO_SIZE = 220;
+    var DISH_PHOTO_OFFSET_X = 48;
+    var DISH_PHOTO_OFFSET_Y = -130;
+    var dpMouseX = 0, dpMouseY = 0, dpCurX = 0, dpCurY = 0;
+    var dpTargetScale = 0.6, dpCurScale = 0.6;
+
+    document.addEventListener("mousemove", function (e) {
+      dpMouseX = e.clientX;
+      dpMouseY = e.clientY;
+    });
+
+    hoverPhotoTargets.forEach(function (el) {
+      el.addEventListener("mouseenter", function () {
+        var img = el.getAttribute("data-hover-image");
+        var webp = el.getAttribute("data-hover-image-webp");
+        dishPhoto.style.backgroundImage = webp
+          ? "image-set(url('" + webp + "') type('image/webp'), url('" + img + "') type('image/jpeg'))"
+          : "url('" + img + "')";
+        dishPhoto.classList.add("is-active");
+        dpTargetScale = 1;
+      });
+      el.addEventListener("mouseleave", function () {
+        dishPhoto.classList.remove("is-active");
+        dpTargetScale = 0.6;
+      });
+    });
+
+    (function raf() {
+      dpCurX += (dpMouseX - dpCurX) * 0.18;
+      dpCurY += (dpMouseY - dpCurY) * 0.18;
+      dpCurScale += (dpTargetScale - dpCurScale) * 0.18;
+      var dpHalf = DISH_PHOTO_SIZE / 2;
+      dishPhoto.style.transform =
+        "translate3d(" + (dpCurX + DISH_PHOTO_OFFSET_X - dpHalf) + "px, " + (dpCurY + DISH_PHOTO_OFFSET_Y - dpHalf) + "px, 0) scale(" + dpCurScale + ")";
+      window.requestAnimationFrame(raf);
+    })();
+  }
+
   /* ---------- Contact / reservation form (no backend wired yet) ---------- */
   var form = document.querySelector("[data-reservation-form]");
   if (form) {

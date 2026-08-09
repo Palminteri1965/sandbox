@@ -506,11 +506,16 @@ const homeMain = `
 /* MENU                                                                  */
 /* ==================================================================== */
 
-function menuRow({ en, es, price }) {
+function menuRow({ en, es, price, image, imageWebp }) {
+  // Dishes with a photo get data-hover-image[-webp]; main.js uses these to
+  // show a cursor-following circular preview on hover (desktop only).
+  const hoverAttrs = image
+    ? ` data-hover-image="${escAttr(image)}"${imageWebp ? ` data-hover-image-webp="${escAttr(imageWebp)}"` : ""}`
+    : "";
   return `
         <li class="flex items-baseline justify-between gap-4 py-4 border-b border-cream/10 reveal transition-colors duration-300 hover:border-gold/50">
           <div>
-            <p class="font-display text-lg text-cream text-hover-ember inline-block">${t(en[0], es[0])}</p>
+            <p class="font-display text-lg text-cream text-hover-ember inline-block"${hoverAttrs}>${t(en[0], es[0])}</p>
             <p class="text-sm text-cream/55 mt-1 max-w-md">${t(en[1], es[1])}</p>
           </div>
           <p class="font-display text-lg text-gold whitespace-nowrap">${price}</p>
@@ -542,7 +547,7 @@ function menuGridSection({ id, intro = "" } = {}) {
           eyebrow: { en: "To Start", es: "Para Comenzar" },
           title: { en: "Raw Bar & Starters", es: "Barra Fría y Entradas" },
           items: [
-            { en: ["Northwest Oysters, Half Dozen", "Mignonette, cocktail sauce, lemon."], es: ["Ostras del Noroeste, Media Docena", "Mignonette, salsa cóctel, limón."], price: "$24" },
+            { en: ["Northwest Oysters, Half Dozen", "Mignonette, cocktail sauce, lemon."], es: ["Ostras del Noroeste, Media Docena", "Mignonette, salsa cóctel, limón."], price: "$24", image: "images/oysters-half-dozen.jpg", imageWebp: "images/oysters-half-dozen.webp" },
             { en: ["Wagyu Beef Tartare", "Smoked egg yolk, capers, rye crisp."], es: ["Tartar de Res Wagyu", "Yema ahumada, alcaparras, pan de centeno."], price: "$22" },
             { en: ["Charred Octopus", "Nduja butter, white bean puree, citrus."], es: ["Pulpo a las Brasas", "Mantequilla de nduja, puré de alubias, cítricos."], price: "$26" },
             { en: ["Roasted Bone Marrow", "Herb gremolata, grilled sourdough."], es: ["Tuétano Asado", "Gremolata de hierbas, pan de masa madre."], price: "$19" },
