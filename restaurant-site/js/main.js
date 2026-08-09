@@ -254,28 +254,9 @@
     updateEmberSoundLabel();
   }
 
-  /* ---------- Gallery: 3D tilt on hover + lightbox ---------- */
+  /* ---------- Gallery lightbox ---------- */
   var galleryThumbs = document.querySelectorAll("[data-gallery-item]");
   if (galleryThumbs.length) {
-    if (!reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      galleryThumbs.forEach(function (el) {
-        el.addEventListener("mousemove", function (e) {
-          var rect = el.getBoundingClientRect();
-          var px = (e.clientX - rect.left) / rect.width;
-          var py = (e.clientY - rect.top) / rect.height;
-          var rotateY = (px - 0.5) * 14;
-          var rotateX = (0.5 - py) * 14;
-          el.style.transitionDuration = "0.1s";
-          el.style.transform =
-            "perspective(900px) rotateX(" + rotateX.toFixed(2) + "deg) rotateY(" + rotateY.toFixed(2) + "deg) scale(1.06)";
-        });
-        el.addEventListener("mouseleave", function () {
-          el.style.transitionDuration = "0.5s";
-          el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) scale(1)";
-        });
-      });
-    }
-
     var lightbox = document.querySelector("[data-lightbox]");
     var lightboxImg = document.querySelector("[data-lightbox-img]");
     var lightboxCaption = document.querySelector("[data-lightbox-caption]");

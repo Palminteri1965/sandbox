@@ -712,7 +712,7 @@ function galleryGridSection({ id, intro = "" } = {}) {
   <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       ${intro}
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6" style="perspective: 1000px;">
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         ${galleryCaptions
           .map(
             (g, i) => `

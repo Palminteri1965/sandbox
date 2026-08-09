@@ -176,26 +176,6 @@
     @apply text-3xl sm:text-4xl lg:text-5xl leading-tight;
   }
 
-  /* Gallery thumbnails: 3D tilt + lift on hover (desktop mice only — JS
-     drives the rotate/scale from cursor position, see main.js), and the
-     full-screen lightbox it opens into. */
-  .gallery-thumb {
-    transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale(1);
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
-  }
-  @media (hover: hover) and (pointer: fine) {
-    .gallery-thumb:hover,
-    .gallery-thumb:focus-visible {
-      box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.65);
-      z-index: 2;
-    }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .gallery-thumb {
-      transition: none;
-    }
-  }
-
   [data-lightbox].is-open {
     display: flex;
   }
