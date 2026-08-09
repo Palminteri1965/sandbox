@@ -78,7 +78,10 @@ function nav(active, { items, logoHref = "index.html" } = {}) {
   items = items || defaultNavItems;
   const linkCls = (key) => `nav-link${key === active ? " nav-link-active" : ""}`;
   const desktopLinks = items
-    .map((i) => `<a href="${i.href}" class="${linkCls(i.key)}"${i.key === active ? ' aria-current="page"' : ""}>${t(i.en, i.es)}</a>`)
+    .map(
+      (i, idx) =>
+        `<a href="${i.href}" class="${linkCls(i.key)}" style="--dot-color: ${sideNavColors[idx % sideNavColors.length]}"${i.key === active ? ' aria-current="page"' : ""}>${t(i.en, i.es)}</a>`
+    )
     .join("\n        ");
   const mobileLinks = items
     .map(

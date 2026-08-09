@@ -77,27 +77,51 @@
   .btn-outline-dark {
     @apply inline-flex items-center justify-center gap-2 rounded-sm border border-ink/30 px-7 py-3.5 min-h-[44px] text-sm font-semibold uppercase tracking-wider text-ink transition-colors duration-200 hover:bg-ink/5 cursor-pointer;
   }
-  /* Golden halo instead of an underline: text brightens and gains a soft
-     glow on hover, punches brighter/tighter on click, eases back on release. */
+  /* Section-colored halo instead of an underline: each top-nav link carries
+     the same --dot-color as its matching side-nav dot (set inline per item
+     in nav()), so hovering "Menu" glows the same ember shade as the Menu
+     dot on the right edge. A blurred radial-gradient blob behind the text
+     (::before) gives the halo real size/visibility beyond just a text
+     glow; the text itself brightens and gains a matching text-shadow. */
   .nav-link {
     @apply relative text-xs tracking-[0.15em] uppercase text-cream/70;
     transition: color 0.3s ease, text-shadow 0.3s ease;
     text-shadow: 0 0 0 rgba(200, 138, 46, 0);
   }
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    inset: -16px -20px;
+    border-radius: 9999px;
+    background: radial-gradient(circle, var(--dot-color, #c88a2e) 0%, transparent 70%);
+    opacity: 0;
+    filter: blur(4px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+  }
   .nav-link:hover,
   .nav-link:focus-visible {
-    @apply text-gold-soft;
-    text-shadow: 0 0 10px rgba(200, 138, 46, 0.8), 0 0 22px rgba(200, 138, 46, 0.45);
+    color: var(--dot-color, #e8cfa0);
+    text-shadow: 0 0 10px var(--dot-color, rgba(200, 138, 46, 0.8)), 0 0 26px var(--dot-color, rgba(200, 138, 46, 0.5));
+  }
+  .nav-link:hover::before,
+  .nav-link:focus-visible::before {
+    opacity: 0.65;
   }
   .nav-link:active {
     transition-duration: 0.1s;
-    text-shadow: 0 0 14px rgba(200, 138, 46, 1), 0 0 32px rgba(200, 138, 46, 0.7);
+    text-shadow: 0 0 14px var(--dot-color, rgba(200, 138, 46, 1)), 0 0 36px var(--dot-color, rgba(200, 138, 46, 0.7));
+  }
+  .nav-link:active::before {
+    opacity: 0.85;
   }
   .nav-link-active {
     @apply text-gold-soft;
   }
   @media (prefers-reduced-motion: reduce) {
-    .nav-link {
+    .nav-link,
+    .nav-link::before {
       transition: none;
     }
   }
