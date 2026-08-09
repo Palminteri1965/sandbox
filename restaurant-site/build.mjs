@@ -90,13 +90,13 @@ function nav(active, { items, logoHref = "index.html" } = {}) {
   return `
   <header data-site-nav class="fixed inset-x-0 top-0 z-50 transition-colors duration-300 bg-transparent on-dark">
     <nav class="mx-auto max-w-content flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20" aria-label="${escAttr("Primary")}">
-      <a href="${logoHref}" class="font-display text-xl sm:text-2xl text-cream tracking-wide">
-        Ember<span class="text-gold"> &amp; </span>Oak
+      <a href="${logoHref}" class="flex flex-col items-center gap-1 font-display text-2xl sm:text-3xl text-cream tracking-wide leading-none">
+        <span class="text-gold" aria-hidden="true">${icons.flame("h-4 w-4 sm:h-5 sm:w-5")}</span>
+        <span>Ember<span class="text-gold"> &amp; </span>Oak</span>
       </a>
       <div class="hidden md:flex items-center gap-8">
         ${desktopLinks}
         <button type="button" data-lang-toggle class="text-xs font-semibold tracking-widest border border-cream/30 rounded-full h-9 min-w-[44px] px-3 text-cream/80 hover:text-gold-soft hover:border-gold/60 hover:shadow-[0_0_16px_-4px_rgba(200,138,46,0.65)] transition-all duration-300 cursor-pointer" aria-label="${escAttr("Switch to Spanish")}">ES</button>
-        <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve", "Reservar")}</a>
       </div>
       <div class="flex items-center gap-3 md:hidden">
         <button type="button" data-lang-toggle class="text-xs font-semibold tracking-widest border border-cream/30 rounded-full h-9 min-w-[44px] px-3 text-cream/80 cursor-pointer" aria-label="${escAttr("Switch to Spanish")}">ES</button>
@@ -107,7 +107,6 @@ function nav(active, { items, logoHref = "index.html" } = {}) {
     </nav>
     <div id="mobile-nav" data-mobile-nav class="hidden md:hidden flex-col bg-charcoal/98 backdrop-blur px-4 sm:px-6 pb-4">
       ${mobileLinks}
-      <a href="${SITE.phoneHref}" class="btn-primary mt-4 w-full">${t("Reserve a Table", "Reservar una Mesa")}</a>
     </div>
   </header>`;
 }
@@ -444,10 +443,6 @@ function homeHero() {
             "Wood-fired steaks. Pacific Northwest soul.",
             "Carnes al fuego de leña. Alma del Pacífico Noroeste."
           )}</p>
-          <div class="mt-9 flex flex-col sm:flex-row gap-4 reveal">
-            <a href="${SITE.phoneHref}" class="btn-primary">${t("Reserve a Table", "Reservar una Mesa")} ${icons.arrowRight("h-4 w-4")}</a>
-            <a href="menu.html" class="btn-outline">${t("View the Menu", "Ver el Menú")}</a>
-          </div>
         </div>
         <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-6 sm:pb-8 flex items-center justify-between reveal">
           <p class="text-[11px] tracking-[0.2em] uppercase text-cream/60">${t("A Wood-Fired Kitchen", "Una Cocina de Fuego de Leña")}</p>
