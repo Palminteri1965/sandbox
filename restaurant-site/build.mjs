@@ -90,9 +90,8 @@ function nav(active, { items, logoHref = "index.html" } = {}) {
   return `
   <header data-site-nav class="fixed inset-x-0 top-0 z-50 transition-colors duration-300 bg-transparent on-dark">
     <nav class="mx-auto max-w-content flex items-center justify-between px-4 sm:px-6 lg:px-8 h-20" aria-label="${escAttr("Primary")}">
-      <a href="${logoHref}" class="flex flex-col items-center gap-1 font-display text-2xl sm:text-3xl text-cream tracking-wide leading-none">
-        <span class="text-gold" aria-hidden="true">${icons.flame("h-4 w-4 sm:h-5 sm:w-5")}</span>
-        <span>Ember<span class="text-gold"> &amp; </span>Oak</span>
+      <a href="${logoHref}" class="font-display text-xl sm:text-2xl text-cream tracking-wide">
+        Ember<span class="text-gold"> &amp; </span>Oak
       </a>
       <div class="hidden md:flex items-center gap-8">
         ${desktopLinks}
@@ -433,7 +432,34 @@ function homeHero() {
             <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
             ${t("Est. 2016 · Seattle, Washington", "Fundado en 2016 · Seattle, Washington")}
           </p>
-          <h1 class="mt-5 font-wordmark font-light uppercase text-cream leading-[0.92] tracking-[0.16em] sm:tracking-[0.22em] text-[clamp(2.5rem,7.5vw,7.5rem)] reveal">
+          <div class="relative mt-6 h-16 w-16 sm:h-24 sm:w-24 reveal" aria-hidden="true">
+            <span class="absolute rounded-full animate-pulse" style="top:-2px; right:10%; width:5px; height:5px; background:#FBBF6B; box-shadow:0 0 8px 2px rgba(251,191,107,0.85); animation-duration:2.4s;"></span>
+            <span class="absolute rounded-full animate-pulse" style="top:14%; right:-4px; width:3px; height:3px; background:#E2582A; box-shadow:0 0 6px 2px rgba(226,88,42,0.85); animation-duration:1.8s; animation-delay:.4s;"></span>
+            <svg viewBox="0 0 24 24" class="absolute inset-0 h-full w-full" style="filter: blur(12px); color: #E2582A; opacity: 0.6;">
+              <path fill="currentColor" d="M12 2.5c.9 2.7-1.8 3.8-1.8 6.5a2.7 2.7 0 0 0 5.4 0c0-.9-.4-1.8-.9-2.6 1.8 1 3.6 3.6 3.6 6.3a6.3 6.3 0 1 1-12.6 0c0-3.6 1.8-6.3 3.6-8.1.9-.9 2.2-1.7 2.7-2.1z"/>
+            </svg>
+            <svg viewBox="0 0 24 24" class="absolute inset-0 h-full w-full" style="filter: drop-shadow(0 0 16px rgba(226,88,42,0.55)); transform: rotate(-5deg);">
+              <defs>
+                <linearGradient id="heroFlameOuter" x1="0" y1="1" x2="0.2" y2="0">
+                  <stop offset="0%" stop-color="#7A1F0A"/>
+                  <stop offset="45%" stop-color="#E2582A"/>
+                  <stop offset="100%" stop-color="#F2A65A"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#heroFlameOuter)" d="M12 2.5c.9 2.7-1.8 3.8-1.8 6.5a2.7 2.7 0 0 0 5.4 0c0-.9-.4-1.8-.9-2.6 1.8 1 3.6 3.6 3.6 6.3a6.3 6.3 0 1 1-12.6 0c0-3.6 1.8-6.3 3.6-8.1.9-.9 2.2-1.7 2.7-2.1z"/>
+            </svg>
+            <svg viewBox="0 0 24 24" class="absolute" style="left:14%; top:20%; width:58%; height:58%; transform: rotate(7deg); filter: drop-shadow(0 0 10px rgba(251,191,107,0.65));">
+              <defs>
+                <linearGradient id="heroFlameInner" x1="0" y1="1" x2="0.2" y2="0">
+                  <stop offset="0%" stop-color="#C8571F"/>
+                  <stop offset="55%" stop-color="#F2A65A"/>
+                  <stop offset="100%" stop-color="#FDE7B8"/>
+                </linearGradient>
+              </defs>
+              <path fill="url(#heroFlameInner)" d="M12 2.5c.9 2.7-1.8 3.8-1.8 6.5a2.7 2.7 0 0 0 5.4 0c0-.9-.4-1.8-.9-2.6 1.8 1 3.6 3.6 3.6 6.3a6.3 6.3 0 1 1-12.6 0c0-3.6 1.8-6.3 3.6-8.1.9-.9 2.2-1.7 2.7-2.1z"/>
+            </svg>
+          </div>
+          <h1 class="mt-3 font-wordmark font-light uppercase text-cream leading-[0.92] tracking-[0.16em] sm:tracking-[0.22em] text-[clamp(2.75rem,8.5vw,9rem)] reveal">
             Ember
             <span class="block">
               <span class="text-gold italic normal-case font-normal text-[1.15em] align-[-0.08em] mr-1 sm:mr-4 tracking-normal">&amp;</span>Oak
