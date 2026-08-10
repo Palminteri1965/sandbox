@@ -441,10 +441,16 @@
           : "url('" + img + "')";
         dishPhoto.classList.add("is-active");
         dpTargetScale = 1;
+        // The ember cursor halo sits on top (z-index 9999) and screen-blends
+        // a warm glow onto whatever's beneath it — right onto this photo,
+        // since the two trail the cursor at almost the same spot. Hide it
+        // for as long as the photo is showing so it doesn't wash the photo out.
+        if (emberCursor) emberCursor.classList.add("is-suppressed");
       });
       el.addEventListener("mouseleave", function () {
         dishPhoto.classList.remove("is-active");
         dpTargetScale = 0.6;
+        if (emberCursor) emberCursor.classList.remove("is-suppressed");
       });
     });
 

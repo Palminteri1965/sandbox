@@ -302,6 +302,11 @@
     filter: blur(3px);
     background: radial-gradient(circle, rgba(226, 88, 42, 0.5) 0%, rgba(210, 60, 20, 0.26) 45%, rgba(210, 60, 20, 0) 72%);
   }
+  /* Hidden while a dish-hover-photo is showing (see main.js) — its
+     mix-blend-mode: screen would otherwise wash out the photo underneath. */
+  #ember-cursor.is-suppressed {
+    opacity: 0;
+  }
   @media (hover: none), (pointer: coarse) {
     #ember-cursor {
       display: none;
