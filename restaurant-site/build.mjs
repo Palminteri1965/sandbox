@@ -548,17 +548,17 @@ function menuGridSection({ id, intro = "" } = {}) {
           title: { en: "Raw Bar & Starters", es: "Barra Fría y Entradas" },
           items: [
             { en: ["Northwest Oysters, Half Dozen", "Mignonette, cocktail sauce, lemon."], es: ["Ostras del Noroeste, Media Docena", "Mignonette, salsa cóctel, limón."], price: "$24", image: "images/oysters-half-dozen.jpg", imageWebp: "images/oysters-half-dozen.webp" },
-            { en: ["Wagyu Beef Tartare", "Smoked egg yolk, capers, rye crisp."], es: ["Tartar de Res Wagyu", "Yema ahumada, alcaparras, pan de centeno."], price: "$22" },
-            { en: ["Charred Octopus", "Nduja butter, white bean puree, citrus."], es: ["Pulpo a las Brasas", "Mantequilla de nduja, puré de alubias, cítricos."], price: "$26" },
-            { en: ["Roasted Bone Marrow", "Herb gremolata, grilled sourdough."], es: ["Tuétano Asado", "Gremolata de hierbas, pan de masa madre."], price: "$19" },
+            { en: ["Wagyu Beef Tartare", "Smoked egg yolk, capers, rye crisp."], es: ["Tartar de Res Wagyu", "Yema ahumada, alcaparras, pan de centeno."], price: "$22", image: "images/wagyu-beef-tartare.jpg", imageWebp: "images/wagyu-beef-tartare.webp" },
+            { en: ["Charred Octopus", "Nduja butter, white bean puree, citrus."], es: ["Pulpo a las Brasas", "Mantequilla de nduja, puré de alubias, cítricos."], price: "$26", image: "images/charred-octopus.jpg", imageWebp: "images/charred-octopus.webp" },
+            { en: ["Roasted Bone Marrow", "Herb gremolata, grilled sourdough."], es: ["Tuétano Asado", "Gremolata de hierbas, pan de masa madre."], price: "$19", image: "images/roasted-bone-marrow.jpg", imageWebp: "images/roasted-bone-marrow.webp" },
           ],
         })}
         ${menuSection({
           eyebrow: { en: "From the Sea", es: "Del Mar" },
           title: { en: "Seafood", es: "Mariscos" },
           items: [
-            { en: ["Alder-Planked King Salmon", "Citrus glaze, charred fennel, fingerling potato."], es: ["Salmón Real en Tabla de Aliso", "Glaseado cítrico, hinojo asado, papa fingerling."], price: "$42" },
-            { en: ["Pan-Seared Halibut", "Brown butter, capers, seasonal vegetable."], es: ["Halibut a la Sartén", "Mantequilla dorada, alcaparras, vegetal de temporada."], price: "$46" },
+            { en: ["Alder-Planked King Salmon", "Citrus glaze, charred fennel, fingerling potato."], es: ["Salmón Real en Tabla de Aliso", "Glaseado cítrico, hinojo asado, papa fingerling."], price: "$42", image: "images/alder-planked-king-salmon.jpg", imageWebp: "images/alder-planked-king-salmon.webp" },
+            { en: ["Pan-Seared Halibut", "Brown butter, capers, seasonal vegetable."], es: ["Halibut a la Sartén", "Mantequilla dorada, alcaparras, vegetal de temporada."], price: "$46", image: "images/pan-seared-halibut.jpg", imageWebp: "images/pan-seared-halibut.webp" },
           ],
         })}
       </div>
@@ -567,20 +567,20 @@ function menuGridSection({ id, intro = "" } = {}) {
           eyebrow: { en: "Steaks & Chops", es: "Carnes al Fuego" },
           title: { en: "From the Hearth", es: "Desde la Parrilla" },
           items: [
-            { en: ["Filet Mignon, 8oz", "Center-cut, dry-aged 30 days."], es: ["Filet Mignon, 8oz", "Corte central, madurado en seco 30 días."], price: "$58" },
-            { en: ["Bone-In Ribeye, 20oz", "Dry-aged 45 days, bone marrow butter."], es: ["Ribeye con Hueso, 20oz", "Madurado en seco 45 días, mantequilla de tuétano."], price: "$74" },
-            { en: ["New York Strip, 14oz", "Dry-aged 30 days, black pepper crust."], es: ["New York Strip, 14oz", "Madurado en seco 30 días, costra de pimienta negra."], price: "$62" },
-            { en: ["Tomahawk for Two, 34oz", "Rosemary smoke, chimichurri, market price."], es: ["Tomahawk para Dos, 34oz", "Humo de romero, chimichurri, precio de mercado."], price: "$145" },
-            { en: ["Wagyu Upgrade, A5", "Add to any cut, priced by the ounce."], es: ["Mejora Wagyu, A5", "Agrégalo a cualquier corte, precio por onza."], price: "+$18/oz" },
+            { en: ["Filet Mignon, 8oz", "Center-cut, dry-aged 30 days."], es: ["Filet Mignon, 8oz", "Corte central, madurado en seco 30 días."], price: "$58", image: "images/filet-mignon-8oz.jpg", imageWebp: "images/filet-mignon-8oz.webp" },
+            { en: ["Bone-In Ribeye, 20oz", "Dry-aged 45 days, bone marrow butter."], es: ["Ribeye con Hueso, 20oz", "Madurado en seco 45 días, mantequilla de tuétano."], price: "$74", image: "images/bone-in-ribeye-20oz.jpg", imageWebp: "images/bone-in-ribeye-20oz.webp" },
+            { en: ["New York Strip, 14oz", "Dry-aged 30 days, black pepper crust."], es: ["New York Strip, 14oz", "Madurado en seco 30 días, costra de pimienta negra."], price: "$62", image: "images/new-york-strip-14oz.jpg", imageWebp: "images/new-york-strip-14oz.webp" },
+            { en: ["Tomahawk for Two, 34oz", "Rosemary smoke, chimichurri, market price."], es: ["Tomahawk para Dos, 34oz", "Humo de romero, chimichurri, precio de mercado."], price: "$145", image: "images/tomahawk-for-two-34oz.jpg", imageWebp: "images/tomahawk-for-two-34oz.webp" },
+            { en: ["Wagyu Upgrade, A5", "Add to any cut, priced by the ounce."], es: ["Mejora Wagyu, A5", "Agrégalo a cualquier corte, precio por onza."], price: "+$18/oz", image: "images/wagyu-upgrade-a5.jpg", imageWebp: "images/wagyu-upgrade-a5.webp" },
           ],
         })}
         ${menuSection({
           eyebrow: { en: "Sides", es: "Acompañamientos" },
           title: { en: "For the Table", es: "Para Compartir" },
           items: [
-            { en: ["Truffle Potato Gratin", "Gruyère, thyme."], es: ["Gratín de Papa con Trufa", "Gruyère, tomillo."], price: "$16" },
-            { en: ["Charred Broccolini", "Calabrian chili, garlic, lemon."], es: ["Broccolini a las Brasas", "Chile calabrés, ajo, limón."], price: "$14" },
-            { en: ["Cast-Iron Mac & Cheese", "Aged cheddar, brioche crumb."], es: ["Mac & Cheese en Hierro Fundido", "Cheddar añejo, migas de brioche."], price: "$15" },
+            { en: ["Truffle Potato Gratin", "Gruyère, thyme."], es: ["Gratín de Papa con Trufa", "Gruyère, tomillo."], price: "$16", image: "images/truffle-potato-gratin.jpg", imageWebp: "images/truffle-potato-gratin.webp" },
+            { en: ["Charred Broccolini", "Calabrian chili, garlic, lemon."], es: ["Broccolini a las Brasas", "Chile calabrés, ajo, limón."], price: "$14", image: "images/charred-broccolini.jpg", imageWebp: "images/charred-broccolini.webp" },
+            { en: ["Cast-Iron Mac & Cheese", "Aged cheddar, brioche crumb."], es: ["Mac & Cheese en Hierro Fundido", "Cheddar añejo, migas de brioche."], price: "$15", image: "images/cast-iron-mac-cheese.jpg", imageWebp: "images/cast-iron-mac-cheese.webp" },
           ],
         })}
       </div>
