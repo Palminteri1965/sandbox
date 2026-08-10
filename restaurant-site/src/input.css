@@ -317,8 +317,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 220px;
-    height: 220px;
+    width: 340px;
+    height: 340px;
     border-radius: 9999px;
     pointer-events: none;
     z-index: 60;
@@ -332,10 +332,10 @@
   #dish-hover-photo::before {
     content: "";
     position: absolute;
-    inset: -24px;
+    inset: -32px;
     border-radius: 9999px;
     background: radial-gradient(circle, rgba(226, 88, 42, 0.55) 0%, rgba(200, 138, 46, 0.22) 48%, transparent 72%);
-    filter: blur(12px);
+    filter: blur(15px);
     z-index: -1;
   }
   #dish-hover-photo.is-active {

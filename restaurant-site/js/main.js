@@ -421,9 +421,9 @@
     dishPhoto.setAttribute("aria-hidden", "true");
     document.body.appendChild(dishPhoto);
 
-    var DISH_PHOTO_SIZE = 220;
-    var DISH_PHOTO_OFFSET_X = 48;
-    var DISH_PHOTO_OFFSET_Y = -130;
+    var DISH_PHOTO_SIZE = 340;
+    var DISH_PHOTO_OFFSET_X = 170;
+    var DISH_PHOTO_OFFSET_Y = -90;
     var dpMouseX = 0, dpMouseY = 0, dpCurX = 0, dpCurY = 0;
     var dpTargetScale = 0.6, dpCurScale = 0.6;
 
