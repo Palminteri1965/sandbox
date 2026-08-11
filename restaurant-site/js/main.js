@@ -320,6 +320,28 @@
         else if (e.key === "ArrowLeft") showAt(currentIndex - 1);
         else if (e.key === "ArrowRight") showAt(currentIndex + 1);
       });
+
+      /* Swipe left/right to move between photos — the touch counterpart
+         to the prev/next buttons (hidden on touch, see input.css), which
+         sit close to the image edges and are fiddly to land a thumb on. */
+      var lbTouchStartX = 0, lbTouchStartY = 0, lbTouchTracking = false;
+      lightbox.addEventListener("touchstart", function (e) {
+        if (e.touches.length !== 1) return;
+        lbTouchStartX = e.touches[0].clientX;
+        lbTouchStartY = e.touches[0].clientY;
+        lbTouchTracking = true;
+      }, { passive: true });
+      lightbox.addEventListener("touchend", function (e) {
+        if (!lbTouchTracking) return;
+        lbTouchTracking = false;
+        var touch = e.changedTouches[0];
+        var dx = touch.clientX - lbTouchStartX;
+        var dy = touch.clientY - lbTouchStartY;
+        var SWIPE_THRESHOLD = 45;
+        if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          showAt(currentIndex + (dx < 0 ? 1 : -1));
+        }
+      }, { passive: true });
     }
   }
 

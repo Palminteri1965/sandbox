@@ -746,6 +746,11 @@ function galleryGridSection({ id, intro = "" } = {}) {
       <figure class="max-w-5xl w-full max-h-full flex flex-col items-center">
         <img data-lightbox-img src="" alt="" class="max-h-[78vh] w-auto max-w-full rounded-sm object-contain shadow-2xl">
         <figcaption data-lightbox-caption class="mt-5 text-center text-sm uppercase tracking-widest text-cream/70"></figcaption>
+        <p class="lightbox-swipe-hint mt-3 text-xs uppercase tracking-widest text-cream/50" aria-hidden="true">
+          ${icons.arrowRight("h-3.5 w-3.5 rotate-180")}
+          ${t("Swipe", "Desliza")}
+          ${icons.arrowRight("h-3.5 w-3.5")}
+        </p>
       </figure>
     </div>
   </section>`;

@@ -217,6 +217,35 @@
       transition: none;
     }
   }
+  /* Touch: swipe replaces the prev/next buttons — they sit close to the
+     image edges and are fiddly to land a thumb on. The buttons stay for
+     mouse/trackpad users; touch gets a swipe hint instead (see main.js
+     for the touchstart/touchend handling). */
+  .lightbox-swipe-hint {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  @media (hover: none), (pointer: coarse) {
+    [data-lightbox-prev],
+    [data-lightbox-next] {
+      display: none;
+    }
+    .lightbox-swipe-hint {
+      display: flex;
+      animation: lightbox-swipe-nudge 1.8s ease-in-out infinite;
+    }
+  }
+  @keyframes lightbox-swipe-nudge {
+    0%, 100% { transform: translateX(0); opacity: 0.5; }
+    50% { transform: translateX(5px); opacity: 0.9; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox-swipe-hint {
+      animation: none;
+    }
+  }
 
   /* Subtle ember-glow text hover for card/dish titles — color and letter
      spacing ease in together, no layout shift. */
