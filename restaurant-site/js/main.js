@@ -463,6 +463,56 @@
         "translate3d(" + (dpCurX + DISH_PHOTO_OFFSET_X - dpHalf) + "px, " + (dpCurY + DISH_PHOTO_OFFSET_Y - dpHalf) + "px, 0) scale(" + dpCurScale + ")";
       window.requestAnimationFrame(raf);
     })();
+  } else if (hoverPhotoTargets.length && window.matchMedia("(hover: none), (pointer: coarse)").matches) {
+    /* Touch equivalent: no cursor to trail, so a tap toggles the same
+       circular preview fixed and centered on screen instead. Tap the
+       photo, its close button, or anywhere else to dismiss it. */
+    var dishPhotoBackdrop = document.createElement("div");
+    dishPhotoBackdrop.id = "dish-hover-photo-backdrop";
+    dishPhotoBackdrop.setAttribute("aria-hidden", "true");
+    document.body.appendChild(dishPhotoBackdrop);
+
+    var dishPhotoTap = document.createElement("div");
+    dishPhotoTap.id = "dish-hover-photo";
+    dishPhotoTap.setAttribute("aria-hidden", "true");
+    dishPhotoTap.innerHTML =
+      '<button type="button" class="dish-hover-photo-close" aria-label="Close preview">' +
+      '<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>' +
+      "</button>";
+    document.body.appendChild(dishPhotoTap);
+    var tapActiveEl = null;
+
+    function closeTapPhoto() {
+      dishPhotoTap.classList.remove("is-active");
+      dishPhotoBackdrop.classList.remove("is-active");
+      tapActiveEl = null;
+    }
+
+    hoverPhotoTargets.forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (tapActiveEl === el) {
+          closeTapPhoto();
+          return;
+        }
+        var img = el.getAttribute("data-hover-image");
+        var webp = el.getAttribute("data-hover-image-webp");
+        dishPhotoTap.style.backgroundImage = webp
+          ? "image-set(url('" + webp + "') type('image/webp'), url('" + img + "') type('image/jpeg'))"
+          : "url('" + img + "')";
+        dishPhotoTap.classList.add("is-active");
+        dishPhotoBackdrop.classList.add("is-active");
+        tapActiveEl = el;
+      });
+    });
+
+    dishPhotoTap.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closeTapPhoto();
+    });
+    document.addEventListener("click", function () {
+      if (tapActiveEl) closeTapPhoto();
+    });
   }
 
   /* ---------- Contact / reservation form (no backend wired yet) ---------- */
