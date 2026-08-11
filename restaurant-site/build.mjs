@@ -900,7 +900,6 @@ const contactMain = `
     eyebrow: { en: "Reservations", es: "Reservas" },
     title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
     subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
-    ratio: "aspect-[16/9] md:aspect-[24/9]",
     video: { src: "images/reservations-hero.mp4", webm: "images/reservations-hero.webm", poster: "images/reservations-hero.jpg" },
   })}
 
@@ -988,7 +987,6 @@ const landingMain = `
     eyebrow: { en: "Reservations", es: "Reservas" },
     title: { en: "Reserve Your Table", es: "Reserva tu Mesa" },
     subtitle: { en: "Call, email, or send a request below — parties of 7 or more should call directly.", es: "Llama, escribe o envía una solicitud a continuación. Grupos de 7 o más deben llamar directamente." },
-    ratio: "aspect-[16/9] md:aspect-[24/9]",
     video: { src: "images/reservations-hero.mp4", webm: "images/reservations-hero.webm", poster: "images/reservations-hero.jpg" },
   })}
   ${reservationSection()}
