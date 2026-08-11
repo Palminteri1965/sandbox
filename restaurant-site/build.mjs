@@ -237,8 +237,13 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[4/3] lg:aspect-[2
   const fadeMask = image || video
     ? `mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 0%, black 72%, transparent 100%);`
     : "";
+  // pt-20 exists solely to clear the fixed nav bar sitting over the very
+  // top of the page. Only the four standalone-page heroes are ever the
+  // first thing on the page (no `id`); the one-page layout's anchor
+  // heroes (id set) sit mid-scroll below other content, so that
+  // clearance is dead space — cut it down to a small breather instead.
   return `
-  <section${id ? ` id="${id}"` : ""} class="relative pt-20">
+  <section${id ? ` id="${id}"` : ""} class="relative ${id ? "pt-6" : "pt-20"}">
     <div style="${fadeMask}">${photo}</div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="${fadeMask}"></div>
     <div class="absolute inset-0 flex items-end">
