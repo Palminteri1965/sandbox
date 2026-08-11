@@ -4,6 +4,11 @@
 import { writeFileSync } from "node:fs";
 import { icons } from "./lib/icons.mjs";
 
+// Cache-bust dist/styles.css and js/main.js on every build so a deploy is
+// never masked by a browser (or GitHub Pages/CDN) serving a stale copy of
+// either file under its unchanging filename.
+const BUILD_ID = Date.now();
+
 const SITE = {
   name: "Ember & Oak",
   fullName: "Ember & Oak Steakhouse",
@@ -62,7 +67,7 @@ function head({ title, description }) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="dist/styles.css">
+  <link rel="stylesheet" href="dist/styles.css?v=${BUILD_ID}">
   <script>document.documentElement.classList.add('js');</script>`;
 }
 
@@ -184,7 +189,7 @@ function footer() {
 
 function scripts() {
   return `
-  <script src="js/main.js" defer></script>`;
+  <script src="js/main.js?v=${BUILD_ID}" defer></script>`;
 }
 
 function page({ title, description, active, jsonLd = "", main, navItems, navLogoHref }) {
