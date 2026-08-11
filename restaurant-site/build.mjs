@@ -216,7 +216,7 @@ ${main}
 /* Shared bits                                                          */
 /* ==================================================================== */
 
-function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9]", image, imageWebp, video, id }) {
+function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[4/3] lg:aspect-[21/9]", image, imageWebp, video, id }) {
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : image
@@ -242,7 +242,7 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[4/3] sm:aspect-[1
     <div style="${fadeMask}">${photo}</div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="${fadeMask}"></div>
     <div class="absolute inset-0 flex items-end">
-      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-0 -mb-12 sm:mb-0 sm:pb-12 md:pb-16">
+      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-0 -mb-6 lg:mb-0 lg:pb-16">
         <p class="eyebrow reveal flex items-center gap-3">
           <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
           ${t(eyebrow.en, eyebrow.es)}
@@ -544,7 +544,7 @@ function menuSection({ eyebrow, title, items }) {
 /** Full menu grid — shared by the menu page and the one-page layout. */
 function menuGridSection({ id, intro = "" } = {}) {
   return `
-  <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24">
+  <section${id ? ` id="${id}"` : ""} class="pt-10 pb-16 sm:pt-14 lg:pt-24 sm:pb-24">
     ${intro}
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-x-16">
       <div>
@@ -621,7 +621,7 @@ const menuMain = `
 /** Kitchen story + values — shared by the about page and the one-page layout. */
 function ourStorySections({ id } = {}) {
   return `
-  <section${id ? ` id="${id}"` : ""} class="py-20 sm:py-28" data-reveal-group>
+  <section${id ? ` id="${id}"` : ""} class="pt-12 pb-20 sm:pt-16 lg:pt-28 sm:pb-28" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-2 items-center">
       <div class="reveal">
         ${photoOrPlaceholder({
@@ -716,7 +716,7 @@ const galleryCaptions = [
 /** Photo grid — shared by the gallery page and the one-page layout. */
 function galleryGridSection({ id, intro = "" } = {}) {
   return `
-  <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24" data-reveal-group>
+  <section${id ? ` id="${id}"` : ""} class="pt-10 pb-16 sm:pt-14 lg:pt-24 sm:pb-24" data-reveal-group>
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
       ${intro}
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
@@ -781,7 +781,7 @@ const galleryMain = `
 /** Contact details + reservation form — shared by the contact page and the one-page layout. */
 function reservationSection({ id, intro = "" } = {}) {
   return `
-  <section${id ? ` id="${id}"` : ""} class="py-16 sm:py-24">
+  <section${id ? ` id="${id}"` : ""} class="pt-10 pb-16 sm:pt-14 lg:pt-24 sm:pb-24">
     ${intro}
     <div class="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-16 lg:grid-cols-5">
       <div class="lg:col-span-2 space-y-10">
