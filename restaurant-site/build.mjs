@@ -211,7 +211,7 @@ ${main}
 /* Shared bits                                                          */
 /* ==================================================================== */
 
-function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[21/9]", image, imageWebp, video, id }) {
+function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[4/3] sm:aspect-[16/9] md:aspect-[21/9]", image, imageWebp, video, id }) {
   const bgImage = imageWebp
     ? `background-image: url('${escAttr(image)}'); background-image: image-set(url('${escAttr(imageWebp)}') type('image/webp'), url('${escAttr(image)}') type('image/jpeg'));`
     : image
@@ -237,7 +237,7 @@ function pageHero({ eyebrow, title, subtitle, ratio = "aspect-[16/9] md:aspect-[
     <div style="${fadeMask}">${photo}</div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink/95 via-ink/50 to-ink/20" style="${fadeMask}"></div>
     <div class="absolute inset-0 flex items-end">
-      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-12 md:pb-16">
+      <div class="mx-auto max-w-content w-full px-4 sm:px-6 lg:px-8 pb-0 -mb-12 sm:mb-0 sm:pb-12 md:pb-16">
         <p class="eyebrow reveal flex items-center gap-3">
           <span class="h-px w-8 bg-gold/60" aria-hidden="true"></span>
           ${t(eyebrow.en, eyebrow.es)}
